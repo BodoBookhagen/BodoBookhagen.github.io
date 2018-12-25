@@ -1,2 +1,1 @@
-# BodoBookhagen.github.io
-Bodo Bookhagen / Earth Sciences
+[Welcome to my homepage!](https://lantaoyu.github.io/)
