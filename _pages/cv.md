@@ -17,7 +17,7 @@ Affiliated with **Geography Department, UC Santa Barbara, Ellison Hall
 
 [bodo.bookhagen@uni-potsdam.de](emailto:bodo.bookhagen@uni-potsdam.de)
 
-See [CV in PDF](http://bodobookhagen.github.io/files/bookhagen_CV.pdf).
+See [CV](http://bodobookhagen.github.io/pdf/bookhagen_CV.pdf).
 
 ## Appointments
 
