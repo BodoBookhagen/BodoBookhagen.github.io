@@ -12,7 +12,7 @@ redirect_from:
 Current Address: **Department of Earth Sciences, Universität Potsdam,
 Karl-Liebknecht-Str. 24-25, 14467 Potsdam, Germany**
 
-Affiliated with **Geography Department, UC Santa Barbara, Ellison Hall
+Affiliated with: **Geography Department, UC Santa Barbara, Ellison Hall
 1832, Santa Barbara, CA 93106, USA**
 
 [bodo.bookhagen@uni-potsdam.de](emailto:bodo.bookhagen@uni-potsdam.de)
