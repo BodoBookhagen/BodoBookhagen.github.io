@@ -36,7 +36,8 @@ conda config --prepend channels conda-forge
 
 | What for? | Conda commands|
 |:----|:----:|
-PointCloud Processing | ```
+| Pandoc Processing| ```conda create -y -n pandoc python pip pandoc imagemagic```|
+|PointCloud Processing | ```
 conda create -y -n PC_py3 python=3.6 pip scipy pandas numpy matplotlib \
 	scikit-image gdal pdal xarray packaging ipython multiprocess \
 	h5py lastools pykdtree spyder gmt=5* imagemagick
@@ -45,6 +46,6 @@ Activate the environment and install laspy
 ```bash
 source activate PC_py3
 pip install laspy
-```
-|
+```|
+
 
