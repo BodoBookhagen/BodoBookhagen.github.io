@@ -9,7 +9,10 @@ See also: [Google Scholar Profile](https://scholar.google.com/citations?user=_Uu
 
 [Jump to peer-reviewed book chapters](#peer-reviewed-book-chapters)
 
-[Jump to peer-reviewed journal articles](#peer-reviewed-journal-articles) [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#2015) [2014](#2014) [2013](#2013) [2012](#2012) [2011](#2011) [2010](#2010) [2009](#2009) [2008](#2008) [2007](#2007) [2006](#2006) [2001-2005](#2001-2005)
+[Jump to peer-reviewed journal articles](#peer-reviewed-journal-articles)
+
+[2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#2015) [2014](#2014) [2013](#2013) [2012](#2012) [2011](#2011) [2010](#2010) 
+[2009](#2009) [2008](#2008) [2007](#2007) [2006](#2006) [2001-2005](#2001-2005)
 
 ## Peer reviewed Book chapters
 
@@ -91,9 +94,9 @@ See also: [Google Scholar Profile](https://scholar.google.com/citations?user=_Uu
 
 | Nr. | Author(s) | Year | Title | *Journal* | DOI | 
 |:---:|:----------|:----:|-------|---------|---------------------|
-|78 | Harvey, J.E., Burbank, D.W., **Bookhagen, B.** |2015| Along-strike changes in Himalayan thrust geometry: Topographic and tectonic discontinuities in western Nepal | *Lithosphere* | [DOI](https://doi.org/10.1130/L444.1)  |
-|77 | Olen, S.M., **Bookhagen, B.**, Hoffmann, B., Sachse, D., Adhikari, D. P., Strecker, M.R. |2015| Understanding erosion rates in the Himalayan orogen: A case study from the Arun Valley | *JGR Earth Surface* | [DOI](https://doi.org/10.1002/2014JF003410) |
-|76 | Boers, N., Barbosa, H.M.J., **Bookhagen, B.**, Marengo, J.A., Marwan, N., Kurths, J. |2015| Propagation of Strong Rainfall Events from Southeastern South America to the Central Andes | *Journal of Climate* | [DOI](https://doi.org/10.1175/JCLI-D-15-0137.1) |
+|78 | Harvey, J.E., Burbank, D.W., **Bookhagen, B.** |2015| Along-strike changes in Himalayan thrust geometry: Topographic and tectonic discontinuities in western Nepal | *Lithosphere* | [DOI](https://doi.org/10.1130/L444.1) [PDF](http://bodobookhagen.github.io/pdf/harvey15_himalaya_tectonics.pdf) |
+|77 | Olen, S.M., **Bookhagen, B.**, Hoffmann, B., Sachse, D., Adhikari, D. P., Strecker, M.R. |2015| Understanding erosion rates in the Himalayan orogen: A case study from the Arun Valley | *JGR Earth Surface* | [DOI](https://doi.org/10.1002/2014JF003410) [PDF](http://bodobookhagen.github.io/pdf/Olen15_Arun_erosion.pdf)|
+|76 | Boers, N., Barbosa, H.M.J., **Bookhagen, B.**, Marengo, J.A., Marwan, N., Kurths, J. |2015| Propagation of Strong Rainfall Events from Southeastern South America to the Central Andes | *Journal of Climate* | [DOI](https://doi.org/10.1175/JCLI-D-15-0137.1) [PDF](http://bodobookhagen.github.io/pdf/boers15_sam_rainfall_propagation_andes.pdf)|
 |75 | Thompson, J. A., D. W. Burbank, T. Li, J. Chen, and **Bookhagen, B.** |2015| Late Miocene northward propagation of the northeast Pamir thrust system, northwest China | *Tectonics* | [DOI](https://doi.org/10.1002/2014TC003690) |
 |74 | Smith, T.T., **Bookhagen, B.**, and Cannon, F. |2015| Improving semi-automated glacier mapping with a multi-method approach: applications in central Asia | *The Cryosphere* | [DOI](https://doi.org/10.5194/tc-9-1747-2015) [PDF](https://www.the-cryosphere.net/9/1747/2015/tc-9-1747-2015.pdf) |
 |73 | Boers, N., **Bookhagen, B.**, Marengo, J., Marwan, N., Kurths, J. |2015| Spatiotemporal characteristics and synchronization of extreme rainfall in South America with focus on the Andes Mountain range| *Climate Dynamics* | [DOI](https://doi.org/10.1007/s00382-015-2601-6) |
