@@ -89,16 +89,16 @@ author_profile: true
 
 | Nr. | Author(s) | Year | Title | Journal | Volume/Pages or DOI | 
 |:---:|:----------|:----:|-------|---------|---------------------|
-|78 | Harvey, J.E., Burbank, D.W., Bookhagen, B. |2015| Along-strike changes in Himalayan thrust geometry: Topographic and tectonic discontinuities in western Nepal, Lithosphere, 7 (5), 511-518, doi:10.1130/L444.1
-|77 | Olen, S.M., Bookhagen, B., Hoffmann, B., Sachse, D., Adhikari, D. P., Strecker, M.R. |2015| Understanding erosion rates in the Himalayan orogen: A case study from the Arun Valley, JGR Earth Surface, doi:10.1002/2014JF003410
-|76 | Boers, N., Barbosa, H.M.J., Bookhagen, B., Marengo, J.A., Marwan, N., Kurths, J. |2015| Propagation of Strong Rainfall Events from Southeastern South America to the Central Andes, Journal of Climate, 28, 7641–7658, doi:10.1175/JCLI-D-15-0137.1 
-|75 | Thompson, J. A., D. W. Burbank, T. Li, J. Chen, and Bookhagen, B. |2015, Late Miocene northward propagation of the northeast Pamir thrust system, northwest China, Tectonics, 34, doi:10.1002/2014TC003690
-|74 | Smith, T.T., Bookhagen, B., and Cannon, F. |2015| Improving semi-automated glacier mapping with a multi-method approach: applications in central Asia, The Cryosphere, doi:10.5194/tc-9-1747-2015
-|73 | Boers, N., Bookhagen, B., Marengo, J., Marwan, N., Kurths, J. |2015| Spatiotemporal characteristics and synchronization of extreme rainfall in South America with focus on the Andes Mountain range, Climate Dynamics, doi:10.1007/s00382-015-2601-6 
-|72 | Scherler, D., Bookhagen, B., Wulf, H., Preusser, F., Strecker, M.R. |2015| Increased late Pleistocene erosion rates during fluvial aggradation in the Garhwal Himalaya, northern India, Earth and Planetary Science Letters, doi:10.1016/j.epsl.2015.06.034 
-|71 | Alonzo, M., Bookhagen, B., McFadden, J.P., Sun, A., Roberts, D.A. |2015| Mapping urban forest leaf area index with airborne lidar using penetration metrics and allometry, Remote Sensing of Environment, 162, 141-153, doi:10.1016/j.rse.2015.02.025
-|70 | Torres Acosta, V., Schildgen, T.F., Clarke, B.A., Scherler, D., Bookhagen, B., Wittmann, H., von Blanckenburg, F., Strekcer, M.R. |2015| Effect of vegetation cover on millennial-scale landscape denudation rates in East Africa, Lithosphere, doi:10.1130/L402.1 
-|69 | Boers, N., Donner, R.V., Bookhagen, B., Kurths, J. |2015| Complex network analysis helps to identify impacts of the El Nino Southern Oscillation on moisture divergence in South America, Climate Dynamics, doi:10.1007/s00382-014-2265-7
+|78 | Harvey, J.E., Burbank, D.W., Bookhagen, B. |2015| Along-strike changes in Himalayan thrust geometry: Topographic and tectonic discontinuities in western Nepal | Lithosphere | [DOI](https://doi.org/10.1130/L444.1)  |
+|77 | Olen, S.M., Bookhagen, B., Hoffmann, B., Sachse, D., Adhikari, D. P., Strecker, M.R. |2015| Understanding erosion rates in the Himalayan orogen: A case study from the Arun Valley | JGR Earth Surface | [DOI](https://doi.org/10.1002/2014JF003410) |
+|76 | Boers, N., Barbosa, H.M.J., Bookhagen, B., Marengo, J.A., Marwan, N., Kurths, J. |2015| Propagation of Strong Rainfall Events from Southeastern South America to the Central Andes | Journal of Climate | [DOI](https://doi.org/10.1175/JCLI-D-15-0137.1) |
+|75 | Thompson, J. A., D. W. Burbank, T. Li, J. Chen, and Bookhagen, B. |2015| Late Miocene northward propagation of the northeast Pamir thrust system, northwest China | Tectonics | [DOI](https://doi.org/10.1002/2014TC003690) |
+|74 | Smith, T.T., Bookhagen, B., and Cannon, F. |2015| Improving semi-automated glacier mapping with a multi-method approach: applications in central Asia | The Cryosphere | [DOI](https://doi.org/10.5194/tc-9-1747-2015) [PDF](https://www.the-cryosphere.net/9/1747/2015/tc-9-1747-2015.pdf) |
+|73 | Boers, N., Bookhagen, B., Marengo, J., Marwan, N., Kurths, J. |2015| Spatiotemporal characteristics and synchronization of extreme rainfall in South America with focus on the Andes Mountain range| Climate Dynamics | [DOI](https://doi.org/10.1007/s00382-015-2601-6) |
+|72 | Scherler, D., Bookhagen, B., Wulf, H., Preusser, F., Strecker, M.R. |2015| Increased late Pleistocene erosion rates during fluvial aggradation in the Garhwal Himalaya, northern India | Earth and Planetary Science Letters | [DOI](https://doi.org/10.1016/j.epsl.2015.06.034) |
+|71 | Alonzo, M., Bookhagen, B., McFadden, J.P., Sun, A., Roberts, D.A. |2015| Mapping urban forest leaf area index with airborne lidar using penetration metrics and allometry | Remote Sensing of Environment | [DOI](https://doi.org/10.1016/j.rse.2015.02.025) |
+|70 | Torres Acosta, V., Schildgen, T.F., Clarke, B.A., Scherler, D., Bookhagen, B., Wittmann, H., von Blanckenburg, F., Strekcer, M.R. |2015| Effect of vegetation cover on millennial-scale landscape denudation rates in East Africa | Lithosphere | [DOI](https://doi.org/10.1130/L402.1)
+|69 | Boers, N., Donner, R.V., Bookhagen, B., Kurths, J. |2015| Complex network analysis helps to identify impacts of the El Nino Southern Oscillation on moisture divergence in South America | Climate Dynamics | [DOI](https://doi.org/10.1007/s00382-014-2265-7)
 
 ### 2014
 [Jump to top](#top)
