@@ -7,8 +7,6 @@ redirect_from:
   - /resume
 ---
 
-{% include base_path %}
-
 Current Address: **Department of Earth Sciences, Universität Potsdam,
 Karl-Liebknecht-Str. 24-25, 14467 Potsdam, Germany**
 
