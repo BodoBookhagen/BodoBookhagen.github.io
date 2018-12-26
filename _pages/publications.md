@@ -9,7 +9,7 @@ See also: [Google Scholar Profile](https://scholar.google.com/citations?user=_Uu
 
 [Jump to peer-reviewed book chapters](#peer-reviewed-book-chapters)
 
-[Jump to peer-reviewed journal articles](#peer-reviewed-journal-articles) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#2015)
+[Jump to peer-reviewed journal articles](#peer-reviewed-journal-articles) [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#2015) [2014](#2014) [2013](#2013) [2012](#2012) [2011](#2011) [2010](#2010) [2009](#2009) [2008](#2008) [2007](#2007) [2006](#2006) [2001-2005](#2001-2005)
 
 ## Peer reviewed Book chapters
 
