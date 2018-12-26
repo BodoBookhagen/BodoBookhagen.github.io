@@ -13,7 +13,7 @@ See also: [Google Scholar Profile](https://scholar.google.com/citations?user=_Uu
 
 ## Peer reviewed Book chapters
 
-| Nr. | Author(s) | Year | Chapter Title | Book Title | Editors | Publisher | DOI | 
+| Nr. | Author(s) | Year | Chapter Title | *Book Title* | Editors | Publisher | DOI | 
 |:---:|:----------|:----:|---------------|------------|---------|-----------|-----|
 | 7   | Smith T.T. and **Bookhagen, B.** | 2019 | Remotely sensed rain and snowfall in the Himalaya | *Himalayan Weather and Climate and their impact on the environment* | A. P. Dimri, B. Bookhagen, M. Stoffel and T. Yasunari | Springer Verlag, Berlin | [doi]() [PDF](http://bodobookhagen.github.io/pdf/smith19_remotely_sensed_rain_and_snowfall_Himalaya.pdf) |
 | 6 |  **Bookhagen, B.** | 2017 | Hydrology and glaciology of the Himalayas: their influence on wetlands | *Bird Migration Across the Himalayas: wetland functioning amidst mountains and glaciers* | H. Prins and T. Namgail | Cambridge University Press | [doi](https://doi.org/10.1017/9781316335420.014) [PDF](http://bodobookhagen.github.io/pdf/bookhagen17_hydrology_climate_wetlands.pdf) |
