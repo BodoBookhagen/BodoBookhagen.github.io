@@ -1,11 +1,11 @@
 ---
-title: 'Notes for Computer Networks'
+title: 'Installing Conda'
 date: 2018-12-26
 permalink: /posts/2018/12/conda-install/
-<!-- tags:
-  - cool posts
-  - category1
-  - category2 -->
+-- tags:
+  - conda
+  - installation
+  - setup
 ---
 
 # Installing Conda on Linux, Mac OS X, and Windows 10
