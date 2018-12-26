@@ -34,6 +34,11 @@ conda config --prepend channels conda-forge/label/dev
 conda config --prepend channels conda-forge
 ```
 
+| What for? | Conda commands |
+|:----------|:--------------:|
+| Pandoc Processing | `conda create -y -n pandoc python pip pandoc imagemagic` |
+
+
 | What for? | Conda commands|
 |:----------|:-------------:|
 | Pandoc Processing | `conda create -y -n pandoc python pip pandoc imagemagic`|
