@@ -7,11 +7,10 @@ See also: [Google Scholar Profile](https://scholar.google.com/citations?user=_Uu
 [Researcher ID Profile](http://www.researcherid.com/rid/A-1389-2012), and [ORCID](https://orcid.org/0000-0003-1323-6453)
 ##### Top
 
-[Jump to peer-reviewed book chapters](#peer-reviewed-book-chapters)
+[Jump to peer-reviewed book chapters](#peer-reviewed-book-chapters)<br>
+[Jump to peer-reviewed journal articles](#peer-reviewed-journal-articles)<br>
 
-[Jump to peer-reviewed journal articles](#peer-reviewed-journal-articles)
-
-[2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#2015) [2014](#2014) [2013](#2013) [2012](#2012) [2011](#2011) [2010](#2010) 
+Year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#2015) [2014](#2014) [2013](#2013) [2012](#2012) [2011](#2011) [2010](#2010) <br>
 [2009](#2009) [2008](#2008) [2007](#2007) [2006](#2006) [2001-2005](#2001-2005)
 
 ## Peer reviewed Book chapters
@@ -71,7 +70,7 @@ See also: [Google Scholar Profile](https://scholar.google.com/citations?user=_Uu
 |:---:|:----------|:----:|-------|---------|---------------------|
 |97 | Castino, F., **Bookhagen, B.**, and M. R. Strecker |2016| River-discharge dynamics in the Southern Central Andes and the 1976–77 global climate shift | *Geophys. Res. Lett.* | [DOI](https://doi.org/10.1002/2016GL070868) [PDF](http://bodobookhagen.github.io/pdf/Castino16_discharge_nw_argentina.pdf) |
 |96 | Bufe, A., D. P. S. Bekaert, E. Hussain, B. Bookhagen, D. W. Burbank, J. A. Thompson Jobe, C. Jie, L. Tao, L. Langtao, and W. Gan | 2017 | Temporal changes in rock-uplift rates of folds in the foreland of the Tian Shan and the Pamir from geodetic and geologic data | *Geophys. Res. Lett.* | [DOI](https://doi.org/10.1002/2017GL073627) [PDF](http://bodobookhagen.github.io/pdf/Bufe17_centralAsia_deformation_InSAR.pdf) |
-|95 | Neelmeiher, J., Motagh, M., **Bookhagen, B.** |2017| High-Resolution Digital Elevation Models from Single-Pass TanDEM-X Imagery Over Mountainous Regions: A Case Study for Inylchek Glacier, Central Asia| *ISPRS Journal of Photogrammetry and Remote Sensing* | [DOI](https://doi.org/10.1016/j.isprsjprs.2017.05.011) |
+|95 | Neelmeijer, J., Motagh, M., **Bookhagen, B.** |2017| High-Resolution Digital Elevation Models from Single-Pass TanDEM-X Imagery Over Mountainous Regions: A Case Study for Inylchek Glacier, Central Asia| *ISPRS Journal of Photogrammetry and Remote Sensing* | [DOI](https://doi.org/10.1016/j.isprsjprs.2017.05.011) [PDF](http://bodobookhagen.github.io/pdf/neelmeijer17_high_res_DEM_glaciers.pdf) |
 |94 | Brell, M., Segel, K., Guanter, L., **Bookhagen, B.** |2017| Hyperspectral and Lidar intensity data fusion: A framework for the rigorous correction of illumination, anisotropic effects and cross-calibration | *IEEE Transactions on Geoscience and Remote Sensing* | [DOI](https://doi.org/10.1109/TGRS.2017.2654516) [PDF](http://bodobookhagen.github.io/pdf/brell17_lidar_fusion.pdf) |
 |93 | Cannon, F., Carvalho, L.M.V, Jones, C., Norris, J., Bookhagen B., Kiladis G.N. |2017 | Effects of Topographic Smoothing on the Simulation of Winter Precipitation in High Mountain Asia | *JGR Atmospheres* | [DOI](https://doi.org/10.1002/2016JD026038) [PDF](http://bodobookhagen.github.io/pdf/Cannon17_topographic_smoothing_winter_precip_HMA.pdf) |
 |92 | Dey, S., Thiede, R.C., Schildgen, T.F., Wittmann, H., **Bookhagen, B.**, Scherler, D., Jain, V., Strecker, M.R. |2016| Holocene internal shortening within the northwest Sub-Himalaya: Out-of-sequence faulting of the Jwalamukhi Thrust, India | *Tectonics* | [DOI](https://doi.org/10.1002/2015TC004002) [PDF](http://bodobookhagen.github.io/pdf/Dey16_out_of_sequence_thrusting_nw_himalaya.pdf) |
@@ -97,7 +96,7 @@ See also: [Google Scholar Profile](https://scholar.google.com/citations?user=_Uu
 |78 | Harvey, J.E., Burbank, D.W., **Bookhagen, B.** |2015| Along-strike changes in Himalayan thrust geometry: Topographic and tectonic discontinuities in western Nepal | *Lithosphere* | [DOI](https://doi.org/10.1130/L444.1) [PDF](http://bodobookhagen.github.io/pdf/harvey15_himalaya_tectonics.pdf) |
 |77 | Olen, S.M., **Bookhagen, B.**, Hoffmann, B., Sachse, D., Adhikari, D. P., Strecker, M.R. |2015| Understanding erosion rates in the Himalayan orogen: A case study from the Arun Valley | *JGR Earth Surface* | [DOI](https://doi.org/10.1002/2014JF003410) [PDF](http://bodobookhagen.github.io/pdf/Olen15_Arun_erosion.pdf)|
 |76 | Boers, N., Barbosa, H.M.J., **Bookhagen, B.**, Marengo, J.A., Marwan, N., Kurths, J. |2015| Propagation of Strong Rainfall Events from Southeastern South America to the Central Andes | *Journal of Climate* | [DOI](https://doi.org/10.1175/JCLI-D-15-0137.1) [PDF](http://bodobookhagen.github.io/pdf/boers15_sam_rainfall_propagation_andes.pdf)|
-|75 | Thompson, J. A., D. W. Burbank, T. Li, J. Chen, and **Bookhagen, B.** |2015| Late Miocene northward propagation of the northeast Pamir thrust system, northwest China | *Tectonics* | [DOI](https://doi.org/10.1002/2014TC003690) |
+|75 | Thompson, J. A., D. W. Burbank, T. Li, J. Chen, and **Bookhagen, B.** |2015| Late Miocene northward propagation of the northeast Pamir thrust system, northwest China | *Tectonics* | [DOI](https://doi.org/10.1002/2014TC003690) [PDF](http://bodobookhagen.github.io/pdf/Thompson15_pamir_nw_china.pdf)|
 |74 | Smith, T.T., **Bookhagen, B.**, and Cannon, F. |2015| Improving semi-automated glacier mapping with a multi-method approach: applications in central Asia | *The Cryosphere* | [DOI](https://doi.org/10.5194/tc-9-1747-2015) [PDF](https://www.the-cryosphere.net/9/1747/2015/tc-9-1747-2015.pdf) |
 |73 | Boers, N., **Bookhagen, B.**, Marengo, J., Marwan, N., Kurths, J. |2015| Spatiotemporal characteristics and synchronization of extreme rainfall in South America with focus on the Andes Mountain range| *Climate Dynamics* | [DOI](https://doi.org/10.1007/s00382-015-2601-6) |
 |72 | Scherler, D., **Bookhagen, B.**, Wulf, H., Preusser, F., Strecker, M.R. |2015| Increased late Pleistocene erosion rates during fluvial aggradation in the Garhwal Himalaya, northern India | *Earth and Planetary Science Letters* | [DOI](https://doi.org/10.1016/j.epsl.2015.06.034) |
