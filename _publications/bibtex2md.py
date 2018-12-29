@@ -73,14 +73,13 @@ def main():
     os.chdir(args.dir)
     paper_number = 0
     bib_data.entries.reverse()
-# | Author(s) | Year | Title | Journal | Volume | DOI | 
-#Header for table should look like
-header = ['---']
-header.append("title: Peer-revied journal articles as table list")
-header.append('Collection: publications')
-header.append('---')
-header.append('| Nr. | Author(s) | Year | Title | Journal | Volume/Pages or DOI | ')
-header.append('|:---:|:----------|:----:|-------|---------|---------------------|')
+    #Header for table should look like
+    header = ['---']
+    header.append("title: Peer-revied journal articles as table list")
+    header.append('Collection: publications')
+    header.append('---')
+    header.append('| Nr. | Author(s) | Year | Title | Journal | Volume/Pages or DOI | ')
+    header.append('|:---:|:----------|:----:|-------|---------|---------------------|')
 
 
 
