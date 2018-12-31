@@ -14,5 +14,3 @@
 .container .content {
     display: none;
     padding : 5px;
-
-{% highlight css %} .center { text-align: center; margin: 0 auto; } {% endhighlight %}
