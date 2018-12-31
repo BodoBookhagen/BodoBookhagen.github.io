@@ -134,19 +134,19 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 
 | Nr. | Author(s) | Year | Title | Journal | DOI | 
 |:---:|:----------|:----:|-------|---------|---------------------|
-|48 | Yildrim, C., Schildgen, T.F., Echtler, H., Melnick, D., **Bookhagen, B.**, Ciner, A., Niedermann, S., Merchel, S., Martschini, M., Steier, P., Strecker, M.R. |2013| Tectonic implications of fluvial incision and pediment deformation at the northern margin of the Central Anatolian Plateau based on multiple cosmogenic nuclides, *Tectonics*, doi:10.1002/tect.20066
-|47 | Amidon, W.H., **Bookhagen, B.**, Avouac, J.P., Smith, T., Rood, D. |2013| Late Pleistocene glacial advances in the western Tibet interior, *Earth and Planetary Science Letters*, doi:10.1016/j.epsl.2013.08.041
-|46 | Boers, N., **Bookhagen, B.**, Marwan. N., Kurths, J., Marengo, J. |2013| Complex networks identify spatial patterns of extreme rainfall events of the South American Monsoon System, *Geophys. Res. Lett.*, 40, 1-7, doi:10.1002/grl.50681
-|45 | Fisher, G.B., **Bookhagen, B.**, Amos, C.B. |2013| Channel planform geometry and slopes from freely available high-spatial resolution imagery and DEM fusion: Implications for channel width scalings, erosion proxies, and fluvial signatures in tectonically active landscapes, Geomorphology, doi:10.1016/j.geomorph.2013.04.011
-|44 | Godard, V., Tucker, G.E., Fisher, G.B., Burbank, D.W., **Bookhagen, B.** |2013| Frequency-dependent landscape response to climatic forcing, *Geophys. Res. Lett.*, 40, 859-863, doi:10.1002/grl.50253
+|48 | Yildrim, C., Schildgen, T.F., Echtler, H., Melnick, D., **Bookhagen, B.**, Ciner, A., Niedermann, S., Merchel, S., Martschini, M., Steier, P., Strecker, M.R. |2013| Tectonic implications of fluvial incision and pediment deformation at the northern margin of the Central Anatolian Plateau based on multiple cosmogenic nuclides| *Tectonics*| [DOI](https://doi.org/10.1002/tect.20066) [PDF](http://bodobookhagen.github.io/pdf/yildrim13_cap_crn.pdf)
+|47 | Amidon, W.H., **Bookhagen, B.**, Avouac, J.P., Smith, T., Rood, D. |2013| Late Pleistocene glacial advances in the western Tibet interior| *Earth and Planetary Science Letters*| [DOI](https://doi.org/10.1016/j.epsl.2013.08.041) [PDF](http://bodobookhagen.github.io/pdf/amidon13_MK_moraines.pdf)
+|46 | Boers, N., **Bookhagen, B.**, Marwan. N., Kurths, J., Marengo, J. |2013| Complex networks identify spatial patterns of extreme rainfall events of the South American Monsoon System | *Geophys. Res. Lett.* |[DOI](https://doi.org/10.1002/grl.50681) [PDF](http://bodobookhagen.github.io/pdf/boers13_complex_networks_SAM.pdf)
+|45 | Fisher, G.B., **Bookhagen, B.**, Amos, C.B. |2013| Channel planform geometry and slopes from freely available high-spatial resolution imagery and DEM fusion: Implications for channel width scalings, erosion proxies, and fluvial signatures in tectonically active landscapes | *Geomorphology* | [DOI](https://doi.org/10.1016/j.geomorph.2013.04.011) [PDF](http://bodobookhagen.github.io/pdf/fisher13_channel_width.pdf)
+|44 | Godard, V., Tucker, G.E., Fisher, G.B., Burbank, D.W., **Bookhagen, B.** |2013| Frequency-dependent landscape response to climatic forcing | *Geophys. Res. Lett.* | [DOI](https://doi.org/10.1002/grl.50253) [PDF](http://bodobookhagen.github.io/pdf/Godard13_frequency_landscape_changes.pdf)
 
 ### 2012
 [Jump to top](#top)
 
 | Nr. | Author(s) | Year | Title | Journal | DOI | 
 |:---:|:----------|:----:|-------|---------|---------------------|
-|43 | Burbank, D.W., **Bookhagen, B.**, Gabet, E.J., Putkonen, J. |2012| Modern climate and erosion in the Himalaya, Compres Rendus Geoscience, 344, 610-626
-|42 | Fisher, G.B., Amos, C.B., **Bookhagen, B.**, Burbank, D.W., Godard, V. |2012| Channel widths, landslides, faults, and beyond: The new world order of high-spatial resolution Google Earth imagery in the study of earth surface processes, Geological Society of America Special Papers, 492, 1-22, doi:10.1130/2012.2492(01)
+|43 | Burbank, D.W., **Bookhagen, B.**, Gabet, E.J., Putkonen, J. |2012| Modern climate and erosion in the Himalaya | *Compres Rendus Geoscience* | [DOI](https://doi.org/10.1016/j.crte.2012.10.010) [PDF](http://bodobookhagen.github.io/pdf/burbank12_modern_climate_erosion_Himalaya.pdf)
+|42 | Fisher, G.B., Amos, C.B., **Bookhagen, B.**, Burbank, D.W., Godard, V. |2012| Channel widths, landslides, faults, and beyond: The new world order of high-spatial resolution Google Earth imagery in the study of earth surface processes | *Geological Society of America Special Papers 492*  |
 |41 | Perroy, R.L., **Bookhagen, B.**, Howarth, J., Chadwick, O. |2012| Holocene and Anthropocene landscape change: arroyo formation on Santa Cruz Island, California, Annals of the Association of American Geographers, doi: 10.1080/00045608.2012.715054
 |40 | Godard, V., Burbank, D.W., Bourles, D.L., **Bookhagen, B.**, Braucher, R., Fisher, G.B. |2012| Impact of glacial erosion on 10Be concentrations in fluvial sediments of the Marsyandi catchment, central Nepal, JGR Earth Surface, doi:10.1029/2011JF002230
 |39 | Wulf, H., **Bookhagen, B.** and Scherler, D. |2012| Climatic and geologic controls on suspended sediment flux in the Sutlej River Valley, western Himalaya, Hydrology and Earth System Sciences, doi:10.5194/hess-16-2193-2012
