@@ -1,5 +1,5 @@
 ---
-title: 'Installing Conda'
+title: 'Installing Miniconda'
 date: 2018-12-26
 permalink: /posts/2018/12/conda-install/
 -- tags:
@@ -8,7 +8,7 @@ permalink: /posts/2018/12/conda-install/
   - setup
 ---
 
-# Installing Conda on Linux, Mac OS X, and Windows 10
+# Installing Miniconda on Linux, Mac OS X, and Windows 10
 
 ## Installation on Windows 10
 Installation works best, if you use the Windows 10 Bash. There are several resources available on the internet that explain the [bash setup](https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10). 
@@ -36,18 +36,16 @@ conda config --prepend channels conda-forge
 
 | What for? | Conda commands |
 |:----------|:--------------:|
-| Pandoc Processing | ```conda create -y -n pandoc python pip pandoc imagemagic``` |
+| Pandoc Processing | ```conda create -y -n pandoc python pip pandoc imagemagick``` |
+| GMT and CDO Processing | ```conda create -y -n gmt_cdo gmt=5* cdo ```  |
 
 
 | What for? | Conda commands|
 |:----------|:-------------:|
 | Pandoc Processing | `conda create -y -n pandoc python pip pandoc imagemagic`|
-|PointCloud Processing | `conda create -y -n PC_py3 python=3.6 pip scipy pandas numpy matplotlib \
-	scikit-image gdal pdal xarray packaging ipython multiprocess \
-	h5py lastools pykdtree spyder gmt=5* imagemagick`
+|PointCloud Processing | ```conda create -y -n PC_py3 python=3.6 pip scipy pandas numpy matplotlib scikit-image gdal pdal xarray packaging ipython multiprocess h5py lastools pykdtree spyder gmt=5* imagemagick```
 	Activate the environment and install laspy 
-	```bash
-	source activate PC_py3
+	```source activate PC_py3
 	pip install laspy```|
 
 
