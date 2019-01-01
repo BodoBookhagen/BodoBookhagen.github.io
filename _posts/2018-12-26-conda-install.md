@@ -8,7 +8,7 @@ permalink: /posts/2018/12/conda-install/
   - setup
 ---
 
-# Installing Miniconda on Linux, Mac OS X, and Windows 10
+Installing Miniconda on Linux, Mac OS X, and Windows 10 for point-cloud processing, python programming, and work with GMT, CDO and other tools.
 
 ## Installation on Windows 10
 Installation works best, if you use the Windows 10 Bash. There are several resources available on the internet that explain the [bash setup](https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10). 
@@ -42,10 +42,11 @@ conda config --prepend channels conda-forge
 
 | What for? | Conda commands|
 |:----------|:-------------:|
-| Pandoc Processing | `conda create -y -n pandoc python pip pandoc imagemagic`|
-|PointCloud Processing | ```conda create -y -n PC_py3 python=3.6 pip scipy pandas numpy matplotlib scikit-image gdal pdal xarray packaging ipython multiprocess h5py lastools pykdtree spyder gmt=5* imagemagick```
-	Activate the environment and install laspy 
-	```source activate PC_py3
+| Pandoc Processing | `conda create -y -n pandoc python pip pandoc imagemagick`|
+
+|PointCloud Processing | ```conda create -y -n PC_py3 python=3.6 pip scipy pandas numpy matplotlib scikit-image gdal pdal xarray packaging ipython multiprocess h5py lastools pykdtree spyder gmt=5* imagemagick``` Activate the environment and install laspy ```source activate PC_py3
 	pip install laspy```|
 
 
+# Activating environments
+You can now call ```source activate pandoc``` to start the pandoc environment. Alternatively, you can set an alias in your .bashrc file.
