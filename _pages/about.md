@@ -17,12 +17,10 @@ I am interested in transport processes within the Earth (vertical tectonics) and
 Detailed information on these research topics can be found on [research](http://bodobookhagen.github.io/research). More extensive tutorial, data, and codes are available and on the [University of Potsdam - Remote Sensing and Earth-Surface Process webpage](http://UP-RS-ESP.github.io/).
 
 
-My **teaching** centers around a remote-sensing and data-science focused curriculum for educating earth scientists. Specifically, we are running an international MSc program *Remote Sensing, geoInformation, and Visualization* (see [our Department webpage](http://www.geo.uni-potsdam.de/msc-RSIV-e.html), the [university's application website](https://www.uni-potsdam.de/de/mnfakul/studium-und-lehre/master/remote-sensing-geoinformation-and-visualization.html), and the [DAAD](https://www.daad.de/deutschland/studienangebote/international-programmes/en/detail/4855/). My current MSc teaching focuses on:
-* Earth System Science (transport processes within the earth, on the Earth's surface, and in the atmosphere)
-* Remote Sensing of the Environment 
-* Applied Remote Sensing: Aerial photogrammetry, Structure from Motion, and Lidar data
-* Applied Remote Sensing: Point Cloud analyses for the Environmental sciences
+My [**teaching**](http://bodobookhagen.github.io/teaching) centers around a combination of remote-sensing and earth-data sciences. In the classroom, we rely on a variety of data source (remote sensing, field data, modeling output), programming environments (Python, C, Matlab), and geochemical tools (e.g., cosmogenic nuclides and stable isotopes) to quantify geoscientific processes. In the past years, we have developed a modern remote sensing and earth-surface processes curriculum and we are running an international MSc program *Remote Sensing, geoInformation, and Visualization* (see [our Department webpage](http://www.geo.uni-potsdam.de/msc-RSIV-e.html), the [university's application website](https://www.uni-potsdam.de/de/mnfakul/studium-und-lehre/master/remote-sensing-geoinformation-and-visualization.html), and the [DAAD](https://www.daad.de/deutschland/studienangebote/international-programmes/en/detail/4855/). All teaching material are available on the Moodle platform at the University of Potsdam.
+
+My current MSc teaching focuses on (1) Earth System Science; (2) Remote Sensing of the Environment; (3) Applied Remote Sensing: Aerial photogrammetry, Structure from Motion, and Lidar data; (4) Applied Remote Sensing: Point Cloud analyses for the Environmental sciences; and (5) Spatiotemporal analysis of remote sensing and earth-science data using Python.
 
 At the BSc level, I am teaching introductory-level classes in remote sensing and GIS ('Grundlagen der Geoinformationssysteme').
 
-All teaching material are available on the Moodle platform at the University of Potsdam.
+
