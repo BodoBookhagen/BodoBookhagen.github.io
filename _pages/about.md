@@ -12,7 +12,7 @@ redirect_from:
 **Research Motivation:** The Earth's surface is driven by geological, biological, and climatic forces. They form a complex system of closely coupled processes - knowledge of these interactions is essential because the Earth’s
 surface is the foundation for all human activity and its dynamics impact all facets of life, habitability, and sustainability. 
 
-I am interested in transport processes within the Earth (vertical tectonics) and on the Earth's Surface (geomorphology). My **research** focuses on quantifying Earth-Surface Processes using (1) remote sensing data and techniques; (2) in-situ and field measurements; (3) geochemical approaches; (4) time series and data analyses; and (5) numerical modeling approaches.
+I am interested in transport processes within the Earth (vertical tectonics) and on the Earth's Surface (geomorphology). My [**research**](http://bodobookhagen.github.io/research) focuses on quantifying Earth-Surface Processes using (1) remote sensing data and techniques; (2) in-situ and field measurements; (3) geochemical approaches; (4) time series and data analyses; and (5) numerical modeling approaches.
 
 Detailed information on these research topics can be found on [research](http://bodobookhagen.github.io/research). More extensive tutorial, data, and codes are available and on the [University of Potsdam - Remote Sensing and Earth-Surface Process webpage](http://UP-RS-ESP.github.io/).
 
