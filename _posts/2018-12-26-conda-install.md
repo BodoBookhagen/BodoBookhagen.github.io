@@ -27,7 +27,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
 # Installing environments
-There exists different environments for different purposes. Here is a list of useful environments that have different purposes:
+It is useful to install different environments for different purposes. Here is a list of useful environments with different purposes:
 For some of these examples, you want to add:
 ```bash
 conda config --prepend channels conda-forge/label/dev
@@ -37,8 +37,12 @@ conda config --prepend channels conda-forge
 | What for? | Conda commands |
 |:----------|:--------------|
 | Pandoc Processing | ```conda create -y -n pandoc python pip pandoc imagemagick``` |
-| GMT and CDO Processing | ```conda create -y -n gmt_cdo gmt=5* cdo ```  |
-|PointCloud Processing | ```conda create -y -n PC_py3 python=3.6 pip scipy pandas numpy matplotlib scikit-image gdal pdal xarray packaging ipython multiprocess h5py lastools pykdtree spyder gmt=5* imagemagick``` <br> Activate the environment ```source activate PC_py3``` and install laspy with ```pip install laspy```|
+| GMT 5 and Python Processing |```conda create -y -n gmt5 gmt=5* python=3.6 scipy pandas numpy matplotlib scikit-image gdal spyder imagemagick``` |
+| GMT 6 and Python Processing |```conda create -y -n gmt6 gmt=6* python=3* scipy pandas numpy matplotlib scikit-image gdal spyder imagemagick``` |
+| GMT and CDO Processing | ```conda create -y -n gmt5_cdo gmt=5* cdo imagemagick```<br>There appears to be an issue with some cdo version (libhdf) and you may need to install cdo separately.  |
+|Processing | ```conda create -y -n cdo cdo```  |
+| GMT, CDO, and NCL Processing | ```conda create -y -n cdo_ncl cdo ncl imagemagick```  |
+|PointCloud Processing | ```conda create -y -n PC_py3 python=3.6 pip scipy pandas numpy matplotlib scikit-image gdal pdal xarray packaging ipython multiprocess h5py lastools pykdtree spyder gmt=5* imagemagick``` <br> Activate the environment ```source activate PC_py3``` <br> and install laspy with ```pip install laspy```|
 
 
 # Activating environments
