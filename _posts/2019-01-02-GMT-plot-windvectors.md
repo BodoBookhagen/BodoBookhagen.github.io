@@ -13,7 +13,7 @@ permalink: /posts/2019/01/GMT-plot-windvectors/
 Visualizing wind fields with GMT can be tricky, especially if the NETCDF data will need to be pre-processed. Here is a short description of some steps necessary to create visually appealing maps from ECMWF u and v wind fields using GMT. The example shown is for South America. The data and scripts are available at [GMT-plot-windvectors-SAM](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM). 
 
 # Data sources and setup
-The data used in this example are [ECMWF-EI-WND_1999_2013_DJF_200_SAM.nc](ECMWF-EI-WND_1999_2013_DJF_200_SAM.nc) for the 200hPA mean DJF wind from 1999 to 2013 for the South American domain. These have been generated and preprocessed with [cdo](https://code.mpimet.mpg.de/projects/cdo/).
+The data used in this example are [ECMWF-EI-WND_1999_2013_DJF_200_SAM.nc](ECMWF-EI-WND_1999_2013_DJF_200_SAM.nc) for the 200hPA mean DJF wind from 1999 to 2013 for the South American domain. These have been generated and preprocessed with [CDO](https://code.mpimet.mpg.de/projects/cdo/).
 
 In addition, you will need topographic data for hillshading purposes. In this example, I am using a 15s global topography obtained from [ftp://topex.ucsd.edu/pub/srtm15_plus/](ftp://topex.ucsd.edu/pub/srtm15_plus/). The file [earth_relief_15s.nc](ftp://topex.ucsd.edu/pub/srtm15_plus/earth_relief_15s.nc) is needed. This will come in handy for many other examples as well and it will be good to keep a copy on your local computer. 
 
@@ -30,6 +30,8 @@ git clone https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM.git`.
 
 ## Prepare Data
 ## Prepare DEM data
+*NOTE: These data are not included on the github page, because they are too large to be stored on github*
+
 We first need to prepare the DEM data for the region of interest. Define the region of interest:
 ```bash
 REGION=-85/-30/-40/15
@@ -74,7 +76,7 @@ fi
 ```
 
 ## Prepare NETCDF wind file
-The file `ECMWF-EI-WND_1999_2013_DJF_200_SAM.nc` is a typical output generated with cdo. It contains the mean u and v wind components for the DJF season from 1999 to 2013 for South America. If you want to obtain information about the NETCDF .nc file, use `ncdump`
+The file `ECMWF-EI-WND_1999_2013_DJF_200_SAM.nc` is a typical output generated with CDO. It contains the mean u and v wind components for the DJF season from 1999 to 2013 for South America. If you want to obtain information about the NETCDF .nc file, use `ncdump`
 ```bash
 ncdump -h ncdump -h ECMWF-EI-WND_1999_2013_DJF_200_SAM.nc
 ```
@@ -215,7 +217,7 @@ You can do the same for the direction in degrees:
 gmt grdmath ${ECMWF_WND::-3}_u.nc NEG ${ECMWF_WND::-3}_v.nc NEG ATAN2 180 D2R MUL R2D = ${ECMWF_WND::-3}_direction_degree.nc
 gmt grdedit ${ECMWF_WND::-3}_direction_degree.nc -D+z"Wind Direction [degree]"+r"180/pi*atan2(-u,-v)"
 ```
-*Note: If you didn't reverse the notation of the u and v component earlier, you will need to use
+*NOTE: If you didn't reverse the notation of the u and v component earlier, you will need to use
 ```
 gmt grdmath ${ECMWF_WND::-3}_u.nc NEG ${ECMWF_WND::-3}_v.nc NEG ATAN2 180 D2R MUL = ${ECMWF_WND::-3}_direction_radians.nc
 ```
@@ -273,7 +275,7 @@ convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 ```
 
 Resulting in a grayscale topographic background with colored wind vectors:
-![ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.jpg](https://BodoBookhagen.github.io/_posts/images/ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.jpg)
+![ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.jpg](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/output_maps/ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.jpg)
 
 # Ploting the data as vectors with a colored relief map as background
 Following the previous explanations, we can generated a map with a colored background adjusting the parameters and using a different colorscale (`-Crelief`).
@@ -296,7 +298,7 @@ gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 ```
-![ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.jpg](https://BodoBookhagen.github.io/_posts/images/ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.jpg)
+![ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.jpg](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/output_maps/ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.jpg)
 
 # Ploting the data as vectors with a colored wind velocities (hillshaded)
 Following the previous explanations, we can generated a map showing wind magnitudes/velocites as background color.
@@ -317,5 +319,5 @@ gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 ```
-![ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.jpg](https://BodoBookhagen.github.io/_posts/images/ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.jpg)
+![ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.jpg](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/output_maps/ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.jpg)
 
