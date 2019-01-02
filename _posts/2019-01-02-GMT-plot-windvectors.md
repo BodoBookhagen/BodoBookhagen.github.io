@@ -273,7 +273,7 @@ convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 ```
 
 Resulting in a grayscale topographic background with colored wind vectors:
-![ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.jpg](https://BodoBookhagen.github.io/posts/images/ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.jpg)
+![ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.jpg](https://BodoBookhagen.github.io/_posts/images/ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.jpg)
 
 # Ploting the data as vectors with a colored relief map as background
 Following the previous explanations, we can generated a map with a colored background adjusting the parameters and using a different colorscale (`-Crelief`).
@@ -296,7 +296,7 @@ gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 ```
-![ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.jpg](https://BodoBookhagen.github.io/posts/images/ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.jpg)
+![ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.jpg](https://BodoBookhagen.github.io/_posts/images/ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.jpg)
 
 # Ploting the data as vectors with a colored wind velocities (hillshaded)
 Following the previous explanations, we can generated a map showing wind magnitudes/velocites as background color.
@@ -317,5 +317,5 @@ gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 ```
-![ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.jpg](https://BodoBookhagen.github.io/posts/images/ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.jpg)
+![ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.jpg](https://BodoBookhagen.github.io/_posts/images/ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.jpg)
 
