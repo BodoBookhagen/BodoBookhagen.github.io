@@ -1,17 +1,17 @@
 ---
-title: 'Plot ECMWF wind vectors with GMT'
-date: 2019-01-02
-permalink: /posts/2019/01/GMT-plot-windvectors/
+title: 'Plot PointCloud (PC) data with GMT'
+date: 2019-01-03
+permalink: /posts/2019/01/PointCloud-to-GMT/
 -- tags:
   - GMT
-  - wind
-  - vector
-  - grdvector
-  - ECMWF
+  - PointCloud
+  - PC
+  - lidar
+  - SfM
+  - 3D view
 ---
 
-Visualizing wind fields with GMT can be tricky, especially if the NETCDF data will need to be pre-processed. Here is a short description of some steps necessary to create visually-appealing maps from ECMWF u and v wind fields using GMT. The example shown is for South America and requires some knowledge of GMT and bash scripting. All processing were done on an Ubuntu system, but should work on any OS. The data and scripts are available at [GMT-plot-windvectors-SAM](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM). 
-
+Visualizing wind fields with GMT can be tricky, especially if the NETCDF data will need to be pre-processed. Here is a short description of some steps necessary to create visually appealing maps from ECMWF u and v wind fields using GMT. The example shown is for South America. The data and scripts are available at [GMT-plot-windvectors-SAM](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM). 
 
 # Data sources and setup
 The data used in this example are [ECMWF-EI-WND_1999_2013_DJF_200_SAM.nc](ECMWF-EI-WND_1999_2013_DJF_200_SAM.nc) for the 200hPA mean DJF wind from 1999 to 2013 for the South American domain. These have been generated and preprocessed with [CDO](https://code.mpimet.mpg.de/projects/cdo/).
@@ -184,16 +184,16 @@ gmt grdinfo ${ECMWF_WND::-3}_magnitude.nc
 ```
 You will see that the units are properly set:
 ```bash
-ECMWF-EI-WND_1999_2013_DJF_200_SAM_magnitude.nc: Title: Produced by grdmath
-ECMWF-EI-WND_1999_2013_DJF_200_SAM_magnitude.nc: Command: grdmath ECMWF-EI-WND_1999_2013_DJF_200_SAM_v.nc 2 POW ECMWF-EI-WND_1999_2013_DJF_200_SAM_u.nc 2 POW ADD SQRT = ECMWF-EI-WND_1999_2013_DJF_200_SAM_magnitude.nc
-ECMWF-EI-WND_1999_2013_DJF_200_SAM_magnitude.nc: Remark: sqrt(u^2 plus v^2)
-ECMWF-EI-WND_1999_2013_DJF_200_SAM_magnitude.nc: Gridline node registration used [Geographic grid]
-ECMWF-EI-WND_1999_2013_DJF_200_SAM_magnitude.nc: Grid file format: nf = GMT netCDF format (32-bit float), COARDS, CF-1.5
-ECMWF-EI-WND_1999_2013_DJF_200_SAM_magnitude.nc: x_min: -85 x_max: -30 x_inc: 0.5 name: longitude [degrees_east] n_columns: 111
-ECMWF-EI-WND_1999_2013_DJF_200_SAM_magnitude.nc: y_min: -40 y_max: 15 y_inc: 0.5 name: latitude [degrees_north] n_rows: 111
-ECMWF-EI-WND_1999_2013_DJF_200_SAM_magnitude.nc: z_min: 0.0781670808792 z_max: 30.9823875427 name: Wind Magnitude [m s**-1]
-ECMWF-EI-WND_1999_2013_DJF_200_SAM_magnitude.nc: scale_factor: 1 add_offset: 0
-ECMWF-EI-WND_1999_2013_DJF_200_SAM_magnitude.nc: format: classic
+ECMWF-EI-WND_1999_2013_DJF_200_domain_timm_magnitude.nc: Title: Produced by grdmath
+ECMWF-EI-WND_1999_2013_DJF_200_domain_timm_magnitude.nc: Command: grdmath ECMWF-EI-WND_1999_2013_DJF_200_domain_timm_v.nc 2 POW ECMWF-EI-WND_1999_2013_DJF_200_domain_timm_u.nc 2 POW ADD SQRT = ECMWF-EI-WND_1999_2013_DJF_200_domain_timm_magnitude.nc
+ECMWF-EI-WND_1999_2013_DJF_200_domain_timm_magnitude.nc: Remark: sqrt(u^2 plus v^2)
+ECMWF-EI-WND_1999_2013_DJF_200_domain_timm_magnitude.nc: Gridline node registration used [Geographic grid]
+ECMWF-EI-WND_1999_2013_DJF_200_domain_timm_magnitude.nc: Grid file format: nf = GMT netCDF format (32-bit float), COARDS, CF-1.5
+ECMWF-EI-WND_1999_2013_DJF_200_domain_timm_magnitude.nc: x_min: -85 x_max: -30 x_inc: 0.5 name: longitude [degrees_east] n_columns: 111
+ECMWF-EI-WND_1999_2013_DJF_200_domain_timm_magnitude.nc: y_min: -40 y_max: 15 y_inc: 0.5 name: latitude [degrees_north] n_rows: 111
+ECMWF-EI-WND_1999_2013_DJF_200_domain_timm_magnitude.nc: z_min: 0.0781670808792 z_max: 30.9823875427 name: Wind Magnitude [m s**-1]
+ECMWF-EI-WND_1999_2013_DJF_200_domain_timm_magnitude.nc: scale_factor: 1 add_offset: 0
+ECMWF-EI-WND_1999_2013_DJF_200_domain_timm_magnitude.nc: format: classic
 ```
 This also tells you that we have values between ~0 and ~30 m/s (see range of `z_min` and `z_max`).
 
@@ -227,8 +227,8 @@ as the first step.*
 # Ploting the data as vectors with a grayscale topography as background
 First, we define a set of input variables for GMT (these will need to be adjusted for your purposes):
 ```
-POSTSCRIPT_BASENAME=ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM
-WIDTH=14
+POSTSCRIPT_BASENAME=ECMWF-EI-WND_1999_2013_DJF_200_SAM
+WIDTH=10
 XSTEP=10
 YSTEP=10
 TITLE="ECMWF-WND DJF mean (1999-2013) - 200hPa"
@@ -237,19 +237,17 @@ POSTSCRIPT1=${POSTSCRIPT_BASENAME}_graytopo.ps
 Next, we generate a colorscale as grayscale from -4000 to +4000 m in 250m steps:
 ```
 DEM_CPT=relief_gray.cpt
-gmt makecpt -T-5000/5000/250 -D -Cgray >$DEM_CPT
+gmt makecpt -T-4000/4000/250 -D -Cgray >$DEM_CPT
 ```
 We also need a colorscale for the wind magnitude. Note that we know that the wind magnitude ranges from ~0 to ~30 and we set the range to 0-25 in 0.5 m/s steps.
 ```bash
 WIND_CPT=wind_color.cpt
-gmt makecpt -T0/30/1 -D -Cviridis >$WIND_CPT
+gmt makecpt -T0/25/0.5 -D -Cviridis >$WIND_CPT
 ```
 
-It is also useful to define the vector scale. This is often a value you need to fine tune to best match your data. Here this is given in cm. We set 2 vector scales: one for plotting flow lines and one for plotting arrows (arrow heads will not be plotted for every flow line):
+It is also useful to define the vector scale. This is often a value you need to fine tune to best match your data. Here this is given in cm.
 ```bash
 VECTSCALE=0.04c
-VECTSCALE2=0.02c
-
 ```
 
 Then we start plotting the various datasets. First, the topography:
@@ -257,43 +255,19 @@ Then we start plotting the various datasets. First, the topography:
 gmt grdimage $TOPO15_GRD_NC -I$TOPO15_GRD_HS2_NC -JM$WIDTH -C$DEM_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -Xc -Yc -E300 -K -P > $POSTSCRIPT1
 ```
 
-If you want to generate a figure without title (for a publication, for example, remove `+t"$TITLE"` from the above command.
-
-
-We plot international borders in gray and coastlines in black (we want to plot this first, because the wind vectors should be plotted on top of it):
+Followed by international borders in gray and coastlines in black (we want to plot this first, because the wind vectors should be plotted on top of it):
 ```bash
-gmt pscoast -W1/thin,black -R -J -N1/thin,gray -O -Df --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
-```
-You can adjust width of lines for coast (`-W1`) and international borders (`N1`) separately.
-
-Next, the wind vectors. You need to give the u and v components to `gmt grdvector`. We plot only every 6th vector in X and Y direction (`-Ix6`) because otherwise the data would be too dense. We first plot colored lines (flowlines): 
-```bash
-gmt grdvector -S${VECTSCALE} -W1.5p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix6 -J -O -K -P >> $POSTSCRIPT1
+gmt pscoast -W1/thin,black -R -J -N1/faint,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
 ```
 
-Next, we plot the arrowheads for the wind vectors. This is very similar to the previous comment, but we use a different vector scale and plot arrowheads at a lower spacing (`-Ix12`). We set the scale of the colored arrowhead with `-Q0.6c+ba+p0.01p,gray`. You have to adjust the vector scale, arrowhead size, and vector spacing for an optimal figure:
+Next, the wind vectors. You need to give the u and v components. We plot only every 8th vector in X and Y direction (`-Ix8`) because otherwise the data would be too dense. We set the scale of the colored arrowhead with `-Q0.25c+ba`. You have to adjust the vector scale, arrowhead size and vector spacing for an optimal figure
 ```bash
-gmt grdvector -S${VECTSCALE2} -Q0.6c+ba+p0.01p,gray -W0.01p,gray ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix12 -J -O -K -P >> $POSTSCRIPT1
-```
-
-The wind field shows nicely the Bolivian High, a major feature of the South American Monsoon System. Let's highlight that area with a white rectangle and label.
-We first place a rectangle `-Sr` with `gmt psxy` with line thickness of 2.5p and white colors (`-W2.5p,white`). We read the cetner coordinates from the following line (-64,-16) and give the size of the box (2cm into x and y direction):
-```bash
-gmt psxy -W2.5p,white -Sr << EOF -R -J -O -K -P >> $POSTSCRIPT1
--64 -16 2c 2c
-EOF
-```
-
-Similarily, we can use `gmt pstext` to plot a label (BH) and offset the label (`-D0.7c/1.3c`) to place it into the upper right corner of the box:
-```bash
-gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,white  << EOF -R -J -O -K -P >> $POSTSCRIPT1
--64 -16 BH
-EOF
+gmt grdvector -Gblack -S${VECTSCALE} -Q0.25c+ba -W0.5 ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix8 -J -O -K -P >> $POSTSCRIPT1
 ```
 
 Last, add the colorscale with label below the figure and convert to a PNG file:
 ```bash
-gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 ```
 Additionally, you can use imagemagick to convert to a smaller file size JPG file:
@@ -303,77 +277,55 @@ convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 
 Resulting in a grayscale topographic background with colored wind vectors:
 
-![ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.png)
+![ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.png)
 
 # Ploting the data as vectors with a colored relief map as background
 Following the previous explanations, we can generated a map with a colored background adjusting the parameters and using a different colorscale (`-Crelief`).
 ```bash
-POSTSCRIPT_BASENAME=ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM
-WIDTH=14
+POSTSCRIPT_BASENAME=ECMWF-EI-WND_1999_2013_DJF_200_SAM
+WIDTH=10
 XSTEP=10
 YSTEP=10
 
 TITLE="ECMWF-WND DJF mean (1999-2013) - 200hPa"
-VECTSCALE=0.04c
-VECTSCALE2=0.02c
 
+POSTSCRIPT1=${POSTSCRIPT_BASENAME}_relieftopo.ps
 DEM_CPT=relief_color.cpt
-gmt makecpt -T-6000/6000/250 -D -Crelief >$DEM_CPT
-echo " "
-echo "Creating file $POSTSCRIPT1"
-echo " "
+gmt makecpt -T-4000/4000/250 -D -Crelief >$DEM_CPT
+VECTSCALE=0.04c
 gmt grdimage $TOPO15_GRD_NC -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$DEM_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -Xc -Yc -E300 -K -P > $POSTSCRIPT1
-gmt pscoast -W1/thin,black -R -J -N1/thin,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
-gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthick,white -K -O -P >> $POSTSCRIPT1
-gmt grdvector -S${VECTSCALE} -W1.5p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix6 -J -O -K -P >> $POSTSCRIPT1
-gmt grdvector -S${VECTSCALE2} -Q0.6c+ba+p0.01p -W0p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix12 -J -O -K -P >> $POSTSCRIPT1
-gmt psxy -W2.5p,white -Sr << EOF -R -J -O -K -P >> $POSTSCRIPT1
--64 -16 2c 2c
-EOF
-gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,white  << EOF -R -J -O -K -P >> $POSTSCRIPT1
--64 -16 BH
-EOF
+gmt pscoast -W1/thin,black -R -J -N1/faint,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
+gmt grdvector -Gblack -S${VECTSCALE} -Q0.3c+ba ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix8 -J -O -K -P >> $POSTSCRIPT1
 gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 ```
 
-The above step generates the following output:
+The above scripts generates the following output:
 
-![ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_relieftopo.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_relieftopo.png)
+![ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.png)
 
 # Ploting the data as vectors with a colored wind velocities (hillshaded)
 Following the previous explanations, we can generated a map showing wind magnitudes/velocites as background color.
 ```bash
-POSTSCRIPT_BASENAME=ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM
-WIDTH=14
+POSTSCRIPT_BASENAME=ECMWF-EI-WND_1999_2013_DJF_200_SAM
+WIDTH=10
 XSTEP=10
 YSTEP=10
 
 TITLE="ECMWF-WND DJF mean (1999-2013) - 200hPa"
-VECTSCALE=0.04c
-VECTSCALE2=0.02c
 
 POSTSCRIPT1=${POSTSCRIPT_BASENAME}_windvelocity.ps
+VECTSCALE=0.04c
 gmt grdimage ${ECMWF_WND::-3}_magnitude_topo15.nc -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$WIND_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -Xc -Yc -E300 -K -P > $POSTSCRIPT1
 gmt pscoast -W1/thin,black -R -J -N1/faint,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
-#gmt grdvector -W1p -S${VECTSCALE} -Q0.3c+ba ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -R -Ix8 -J -O -K -P >> $POSTSCRIPT1
-gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthick,white -K -O -P >> $POSTSCRIPT1
-#gmt grdvector -Gblack -S${VECTSCALE} -W1.5p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix6 -J -O -K -P >> $POSTSCRIPT1
-gmt grdvector -S${VECTSCALE} -Q0.6c+ba+p -W1p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix8 -J -O -K -P >> $POSTSCRIPT1
-gmt grdvector -Gblack -S${VECTSCALE2} -Q0.5c+ba -W1p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix16 -J -O -K -P >> $POSTSCRIPT1
-gmt psxy -W2.5p,white -Sr << EOF -R -J -O -K -P >> $POSTSCRIPT1
--64 -16 2c 2c
-EOF
-gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,white  << EOF -R -J -O -K -P >> $POSTSCRIPT1
--64 -16 BH
-EOF
+gmt grdvector -Gblack -S${VECTSCALE} -Q0.25c+ba ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -R -Ix7 -J -O -K -P >> $POSTSCRIPT1
 gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 ```
 
-The above step generates the following output:
+The above scripts generates the following output:
 
-![ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_windvelocity.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_windvelocity.png)
+![ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.png)
 
