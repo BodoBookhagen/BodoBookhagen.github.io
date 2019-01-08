@@ -146,7 +146,9 @@ wget https://download.geofabrik.de/south-america-latest.osm.pbf
 Next, the OSM-pbf file needs to be converted to GMT files. This will need to be done for every attribute separately to keep your database nice and clean. We usually use the following. 
 *NOTE: gdal/ogr will need to have been compiled with GEOS, SQL and pbf support!*
 
-*NOTE: In order to generate the railway database, you have to change /usr/share/gdal/2.2/osmconf.ini and allow the tag railway to be created.*
+*NOTE: In order to generate the railway database, you have to change /usr/share/gdal/2.2/osmconf.ini and allow the tag railway to be created. See [here](https://wiki.openstreetmap.org/wiki/User:Bgirardot/How_To_Convert_osm_.pbf_files_to_Esri_Shapefiles). You first need to identify the relevant osmconf.ini file using `locate osmconf.ini` and then edit that to include additional attributes and fields.*
+
+*NOTE: In order to generate the volcano database, you have to change /usr/share/gdal/2.2/osmconf.ini and allow the tag natural to be created.*
 
 ```bash
 ogr2ogr -f "GMT" south-america_roads01.gmt south-america-latest.osm.pbf -progress -sql "select highway from lines where highway in ('primary', 'secondary', 'tertiary', 'unclassified', 'residential')" 
@@ -172,6 +174,28 @@ ogr2ogr -f "GMT" CentralAndesvolcano.gmt south-america_volcano.gmt -clipsrc -80 
 ```
 
 The files `CentralAndeslakes.gmt` can be plotted with `gmt psxy`.
+
+### Prepare city dataset from OSM
+First, edit osmconf.ini and add `city` to the list of attributes in the section `[points]`.
+The line `attributes` in the `[points]` section should read:
+```bash
+attributes=name,barrier,highway,ref,address,is_in,place,man_made,city,population
+```
+
+Next, extract the cities with `ogr2ogr` and store name and population `select city,name,population` and select only cities with a stored name `where name is not null`:
+```bash
+ogr2ogr -f "GMT" south-america_cities_with_names.gmt south-america-latest.osm.pbf -progress -sql "select city,name,population from points where name is not null" 
+```
+
+We create a second dataset containing only cities with a stored population:
+```bash
+ogr2ogr -f "GMT" south-america_cities_with_population.gmt south-america-latest.osm.pbf -progress -sql "select city,name,population from points where population is not null" 
+```
+
+Alternatively, create a dataset containing any city (also without names):
+```bash
+ogr2ogr -f "GMT" south-america_cities.gmt south-america-latest.osm.pbf -progress -sql "select city,name,population from points" 
+```
 
 ### Prepare simplified city dataset
 City locations are also included in the OSM dataset, but a simpler CSV file will do it as well. There are many datasets available, here we are using a free city CSV version currently hosted at [maxmind](https://www.maxmind.com/en/free-world-cities-database). The CSV contains:
@@ -220,109 +244,3 @@ bzip2 -9 USGS_EQ_CentralAndes_1970_2018_mag6_to_9.csv
 These files are available in the [GMT_vector_data](GMT_vector_data) directory.
 
 ## Prepare GPS vector data
-
-# Ploting the data as vectors with a grayscale topography as background
-First, we define a set of input variables for GMT (these will need to be adjusted for your purposes):
-```
-POSTSCRIPT_BASENAME=ECMWF-EI-WND_1999_2013_DJF_200_SAM
-WIDTH=10
-XSTEP=10
-YSTEP=10
-TITLE="ECMWF-WND DJF mean (1999-2013) - 200hPa"
-POSTSCRIPT1=${POSTSCRIPT_BASENAME}_graytopo.ps
-```
-Next, we generate a colorscale as grayscale from -4000 to +4000 m in 250m steps:
-```
-DEM_CPT=relief_gray.cpt
-gmt makecpt -T-4000/4000/250 -D -Cgray >$DEM_CPT
-```
-We also need a colorscale for the wind magnitude. Note that we know that the wind magnitude ranges from ~0 to ~30 and we set the range to 0-25 in 0.5 m/s steps.
-```bash
-WIND_CPT=wind_color.cpt
-gmt makecpt -T0/25/0.5 -D -Cviridis >$WIND_CPT
-```
-
-It is also useful to define the vector scale. This is often a value you need to fine tune to best match your data. Here this is given in cm.
-```bash
-VECTSCALE=0.04c
-```
-
-Then we start plotting the various datasets. First, the topography:
-```bash
-gmt grdimage $TOPO15_GRD_NC -I$TOPO15_GRD_HS2_NC -JM$WIDTH -C$DEM_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -Xc -Yc -E300 -K -P > $POSTSCRIPT1
-```
-
-Followed by international borders in gray and coastlines in black (we want to plot this first, because the wind vectors should be plotted on top of it):
-```bash
-gmt pscoast -W1/thin,black -R -J -N1/faint,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
-```
-
-Next, the wind vectors. You need to give the u and v components. We plot only every 8th vector in X and Y direction (`-Ix8`) because otherwise the data would be too dense. We set the scale of the colored arrowhead with `-Q0.25c+ba`. You have to adjust the vector scale, arrowhead size and vector spacing for an optimal figure
-```bash
-gmt grdvector -Gblack -S${VECTSCALE} -Q0.25c+ba -W0.5 ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix8 -J -O -K -P >> $POSTSCRIPT1
-```
-
-Last, add the colorscale with label below the figure and convert to a PNG file:
-```bash
-psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
-gmt psconvert $POSTSCRIPT1 -A -P -Tg
-```
-Additionally, you can use imagemagick to convert to a smaller file size JPG file:
-```bash
-convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
-```
-
-Resulting in a grayscale topographic background with colored wind vectors:
-
-![ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200_SAM_graytopo.png)
-
-# Ploting the data as vectors with a colored relief map as background
-Following the previous explanations, we can generated a map with a colored background adjusting the parameters and using a different colorscale (`-Crelief`).
-```bash
-POSTSCRIPT_BASENAME=ECMWF-EI-WND_1999_2013_DJF_200_SAM
-WIDTH=10
-XSTEP=10
-YSTEP=10
-
-TITLE="ECMWF-WND DJF mean (1999-2013) - 200hPa"
-
-POSTSCRIPT1=${POSTSCRIPT_BASENAME}_relieftopo.ps
-DEM_CPT=relief_color.cpt
-gmt makecpt -T-4000/4000/250 -D -Crelief >$DEM_CPT
-VECTSCALE=0.04c
-gmt grdimage $TOPO15_GRD_NC -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$DEM_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -Xc -Yc -E300 -K -P > $POSTSCRIPT1
-gmt pscoast -W1/thin,black -R -J -N1/faint,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
-gmt grdvector -Gblack -S${VECTSCALE} -Q0.3c+ba ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix8 -J -O -K -P >> $POSTSCRIPT1
-gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
-gmt psconvert $POSTSCRIPT1 -A -P -Tg
-convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
-```
-
-The above scripts generates the following output:
-
-![ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200_SAM_relieftopo.png)
-
-# Ploting the data as vectors with a colored wind velocities (hillshaded)
-Following the previous explanations, we can generated a map showing wind magnitudes/velocites as background color.
-```bash
-POSTSCRIPT_BASENAME=ECMWF-EI-WND_1999_2013_DJF_200_SAM
-WIDTH=10
-XSTEP=10
-YSTEP=10
-
-TITLE="ECMWF-WND DJF mean (1999-2013) - 200hPa"
-
-POSTSCRIPT1=${POSTSCRIPT_BASENAME}_windvelocity.ps
-VECTSCALE=0.04c
-gmt grdimage ${ECMWF_WND::-3}_magnitude_topo15.nc -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$WIND_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -Xc -Yc -E300 -K -P > $POSTSCRIPT1
-gmt pscoast -W1/thin,black -R -J -N1/faint,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
-gmt grdvector -Gblack -S${VECTSCALE} -Q0.25c+ba ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -R -Ix7 -J -O -K -P >> $POSTSCRIPT1
-gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
-gmt psconvert $POSTSCRIPT1 -A -P -Tg
-convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
-```
-
-The above scripts generates the following output:
-
-![ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.png](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200_SAM_windvelocity.png)
-
