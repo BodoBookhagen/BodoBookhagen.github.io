@@ -13,6 +13,7 @@ header:
   actions:
     - label: "Research"
       url: "https://bodobookhagen.github.io/research/"
+excerpt: ""
 ---
 
 **Research Motivation:** The Earth's surface is driven by geological, biological, and climatic forces. They form a complex system of closely coupled processes - knowledge of these interactions is essential because the Earth’s
