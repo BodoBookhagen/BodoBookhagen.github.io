@@ -18,6 +18,8 @@ read_time: false
   - ECMWF
 ---
 
+Using GMT to merge topographic and wind-vector data for visually appealing maps.
+
 Visualizing wind fields with GMT can be tricky, especially if the NETCDF data will need to be pre-processed. Here is a short description of some steps necessary to create visually-appealing maps from ECMWF u and v wind fields using GMT. The example shown is for South America and requires some knowledge of GMT and bash scripting. All processing were done on an Ubuntu system, but should work on any OS. The data and scripts are available at [GMT-plot-windvectors-SAM](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM). 
 
 
