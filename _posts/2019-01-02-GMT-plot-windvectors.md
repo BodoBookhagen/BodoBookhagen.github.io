@@ -1,10 +1,11 @@
 ---
 title: 'Plot ECMWF wind vectors with GMT'
+author_profile: false
 date: 2019-01-02
 permalink: /posts/2019/01/GMT-plot-windvectors/
 header:
   overlay_image: https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.jpg
-  overlay_filter: 0.5 # same as adding an opacity of 0.5 to a black background
+  overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
   caption: "ECMWF DJF 1999-2013 Wind velocity"
   actions:
     - label: "Github"
@@ -18,7 +19,7 @@ read_time: false
   - ECMWF
 ---
 
-Using GMT to merge topographic and wind-vector data for visually appealing maps.
+Using GMT to merge topographic and wind-vector data for visually-appealing maps.
 
 Visualizing wind fields with GMT can be tricky, especially if the NETCDF data will need to be pre-processed. Here is a short description of some steps necessary to create visually-appealing maps from ECMWF u and v wind fields using GMT. The example shown is for South America and requires some knowledge of GMT and bash scripting. All processing were done on an Ubuntu system, but should work on any OS. The data and scripts are available at [GMT-plot-windvectors-SAM](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM). 
 
