@@ -2,6 +2,7 @@
 title: 'Installing Miniconda'
 date: 2018-12-26
 permalink: /posts/2018/12/conda-install/
+read_time: false
 -- tags:
   - conda
   - installation

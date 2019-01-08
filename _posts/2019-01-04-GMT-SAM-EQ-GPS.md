@@ -1,6 +1,7 @@
 ---
 title: 'Plot USGS SAM topography, earthquake data, GPS vectors, NDVI and rainfall with GMT'
 date: 2019-01-04
+read_time: false
 permalink: /posts/2019/01/GMT-SAM-EQ-GPS/
 -- tags:
   - GMT
