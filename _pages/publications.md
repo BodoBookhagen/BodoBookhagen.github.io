@@ -31,7 +31,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 
 | Nr. | Author(s) | Year | Title | *Journal* |  DOI | 
 |:---:|:----------|:----:|-------|:---------:|:---:|
-| 115 | Purinton, B. and **Bookhagen, B.**| 2018 | Measuring Decadal Vertical Land-level Changes from SRTM-C (2000) and TanDEM-X (~2015) in the South-Central Andes | *Earth Surf. Dynam.* | [DOI](https://
+| 115 | Smith, T.T., Rheinwalt, A. and **Bookhagen, B.**| 2019 | Determining the Optimal Grid Resolution for Topographic Analysis on an Airborne Lidar Dataset | *Earth Surf. Dynam. Discussions* | [DOI](https://doi.org/10.5194/esurf-2018-96) [PDF](https://www.earth-surf-dynam-discuss.net/esurf-2018-96/esurf-2018-96.pdf)
 
 ### 2018
 
