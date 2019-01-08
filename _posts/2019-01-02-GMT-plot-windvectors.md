@@ -1,6 +1,6 @@
 ---
 title: 'Plot ECMWF wind vectors with GMT'
-author_profile: false
+author_profile: true
 date: 2019-01-02
 classes: wide
 permalink: /posts/2019/01/GMT-plot-windvectors/

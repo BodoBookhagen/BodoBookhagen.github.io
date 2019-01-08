@@ -8,13 +8,11 @@ redirect_from:
 title: "Remote Sensing and Earth Surface Processes"
 header:
   overlay_image: images/Kailash_title_clip.jpg
-  overlay_filter: 0.7
+  overlay_filter: 0.5
   caption: "Kinnaur Kailash by [Bodo Bookhagen](https://bodobookhagen.github.io/)"
-  actions:
-    - label: "Research"
-      url: "https://bodobookhagen.github.io/research/"
 excerpt: ""
 ---
+![Kinnaur Kailash](images/Kailash_title_clip.jpg)
 
 **Research Motivation:** The Earth's surface is driven by geological, biological, and climatic forces. They form a complex system of closely coupled processes - knowledge of these interactions is essential because the Earth’s
 surface is the foundation for all human activity and its dynamics impact all facets of life, habitability, and sustainability. 
