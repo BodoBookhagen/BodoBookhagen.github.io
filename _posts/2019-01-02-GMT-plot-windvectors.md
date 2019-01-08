@@ -306,7 +306,10 @@ convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 
 Resulting in a grayscale topographic background with colored wind vectors:
 
-![ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.jpg](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.jpg)
+<figure>
+    <a href="https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.jpg"><img src="https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.jpg"></a>
+    <figcaption>ECMWF mean 1999-2013 DJF 200hPa wind field: Grayscale topographic relief with wind magnitude as color </figcaption>
+</figure>
 
 # Plotting the data as vectors with a colored relief map as background
 Following the previous explanations, we can generated a map with a colored background adjusting the parameters and using a different colorscale (`-Crelief`).
@@ -343,7 +346,10 @@ convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 
 The above step generates the following output:
 
-![ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_relieftopo.jpg](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_relieftopo.jpg)
+<figure>
+    <a href="https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_relieftopo.jpg"><img src="https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_relieftopo.jpg"></a>
+    <figcaption>ECMWF mean 1999-2013 DJF 200hPa wind field: Colored topographic relief with wind magnitude as color </figcaption>
+</figure>
 
 # Plotting the data as vectors with a colored wind velocities (hillshaded)
 Following the previous explanations, we can generated a map showing wind magnitudes/velocites as background color.
@@ -380,7 +386,7 @@ The above step generates the following output:
 
 <figure>
     <a href="https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_windvelocity.jpg"><img src="https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_windvelocity.jpg"></a>
-    <figcaption>ECMWF</figcaption>
+    <figcaption>ECMWF mean 1999-2013 DJF 200hPa wind field: Magnitude as colorbackground with black arrows </figcaption>
 </figure>
 
 # Plotting Summary
