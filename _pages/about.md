@@ -1,5 +1,6 @@
 ---
 permalink: /
+layout: splash
 excerpt: "Bodo Bookhagen"
 author_profile: true
 redirect_from: 
@@ -7,7 +8,7 @@ redirect_from:
   - /about.html
 title: "Remote Sensing and Earth Surface Processes"
 header:
-  overlay_image: images/Kailash_title_clip.jpg
+  overlay_image: https://bodobookhagen.github.io/images/Kailash_title_clip.jpg
   overlay_filter: 0.5
   caption: "Kinnaur Kailash by [Bodo Bookhagen](https://bodobookhagen.github.io/)"
 excerpt: ""
