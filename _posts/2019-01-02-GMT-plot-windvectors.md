@@ -2,6 +2,7 @@
 title: 'Plot ECMWF wind vectors with GMT'
 author_profile: false
 date: 2019-01-02
+classes: wide
 permalink: /posts/2019/01/GMT-plot-windvectors/
 header:
   overlay_image: https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.jpg
