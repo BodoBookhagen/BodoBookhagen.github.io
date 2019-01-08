@@ -7,9 +7,9 @@ redirect_from:
   - /about.html
 title: "Remote Sensing and Earth Surface Processes"
 header:
-  overlay_image: images/Kailash_title_clip.jpg "Kinnaur Kailash
+  overlay_image: images/Kailash_title_clip.jpg
   overlay_filter: 0.7
-  caption: "Photo credit: [Bodo Bookhagen](https://bodobookhagen.github.io/)"
+  caption: "Kinnaur Kailash by [Bodo Bookhagen](https://bodobookhagen.github.io/)"
   actions:
     #- label: "Team"
     #  url: "https://up-rs-esp.github.io/team/"
