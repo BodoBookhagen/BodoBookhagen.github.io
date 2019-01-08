@@ -1,6 +1,6 @@
 ---
 permalink: /
-layout: posts
+layout: archive
 excerpt: "Bodo Bookhagen"
 author_profile: true
 redirect_from: 
