@@ -2,6 +2,13 @@
 title: 'Plot ECMWF wind vectors with GMT'
 date: 2019-01-02
 permalink: /posts/2019/01/GMT-plot-windvectors/
+header:
+  overlay_image: https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.jpg
+  overlay_filter: 0.5 # same as adding an opacity of 0.5 to a black background
+  caption: "ECMWF DJF 1999-2013 Wind velocity"
+  actions:
+    - label: "Github"
+      url: "https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM"
 read_time: false
 -- tags:
   - GMT
