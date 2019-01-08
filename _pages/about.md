@@ -11,8 +11,8 @@ header:
   overlay_filter: 0.7
   caption: "Kinnaur Kailash by [Bodo Bookhagen](https://bodobookhagen.github.io/)"
   actions:
-    #- label: "Team"
-    #  url: "https://up-rs-esp.github.io/team/"
+    - label: "Research"
+      url: "https://bodobookhagen.github.io/research/"
 ---
 
 **Research Motivation:** The Earth's surface is driven by geological, biological, and climatic forces. They form a complex system of closely coupled processes - knowledge of these interactions is essential because the Earth’s
