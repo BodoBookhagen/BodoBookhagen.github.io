@@ -6,8 +6,14 @@ author_profile: true
 redirect_from: 
   - /about/
   - /about.html
+header:
+  overlay_image: images/Kailash_title_clip.jpg "Kinnaur Kailash
+  overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
+  caption: "Photo credit: [Bodo Bookhagen](https://bodobookhagen.github.io/)"
+  actions:
+    #- label: "Team"
+    #  url: "https://up-rs-esp.github.io/team/"
 ---
-![View of the Kinnaur Kailash in the NW Himalaya](images/Kailash_title_clip.jpg "Kinnaur Kailash")
 
 **Research Motivation:** The Earth's surface is driven by geological, biological, and climatic forces. They form a complex system of closely coupled processes - knowledge of these interactions is essential because the Earth’s
 surface is the foundation for all human activity and its dynamics impact all facets of life, habitability, and sustainability. 
