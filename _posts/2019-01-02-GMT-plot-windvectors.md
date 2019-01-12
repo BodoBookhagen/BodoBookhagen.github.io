@@ -2,10 +2,9 @@
 title: 'Plot ECMWF wind vectors with GMT'
 author_profile: true
 date: 2019-01-02
-classes: wide
 permalink: /posts/2019/01/GMT-plot-windvectors/
 toc: true
-toc_label: GMT plot windvectors"
+toc_label: "GMT plot windvectors"
 header:
   overlay_image: https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/summary.jpg
   overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
