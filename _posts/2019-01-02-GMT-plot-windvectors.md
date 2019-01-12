@@ -434,7 +434,7 @@ The top bar for this posts has been created with [convert](https://imagemagick.o
 convert -density 150 -quality 100 ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_relieftopo.jpg ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.jpg ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_windvelocity.jpg -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append  -resize 1024x584 summary.jpg
 ```
 
-The above code snippets allow to create three simple views of South America and 200hPa wind velocities with varying color schemes:
+If you run the BASH script [plot_CentralAndesAmazon_200hPa_DJF_wind.sh](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/blob/master/plot_CentralAndesAmazon_200hPa_DJF_wind.sh) and combine the output into one row, it will create three simple views of South America and 200hPa wind velocities with varying color schemes:
 
 <figure class="third">
 	<img src="https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.jpg">
