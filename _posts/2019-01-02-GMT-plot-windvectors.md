@@ -43,9 +43,16 @@ Clone the repository with:
 git clone https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM.git`.
 ```
 
+The data were processed and images were made with GMT version 5.4.3.
+```bash
+gmt --version
+5.4.3
+```
+
 ## Prepare Data
 ### Prepare DEM data
-Note: These data are not included on the github page, because they are too large to be stored on github {: .notice--warning}
+Note: These data are not included on the github page, because they are too large to be stored on github
+{: .notice--warning}
 
 We first need to prepare the DEM data for the region of interest. Define the region of interest:
 ```bash
@@ -171,7 +178,8 @@ gmt grdconvert ${ECMWF_WND}?u -G${ECMWF_WND::-3}_u.nc
 
 CDO likes to store files with longitudes from 0 to 360. I prefer -180 to +180 and will apply this in the following step. 
 
-*NOTE* This is not necessary, but most other data have longitude values between -180 and 180 and I like to keep it consistent. This also makes clipping and cutting easier. {: .notice--warning}
+*NOTE* This is not necessary, but most other data have longitude values between -180 and 180 and I like to keep it consistent. This also makes clipping and cutting easier.
+{: .notice--warning}
 
 ```bash
 gmt grdedit ${ECMWF_WND::-3}_u.nc -R-85/-30/-40/15
@@ -236,7 +244,8 @@ gmt grdmath ${ECMWF_WND::-3}_u.nc NEG ${ECMWF_WND::-3}_v.nc NEG ATAN2 180 D2R MU
 gmt grdedit ${ECMWF_WND::-3}_direction_degree.nc -D+z"Wind Direction [degree]"+r"180/pi*atan2(-u,-v)"
 ```
 
-*NOTE* If you didn't reverse the notation of the u and v component earlier, you will need to use the following command (otherwise ignore): {: .notice--warning}
+*NOTE* If you didn't reverse the notation of the u and v component earlier, you will need to use the following command (otherwise ignore):
+{: .notice--warning}
 
 ```
 gmt grdmath ${ECMWF_WND::-3}_u.nc NEG ${ECMWF_WND::-3}_v.nc NEG ATAN2 180 D2R MUL = ${ECMWF_WND::-3}_direction_radians.nc
@@ -310,12 +319,24 @@ gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,white  << EOF -R -J -O -K -P >> $P
 EOF
 ```
 
-Last, add the colorscale with label below the figure and convert to a PNG file:
+We can also add a red box for the study are in NW Argentina by defining the corner coordinates as list of coordinates and add option `-L` that forces closing the polygon.
 ```bash
-gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psxy -W2.5p,red -L << EOF -R -J -O -K -P >> $POSTSCRIPT1
+-69 -28
+-69 -22
+-63 -22
+-63 -28
+EOF
+```
+
+
+Last, add the colorscale with label below the figure and convert to a PNG file. The `gmt psscale` command create a box around the legend (`-F` with clearance `-c` of x=1cm and 0.2cm - this is important to allow enough space for the longer label). The label itself is added by the `-B1:` statement: first the label followed by the unit. `-Baf` indicates automatic adding of the unit. The font is set to 12p with ` --FONT=12p --FONT_ANNOT_PRIMARY=12p`.
+```bash
+gmt psscale -R -J -DjBC+h+o-0.5c/-3.0c/+w5c/0.3c -C$WIND_CPT -F+c1c/0.2c+gwhite+r1p+pthin,black -Baf1:"200 hPa DJF wind speed (1999-2013)":/:"[m/s]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 ```
-Additionally, you can use imagemagick to convert to a smaller file size JPG file:
+
+Additionally, you can use [imagemagick](https://www.imagemagick.org/) to convert to a smaller file size JPG file (this is the file available in the folder [output_maps](https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/):
 ```bash
 convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 ```
@@ -330,32 +351,33 @@ Resulting in a grayscale topographic background with colored wind vectors:
 # Plotting the data as vectors with a colored relief map as background
 Following the previous explanations, we can generated a map with a colored background adjusting the parameters and using a different colorscale (`-Crelief`).
 ```bash
-POSTSCRIPT_BASENAME=ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM
-WIDTH=14
-XSTEP=10
-YSTEP=10
 
-TITLE="ECMWF-WND DJF mean (1999-2013) - 200hPa"
-VECTSCALE=0.04c
-VECTSCALE2=0.02c
-
+POSTSCRIPT1=${POSTSCRIPT_BASENAME}_relieftopo.ps
+#Make colorscale
 DEM_CPT=relief_color.cpt
 gmt makecpt -T-6000/6000/250 -D -Crelief >$DEM_CPT
 echo " "
 echo "Creating file $POSTSCRIPT1"
 echo " "
-gmt grdimage $TOPO15_GRD_NC -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$DEM_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -Xc -Yc -E300 -K -P > $POSTSCRIPT1
+#gmt grdimage $TOPO15_GRD_NC -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$DEM_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne -Xc -Yc -E300 -K -P > $POSTSCRIPT1
+gmt grdimage $TOPO15_GRD_NC -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$DEM_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne -Xc -Yc -E300 -K -P > $POSTSCRIPT1
 gmt pscoast -W1/thin,black -R -J -N1/thin,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
 gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthick,white -K -O -P >> $POSTSCRIPT1
 gmt grdvector -S${VECTSCALE} -W1.5p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix6 -J -O -K -P >> $POSTSCRIPT1
 gmt grdvector -S${VECTSCALE2} -Q0.6c+ba+p0.01p -W0p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix12 -J -O -K -P >> $POSTSCRIPT1
+gmt psxy -W2.5p,red -L << EOF -R -J -O -K -P >> $POSTSCRIPT1
+-69 -28
+-69 -22
+-63 -22
+-63 -28
+EOF
 gmt psxy -W2.5p,white -Sr << EOF -R -J -O -K -P >> $POSTSCRIPT1
 -64 -16 2c 2c
 EOF
 gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,white  << EOF -R -J -O -K -P >> $POSTSCRIPT1
 -64 -16 BH
 EOF
-gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.5c/-3.0c/+w5c/0.3c -C$WIND_CPT -F+c1c/0.2c+gwhite+r1p+pthin,black -Baf1:"200 hPa DJF wind speed (1999-2013)":/:"[m/s]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 ```
@@ -370,30 +392,32 @@ The above step generates the following output:
 # Plotting the data as vectors with a colored wind velocities (hillshaded)
 Following the previous explanations, we can generated a map showing wind magnitudes/velocites as background color.
 ```bash
-POSTSCRIPT_BASENAME=ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM
-WIDTH=14
-XSTEP=10
-YSTEP=10
-
-TITLE="ECMWF-WND DJF mean (1999-2013) - 200hPa"
+POSTSCRIPT1=${POSTSCRIPT_BASENAME}_windvelocity.ps
+echo " "
+echo "Creating file $POSTSCRIPT1"
+echo " "
 VECTSCALE=0.04c
 VECTSCALE2=0.02c
-
-POSTSCRIPT1=${POSTSCRIPT_BASENAME}_windvelocity.ps
-gmt grdimage ${ECMWF_WND::-3}_magnitude_topo15.nc -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$WIND_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -Xc -Yc -E300 -K -P > $POSTSCRIPT1
-gmt pscoast -W1/thin,black -R -J -N1/faint,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
+#gmt grdimage ${ECMWF_WND::-3}_magnitude_topo15.nc -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$WIND_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne -Xc -Yc -E300 -K -P > $POSTSCRIPT1
+gmt grdimage ${ECMWF_WND::-3}_magnitude_topo15.nc -I$TOPO15_GRD_HS_NC -JM$WIDTH -C$WIND_CPT -R${ECMWF_WND::-3}_u.nc -Q -Bx$XSTEP -By$YSTEP -BWSne -Xc -Yc -E300 -K -P > $POSTSCRIPT1
+gmt pscoast -W1/thin,black -R -J -N1/thin,gray -O -Df --FONT_ANNOT_PRIMARY=12p --FORMAT_GEO_MAP=ddd:mm:ssF -P -K >> $POSTSCRIPT1
 #gmt grdvector -W1p -S${VECTSCALE} -Q0.3c+ba ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -R -Ix8 -J -O -K -P >> $POSTSCRIPT1
 gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthick,white -K -O -P >> $POSTSCRIPT1
-#gmt grdvector -Gblack -S${VECTSCALE} -W1.5p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix6 -J -O -K -P >> $POSTSCRIPT1
-gmt grdvector -S${VECTSCALE} -Q0.6c+ba+p -W1p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix8 -J -O -K -P >> $POSTSCRIPT1
-gmt grdvector -Gblack -S${VECTSCALE2} -Q0.5c+ba -W1p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix16 -J -O -K -P >> $POSTSCRIPT1
+#gmt grdvector -S${VECTSCALE} -W0.5p,black ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix4 -J -O -K -P >> $POSTSCRIPT1
+gmt grdvector -Gblack -S${VECTSCALE2} -Q0.4c+ba+gblack+pfaint,black -W0p ${ECMWF_WND::-3}_u.nc ${ECMWF_WND::-3}_v.nc -C$WIND_CPT -R -Ix7 -J -O -K -P >> $POSTSCRIPT1
+gmt psxy -W2.5p,red -L << EOF -R -J -O -K -P >> $POSTSCRIPT1
+-69 -28
+-69 -22
+-63 -22
+-63 -28
+EOF
 gmt psxy -W2.5p,white -Sr << EOF -R -J -O -K -P >> $POSTSCRIPT1
 -64 -16 2c 2c
 EOF
 gmt pstext -D0.7c/1.3c -F+f14p,Helvetica-Bold,white  << EOF -R -J -O -K -P >> $POSTSCRIPT1
 -64 -16 BH
 EOF
-gmt psscale -R -J -DjBC+h+o-1.7c/-2.0c/+w5c/0.3c -C$WIND_CPT -F+gwhite+r1p+pthin,black -Baf -By+l"Wind Velocity (m/s)" --FONT=9p --FONT_ANNOT_PRIMARY=9p --MAP_FRAME_PEN=1 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.5c/-3.0c/+w5c/0.3c -C$WIND_CPT -F+c1c/0.2c+gwhite+r1p+pthin,black -Baf1:"200 hPa DJF wind speed (1999-2013)":/:"[m/s]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5 --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
 gmt psconvert $POSTSCRIPT1 -A -P -Tg
 convert -alpha off -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
 ```
@@ -406,6 +430,11 @@ The above step generates the following output:
 </figure>
 
 # Plotting Summary
+The top bar for this posts has been created with [convert](https://imagemagick.org/script/convert.php) and appending the output images via `convert +append`. If you want to `-resize` the image, check `identify` to find out about image size and then calculate the resizing factor:
+```bash
+convert -density 150 -quality 100 ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_relieftopo.jpg ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.jpg ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_windvelocity.jpg +append -fuzz 1% -trim -bordercolor white -border 10x0 +repage -resize 1024x584 summary.jpg
+```
+
 The above code snippets allow to create three simple views of South America and 200hPa wind velocities with varying color schemes:
 
 <figure class="third">
