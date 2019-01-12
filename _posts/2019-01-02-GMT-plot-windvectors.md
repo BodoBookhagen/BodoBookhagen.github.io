@@ -50,7 +50,7 @@ gmt --version
 
 ## Prepare Data
 ### Prepare DEM data
-Note: These data are not included on the github page, because they are too large to be stored on github
+*NOTE* These data are not included on the github page, because they are too large to be stored on github
 {: .notice--warning}
 
 We first need to prepare the DEM data for the region of interest. Define the region of interest:
@@ -429,9 +429,9 @@ The above step generates the following output:
 </figure>
 
 # Plotting Summary
-The top bar for this posts has been created with [convert](https://imagemagick.org/script/convert.php) and appending the output images via `convert +append`. If you want to `-resize` the image, check `identify` to find out about image size and then calculate the resizing factor:
+The top bar for this posts has been created with [convert](https://imagemagick.org/script/convert.php) and appending the output images via `convert +append`. If you want to `-resize` the image, check `identify` to find out about image size and then calculate the resizing factor. If you want to increase the spacing between the images, increase `-border 1x0` to `-border 10x0`.
 ```bash
-convert -density 150 -quality 100 ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_relieftopo.jpg ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.jpg ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_windvelocity.jpg +append -fuzz 1% -trim -bordercolor white -border 10x0 +repage -resize 1024x584 summary.jpg
+convert -density 150 -quality 100 ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_relieftopo.jpg ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.jpg ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_windvelocity.jpg -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append  -resize 1024x584 summary.jpg
 ```
 
 The above code snippets allow to create three simple views of South America and 200hPa wind velocities with varying color schemes:
