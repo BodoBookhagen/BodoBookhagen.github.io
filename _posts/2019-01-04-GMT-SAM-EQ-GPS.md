@@ -1,6 +1,15 @@
 ---
-title: 'Plot USGS SAM topography, earthquake data, GPS vectors, NDVI and rainfall with GMT'
+title: 'Plot SAM topography, USGS earthquake data, GPS vectors, NDVI and rainfall with GMT'
 date: 2019-01-04
+toc: true
+toc_label: "Plot SAM topography"
+header:
+  overlay_image: https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/summary.jpg
+  overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
+  caption: "SAM topography "
+  actions:
+    - label: "Github"
+      url: "https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM"
 read_time: false
 permalink: /posts/2019/01/GMT-SAM-EQ-GPS/
 -- tags:
