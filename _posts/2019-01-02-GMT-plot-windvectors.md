@@ -4,6 +4,8 @@ author_profile: true
 date: 2019-01-02
 classes: wide
 permalink: /posts/2019/01/GMT-plot-windvectors/
+toc: true
+toc_label: GMT plot windvectors"
 header:
   overlay_image: https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/ECMWF-EI-WND_1999_2013_DJF_200hpa_SAM_graytopo.jpg
   overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
@@ -43,7 +45,7 @@ git clone https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM.git`.
 
 ## Prepare Data
 ### Prepare DEM data
-*NOTE: These data are not included on the github page, because they are too large to be stored on github*
+Note: These data are not included on the github page, because they are too large to be stored on github {: .notice--warning}
 
 We first need to prepare the DEM data for the region of interest. Define the region of interest:
 ```bash
@@ -167,7 +169,10 @@ The file contains both, the u and v wind direction, and it is easier to work wit
 gmt grdconvert ${ECMWF_WND}?u -G${ECMWF_WND::-3}_u.nc
 ```
 
-CDO likes to store files with longitudes from 0 to 360. I prefer -180 to +180 and will apply this in the following step. *NOTE: This is not necessary, but most other data have longitude values between -180 and 180 and I like to keep it consistent. This also makes clipping and cutting easier*:
+CDO likes to store files with longitudes from 0 to 360. I prefer -180 to +180 and will apply this in the following step. 
+
+*NOTE* This is not necessary, but most other data have longitude values between -180 and 180 and I like to keep it consistent. This also makes clipping and cutting easier. {: .notice--warning}
+
 ```bash
 gmt grdedit ${ECMWF_WND::-3}_u.nc -R-85/-30/-40/15
 ```
@@ -231,7 +236,7 @@ gmt grdmath ${ECMWF_WND::-3}_u.nc NEG ${ECMWF_WND::-3}_v.nc NEG ATAN2 180 D2R MU
 gmt grdedit ${ECMWF_WND::-3}_direction_degree.nc -D+z"Wind Direction [degree]"+r"180/pi*atan2(-u,-v)"
 ```
 
-*NOTE: If you didn't reverse the notation of the u and v component earlier, you will need to use: *
+*NOTE* If you didn't reverse the notation of the u and v component earlier, you will need to use the following command (otherwise ignore): {: .notice--warning}
 
 ```
 gmt grdmath ${ECMWF_WND::-3}_u.nc NEG ${ECMWF_WND::-3}_v.nc NEG ATAN2 180 D2R MUL = ${ECMWF_WND::-3}_direction_radians.nc
