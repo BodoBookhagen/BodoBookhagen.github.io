@@ -36,7 +36,7 @@ conda config --prepend channels conda-forge
 ```
 
 | What for? | Conda commands |
-|:----------|:--------------|
+|:---------:|:--------------|
 | Pandoc Processing | ```conda create -y -n pandoc python pip pandoc imagemagick``` |
 | GMT 5 and Python Processing |```conda create -y -n gmt5 gmt=5* python=3.6 scipy pandas numpy matplotlib scikit-image gdal spyder imagemagick``` |
 | GMT 6 and Python Processing |```conda create -y -n gmt6 gmt=6* python=3* scipy pandas numpy matplotlib scikit-image gdal spyder imagemagick``` |
