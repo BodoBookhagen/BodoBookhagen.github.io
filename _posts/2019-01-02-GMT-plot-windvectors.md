@@ -42,7 +42,7 @@ Clone the repository with:
 git clone https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM.git`.
 ```
 
-The data were processed and images were made with GMT version 5.4.3.
+The data were processed and maps were created with GMT version 5.4.3.
 ```bash
 gmt --version
 5.4.3
