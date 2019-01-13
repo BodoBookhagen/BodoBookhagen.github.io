@@ -4,6 +4,7 @@ author_profile: true
 date: 2019-01-02
 permalink: /posts/2019/01/GMT-plot-windvectors/
 toc: true
+toc_sticky: true
 toc_label: "GMT plot windvectors"
 header:
   overlay_image: https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM/raw/master/output_maps/summary.jpg
@@ -13,7 +14,7 @@ header:
     - label: "Github"
       url: "https://github.com/BodoBookhagen/GMT-plot-windvectors-SAM"
 read_time: false
--- tags:
+tags:
   - GMT
   - wind
   - vector
