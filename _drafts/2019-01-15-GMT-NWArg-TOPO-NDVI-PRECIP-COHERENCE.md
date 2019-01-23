@@ -1,0 +1,883 @@
+---
+title: 'Plot topography, NDVI, rainfall and S1 SAR coherence for NW Argentina'
+date: 2019-01-15
+toc: true
+toc_sticky: true
+toc_label: "Plot SAM topography"
+header:
+  overlay_image: https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/CentralAndes_Topo15S_relief_topo_EQ_combined.jpg
+  overlay_filter: 0.3 # same as adding an opacity of 0.5 to a black background
+  caption: "NW Argentina topography and SAR coherence "
+  actions:
+    - label: "Github"
+      url: "https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP"
+read_time: false
+permalink: /posts/2019/01/GMT-SAM-EQ/
+tags:
+  - GMT
+  - SAM
+  - NW Argentina
+  - Central Andes
+  - NDVI
+  - Andes
+  - TRMM
+  - Coherence
+  - SAR
+  - SRTM
+---
+
+South America is characterized by steep gradients in tectonism, topography, and climate. In this blog entry, we show how these gradients can be visualized documenting the changes in topography, earthquake character, vegetation cover (NDVI), and TRMM rainfall distribution.
+
+South America is characterized by steep gradients in tectonism, topography, and climate. In this blog entry, we show how these gradients can be visualized documenting the changes in topography, earthquake character, vegetation cover (NDVI), and TRMM rainfall distribution. The data and scripts are available at [GMT-SAM-EQ-NDVI-PRECIP](https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP). 
+
+# Data sources and setup
+
+The data were processed and maps were created with GMT version 5.4.3.
+```bash
+gmt --version
+5.4.3
+```
+
+## Global relief at 15s
+Topographic data are needed. In this example, we rely on the 15s global topography obtained from [ftp://topex.ucsd.edu/pub/srtm15_plus/](ftp://topex.ucsd.edu/pub/srtm15_plus/). The file [earth_relief_15s.nc](ftp://topex.ucsd.edu/pub/srtm15_plus/earth_relief_15s.nc) is needed. Use `wget ftp://topex.ucsd.edu/pub/srtm15_plus/earth_relief_15s.nc` to obtain the data. This will come in handy for many other examples as well and it will be good to keep a copy on your local computer. 
+
+*NOTE:* These data are 2.6GB.
+{: .notice--warning}
+
+
+## SRTM1 data
+Alternatively, you can download the [SRTM DEM](https://www2.jpl.nasa.gov/srtm/) at 30m or 90m spatial resolution. I suggest to look at the most recent [NASADEM](https://earthdata.nasa.gov/community/community-data-system-programs/measures-projects/nasadem). Data have not been finalized yet (but will so soon) and can be accessed [here](https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/SouthAmerica/hgt_merge/). There is a neat github repository [nasadem](https://github.com/dshean/nasadem) by David Shean that provides some scripts for downloading and preprocessing. [TanDEM-X](https://github.com/dshean/tandemx) data are also available. In any case, for our purposes the 15s data will be just fine.
+
+Here, I am using the command `dem.py` from ISCE to download the SRTM1 DEM (1 arcsec, 30m) for a certain area. `dem.py` expect the boundary coordinates to be given. The area of interest is between latitudes 22 and 28S and longitudes 70W and 62W.
+```bash
+start_isce
+mkdir SRTM1_MEASURES
+cd SRTM1_MEASURES
+dem.py -k -a stitch -s 1 -b -28 -22 -70 -62 -m xml -c -r -k -u https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/SouthAmerica/hgt_merge/
+```
+As an additional preparatory step, the data are converted to a compress GeoTIFF file with `gdal_translate` and converted to a netcdf file with `gmt grdconvert`:
+```bash
+gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=7 -co predictor=2 demLat_S28_S22_Lon_W070_W062.dem.wgs84.vrt demLat_S28_S22_Lon_W070_W062.dem.wgs84.tif
+gmt grdconvert demLat_S28_S22_Lon_W070_W062.dem.wgs84.tif=gd/1/0/0 -GdemLat_S28_S22_Lon_W070_W062.dem.wgs84.nc
+```
+
+*NOTE* Compressing the GeoTIFF file with DEFLATE and LEVEL 7 and setting the predictor to 2, reduces the files size from 1.2GB to 335MB.
+{: .notice--warning}
+
+In this tutorial, we will only work with the NetCDF file.
+
+Additionally, we calculate the hillshade image for this grid. First, with a more sophisticated shading (options `-Ne0.6 -Es75/55+a`) and then very simple shading (`-Nt1 -Ep`).
+
+```bash
+gmt grdgradient demLat_S28_S22_Lon_W070_W062.dem.wgs84.nc -Ne0.6 -Es75/55+a -GdemLat_S28_S22_Lon_W070_W062.dem.wgs84_HS.nc
+gmt grdgradient demLat_S28_S22_Lon_W070_W062.dem.wgs84.nc -Nt1 -Ep -GdemLat_S28_S22_Lon_W070_W062.dem.wgs84_HS2.nc
+```
+
+## Conda setup
+Install and start the GMT environment with:
+```bash
+conda create -y -n gmt5 gmt=5* python=3.6 scipy pandas numpy matplotlib scikit-image gdal spyder imagemagick
+source activate gmt5
+```
+
+Depending on your system, you may need to change the order of the channels with the following and then re-run the `conda create` command from above:
+```bash
+conda config --remove channels defaults
+conda config --append channels conda-forge/label/dev
+```
+
+Clone the repository with:
+```bash
+git clone https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP`.
+```
+
+## Prepare Data
+### Prepare grid / raster data
+#### Prepare DEM data
+
+*NOTE:* These data are not included on the github page, because they are too large to be stored on github.
+{: .notice--warning}
+
+We first make sure that all hillshade imagery for the DEM have been created. We also define a region of interest (this is the same region as used for extracting the DEM data):
+```bash
+REGION=-70/-62/-28/-22
+```
+
+We define the DEM name (either set the path or copy the relevant NETCDF file to the working directory):
+```bash
+SRTM1_30m_NC=demLat_S28_S22_Lon_W070_W062.dem.wgs84.nc
+```
+
+Next, generate a hillshade image. Here, we use more sophisticated hillshade calculation and store in `$SRTM1_30m_HS_NC`:
+```bash
+SRTM1_30m_HS_NC=demLat_S28_S22_Lon_W070_W062.dem.wgs84_HS.nc
+if [ ! -e $SRTM1_30m_HS_NC ]
+then
+    echo "generate hillshade $SRTM1_30m_HS_NC"
+    gmt grdgradient $SRTM1_30m_NC -Ne0.6 -Es75/55+a -G$SRTM1_30m_HS_NC
+fi
+```
+
+If you instead want to have a simpler hillshading with less relief, use something akin to the Peucker algorithm. We call this `$SRTM1_30m_HS2_NC`.
+```bash
+SRTM1_30m_HS2_NC=demLat_S28_S22_Lon_W070_W062.dem.wgs84_HS2.nc
+if [ ! -e $SRTM1_30m_HS2_NC ]
+then
+    echo "generate hillshade $SRTM1_30m_HS2_NC"
+    gmt grdgradient $SRTM1_30m_NC -Nt1 -Ep -G$SRTM1_30m_HS2_NC
+fi
+```
+
+#### Prepare MODIS EVI and NDVI raster data
+##### Mean EVI and mean NDVI
+These have been created from the MODIS product [MOD13A3](https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table/mod13a2_v006) and compiled to annual and monthly averages. Data-preprocessing is not shown here. We have generated a Geotiff file containing mean NDVI and EVI from 2001-2017 stored in the files MOD13A3_2001-2017NDVImn.tif and MOD13A3_2001-2017EVImn.tif.
+
+We use `gmt grdcut` to extract the relevant region from a global file.
+```bash
+MOD13A3_NDVI=/raid-everest/data/MODIS/MOD13A3/MOD13A3_2001-2017NDVImn.tif
+MOD13A3_NDVI_NWArg=MOD13A3_2001-2017NDVImn_NWArg.nc
+if [ ! -e $MOD13A3_NDVI_NWArg ]
+then
+    echo "generate NDVI Mean Clip $MOD13A3_NDVI_NWArg"
+    gmt grdcut -R$REGION $MOD13A3_NDVI -G$MOD13A3_NDVI_NWArg
+fi
+```
+
+Next, we resample this file to the resolution of the topographic data to allow hillshading and more sophisticated visualization. Resampling will be forced with number of lines and rows that have been obtained with `gdalinfo demLat_S28_S22_Lon_W070_W062.dem.wgs84.nc`: 28800+/21600.
+```bash
+MOD13A3_NDVI_NWArg_SRTM1=MOD13A3_2001-2017NDVImn_NWArg_SRTM1.nc
+if [ ! -e $MOD13A3_NDVI_NWArg_SRTM1 ]
+then
+    echo "resample NDVI Mean Clip $MOD13A3_NDVI_NWArg_SRTM1"
+    gmt grdsample $MOD13A3_NDVI_NWArg -R$REGION -I28800+/21600+ -G$MOD13A3_NDVI_NWArg_SRTM1
+fi
+```
+
+We do the same for the EVI data:
+```bash
+MOD13A3_EVI=/raid-everest/data/MODIS/MOD13A3/MOD13A3_2001-2017EVImn.tif
+MOD13A3_EVI_NWArg=MOD13A3_2001-2017EVImn_NWArg.nc
+MOD13A3_EVI_NWArg_SRTM1=MOD13A3_2001-2017EVImn_NWArg_SRTM1.nc
+if [ ! -e $MOD13A3_EVI_NWArg ]
+then
+    echo "generate EVI Mean Clip $MOD13A3_EVI_NWArg"
+    gmt grdcut -R$REGION $MOD13A3_EVI -G$MOD13A3_EVI_NWArg
+fi
+
+if [ ! -e $MOD13A3_EVI_NWArg_SRTM1 ]
+then
+    echo "resample EVI Mean Clip $MOD13A3_EVI_NWArg_SRTM1"
+    gmt grdsample $MOD13A3_EVI_NWArg -R$REGION -I28800+/21600+ -G$MOD13A3_EVI_NWArg_SRTM1
+fi
+```
+
+##### Std. deviation EVI and std. deviation NDVI
+Next, we look at the std. devatiation of NDVI data: 
+```bash
+MOD13A3_NDVIstd=/raid-everest/data/MODIS/MOD13A3/MOD13A3_2001-2017NDVIstd.tif
+MOD13A3_NDVIstd_NWArg=MOD13A3_2001-2017NDVIstd_NWArg.nc
+MOD13A3_NDVIstd_NWArg_SRTM1=MOD13A3_2001-2017NDVIstd_NWArg_SRTM1.nc
+if [ ! -e $MOD13A3_NDVIstd_NWArg ]
+then
+    echo "generate EVI Mean Clip $MOD13A3_NDVIstd_NWArg"
+    gmt grdcut -R$REGION $MOD13A3_NDVIstd -G$MOD13A3_NDVIstd_NWArg
+fi
+
+if [ ! -e $MOD13A3_NDVIstd_NWArg_SRTM1 ]
+then
+    echo "resample EVI Mean Clip $MOD13A3_NDVIstd_NWArg_SRTM1"
+    gmt grdsample $MOD13A3_NDVIstd_NWArg -R$REGION -I28800+/21600+ -G$MOD13A3_NDVIstd_NWArg_SRTM1
+fi
+```
+
+Next, we look at the std. devatiation of EVI data: 
+```bash
+MOD13A3_EVIstd=/raid-everest/data/MODIS/MOD13A3/MOD13A3_2001-2017EVIstd.tif
+MOD13A3_EVIstd_NWArg=MOD13A3_2001-2017EVIstd_NWArg.nc
+MOD13A3_EVIstd_NWArg_SRTM1=MOD13A3_2001-2017EVIstd_NWArg_SRTM1.nc
+if [ ! -e $MOD13A3_EVIstd_NWArg ]
+then
+    echo "generate EVI Mean Clip $MOD13A3_EVIstd_NWArg"
+    gmt grdcut -R$REGION $MOD13A3_EVIstd -G$MOD13A3_EVIstd_NWArg
+fi
+
+if [ ! -e $MOD13A3_EVIstd_NWArg_SRTM1 ]
+then
+    echo "resample EVI Mean Clip $MOD13A3_EVIstd_NWArg_SRTM1"
+    gmt grdsample $MOD13A3_EVIstd_NWArg -R$REGION -I28800+/21600+ -G$MOD13A3_EVIstd_NWArg_SRTM1
+fi
+```
+
+### Prepare vector data / shapefiles
+#### Convert gridded output data from HyDROSHED to vector data
+We have used various software to generate polygon files outlining the hydrologic basins of South America. An easy way to start is to look at [Hydroshed](https://hydrosheds.cr.usgs.gov/index.php). Here, we provide several shapefiles in the subdirectory [GMT_vector_data](GMT_vector_data). The shapefiles have been converted to GMT files using [ogr2ogr](https://www.gdal.org/ogr2ogr.html) and the projection has been changed from UTM-19S to GEOGRAPHIC projection (EPSG 4326), where necessary. In the subdirectory GMT_vector_data, run:
+```bash
+ogr2ogr -f GMT -t_srs epsg:4326 AltiplanoPuna_1basin_EPSG4326.gmt AltiplanoPuna_1basin_UTM19S_WGS84.shp
+ogr2ogr -f GMT -t_srs epsg:4326 SA_basins_15s_puna_EPSG4326.gmt SA_basins_15s_puna_UTM19S_WGS84.shp
+```
+*NOTE:* These files have already been generated.
+{: .notice--warning}
+
+Now, these gmt files can be plotted with `psxy`.
+
+If you have exceptionally large GMT files, you can compress them with [gzip](https://www.gzip.org/) or [bzip2](http://www.bzip.org/) (see next section).
+{: .notice--warning}
+
+#### Prepare OSM vector data
+The [OpenStreetMap (OSM)](https://www.openstreetmap.org/) dataset is very useful for showing high-resolution shorelines, anthropogenic infrastructure and a variety of other data that are not contained in the GMT vector files. OSM data come in a different format and will need to be converted before usage. [OSM Wiki](https://wiki.openstreetmap.org/wiki/Downloading_data) provides some insights, but there are additional steps necessary. this is a multi-step process.
+
+First, get the data from [geofabrik](https://www.geofabrik.de/). They provide pbf files for every continent (or country) that can be converted into GMT or shapefile format:
+```bash
+wget https://download.geofabrik.de/south-america-latest.osm.pbf
+```
+
+Next, the OSM-pbf file needs to be converted to GMT files. This will need to be done for every attribute separately to keep your database nice and clean. We usually use the following. 
+*NOTE:* gdal/ogr will need to have been compiled with GEOS, SQL and pbf support!
+{: .notice--warning}
+
+*NOTE:* In order to generate the railway database, you have to change /usr/share/gdal/2.2/osmconf.ini and allow the tag railway to be created. See [here](https://wiki.openstreetmap.org/wiki/User:Bgirardot/How_To_Convert_osm_.pbf_files_to_Esri_Shapefiles). You first need to identify the relevant osmconf.ini file using `locate osmconf.ini` and then edit that to include additional attributes and fields.
+{: .notice--warning}
+
+*NOTE:* In order to generate the volcano database, you have to change /usr/share/gdal/2.2/osmconf.ini and allow the tag natural to be created.
+{: .notice--warning}
+
+```bash
+ogr2ogr -f "GMT" south-america_roads01.gmt south-america-latest.osm.pbf -progress -sql "select highway from lines where highway in ('primary', 'secondary', 'tertiary', 'unclassified', 'residential')" 
+ogr2ogr -f "GMT" south-america_roads02.gmt south-america-latest.osm.pbf -progress -sql "select highway from lines where highway not in ('primary', 'secondary', 'tertiary', 'unclassified', 'residential')" 
+ogr2ogr -f "GMT" south-america_lakes.gmt south-america-latest.osm.pbf -progress -sql "select natural from multipolygons where natural in ('water')" 
+ogr2ogr -f "GMT" south-america_wetlands.gmt south-america-latest.osm.pbf -progress -sql "select natural from multipolygons where natural in ('wetland')" 
+ogr2ogr -f "GMT" south-america_rivers.gmt south-america-latest.osm.pbf -progress -sql "select waterway from lines where waterway in ('river')" 
+ogr2ogr -f "GMT" south-america_railway.gmt south-america-latest.osm.pbf -progress -sql "select railway from lines where railway in ('rail')" 
+ogr2ogr -f "GMT" south-america_volcano.gmt south-america-latest.osm.pbf -progress -sql "select natural from points where natural in ('volcano')" 
+```
+If you replace `-f "GMT"` with `-f "ESRI Shapefile"`, you create ESRI shapefiles as output.
+
+These are large files and processing them with GMT for map making will take some time. I suggest to clip this to the area of interest (will make map making a little faster). Here, we use the coordinates from the `$REGION` variable (see above). `-clipsrs` expects xmin ymin xmax ymax coordinates.
+
+```bash
+ogr2ogr -f "GMT" CentralAndesroads01.gmt south-america_roads01.gmt -clipsrc -80 -40 -60 -15
+ogr2ogr -f "GMT" CentralAndesroads02.gmt south-america_roads02.gmt -clipsrc -80 -40 -60 -15
+ogr2ogr -f "GMT" CentralAndeslakes.gmt south-america_lakes.gmt -clipsrc -80 -40 -60 -15
+ogr2ogr -f "GMT" CentralAndeswetlands.gmt south-america_wetlands.gmt -clipsrc -80 -40 -60 -15
+ogr2ogr -f "GMT" CentralAndesrivers.gmt south-america_rivers.gmt -clipsrc -80 -40 -60 -15
+ogr2ogr -f "GMT" CentralAndesrailway.gmt south-america_railway.gmt -clipsrc -80 -40 -60 -15
+ogr2ogr -f "GMT" CentralAndesvolcano.gmt south-america_volcano.gmt -clipsrc -80 -40 -60 -15
+```
+
+The files `CentralAndeslakes.gmt` can be plotted with `gmt psxy`.
+
+#### Prepare city dataset from OSM
+First, edit osmconf.ini and add `city` to the list of attributes in the section `[points]`.
+The line `attributes` in the `[points]` section should read:
+```bash
+attributes=name,barrier,highway,ref,address,is_in,place,man_made,city,population
+```
+
+Next, extract the cities with `ogr2ogr` and store name and population `select city,name,population` and select only cities with a stored name `where name is not null`:
+```bash
+ogr2ogr -f "GMT" south-america_cities_with_names.gmt south-america-latest.osm.pbf -progress -sql "select city,name,population from points where name is not null" 
+```
+
+We create a second dataset containing only cities with a stored population:
+```bash
+ogr2ogr -f "GMT" south-america_cities_with_population.gmt south-america-latest.osm.pbf -progress -sql "select city,name,population from points where population is not null" 
+```
+
+Alternatively, create a dataset containing any city (also without names):
+```bash
+ogr2ogr -f "GMT" south-america_cities.gmt south-america-latest.osm.pbf -progress -sql "select city,name,population from points" 
+```
+
+#### Prepare simplified city dataset
+City locations are also included in the OSM dataset, but a simpler CSV file will do it as well. There are many datasets available, here we are using a free city CSV version currently hosted at [maxmind](https://www.maxmind.com/en/free-world-cities-database). The CSV contains:
+`Country,City,AccentCity,Region,Population,Latitude,Longitude`.
+The file contains a global database of cities - we are only interested in showing a few for South America and we preprocess the data to select only Santiago de Chile, Salta, Mendoza and La Paz.
+
+*NOTE:* We have converted the gzip-compressed file to a bzip2 compressed file
+{: .notice--warning}
+
+First we search for the country ar (Argentina) and city Salta and we only use the longitude, latitude columns. In the second command, we add the label Salta to the end of the first row:
+
+```bash
+bzip2 -dc worldcitiespop.txt.bz2 | grep -w ar | grep -w Salta | gmt select -i6,5 >salta.txt
+sed -i "1 s|$| Salta|" salta.txt
+```
+
+This can be done in the same fashion for the other cities:
+```bash
+bzip2 -dc worldcitiespop.txt.bz2 | grep -w ar | grep ",Mendoza" | gmt select -i6,5 >mendoza.txt
+sed -i "1 s|$| Mendoza|" mendoza.txt
+
+bzip2 -dc worldcitiespop.txt.bz2 | grep -w bo | grep ",La Paz,04" | gmt select -i8,7 >lapaz.txt
+sed -i "1 s|$| LaPaz|" lapaz.txt
+
+bzip2 -dc worldcitiespop.txt.bz2 | grep -w cl | grep ",Santiago" | gmt select -i6,5 >SdC.txt
+sed -i "1 s|$| SdC|" SdC.txt
+```
+The txt files can be plotted with `gmt psxy`.
+
+
+#### Prepare Earthquake catalog from USGS
+There exists different EQ catalogs. Here, we download data from the [USGS](https://earthquake.usgs.gov/earthquakes/search/) by selecting a range of magnitude, time, and geographic region and write to a CSV file. If you use the entire geographic region of SAM (or the region we have been working with), you will need to select the magnitude in steps, to produce less than 20k searches (max. allowed number of records to export). Because we will plot the magnitudes with different sizes/colors, this will be useful in any case. We have generated several files with the following names (should be self explanatory): USGS_EQ_NWArg_1970_2018_mag3.5_to_4.csv, USGS_EQ_NWArg_1970_2018_mag4_to_4.5.csv, USGS_EQ_NWArg_1970_2018_mag4.5_to_5.csv, USGS_EQ_NWArg_1970_2018_mag5_to_5.5.csv, USGS_EQ_NWArg_1970_2018_mag5.5_to_6.csv, USGS_EQ_NWArg_1970_2018_mag6_to_9.csv. 
+We compress them with `bzip2`. `bzip2` is much more efficient in compressing ASCII text files than `gzip`. A quick test shows that file USGS_EQ_NWArg_1970_2018_mag3.5_to_4.csv compressed to 291293 bytes (291 kb) with `bzip2` and to 410052 bytes (410 kb) with `gzip` (using best compression option `-9` for both algorithms). We combine magnitude ranges 4 to 5 and 5 to 6:
+
+```bash
+bzip2 -9 USGS_EQ_NWArg_1970_2018_mag3.5_to_4.csv
+
+cp USGS_EQ_NWArg_1970_2018_mag4_to_4.5.csv USGS_EQ_NWArg_1970_2018_mag4_to_5.csv
+cat USGS_EQ_NWArg_1970_2018_mag4.5_to_5.csv >> USGS_EQ_NWArg_1970_2018_mag4_to_5.csv
+bzip2 -9 USGS_EQ_NWArg_1970_2018_mag4_to_5.csv
+
+cp USGS_EQ_NWArg_1970_2018_mag5_to_5.5.csv USGS_EQ_NWArg_1970_2018_mag5_to_6.csv
+cat USGS_EQ_NWArg_1970_2018_mag5.5_to_6.csv >>USGS_EQ_NWArg_1970_2018_mag5_to_6.csv
+bzip2 -9 USGS_EQ_NWArg_1970_2018_mag5_to_6.csv
+
+bzip2 -9 USGS_EQ_NWArg_1970_2018_mag6_to_9.csv
+```
+
+These files are available in the [GMT_vector_data](GMT_vector_data) directory.
+
+# Generating a topographic map
+After compiling all the various data source, we can use GMT to create a topographic map of SAM.
+
+As a reminder, we have done the following preparatory steps. This excerpt is taken from [plot_NWArg_TOPO_EQ.sh](https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/plot_NWArg_TOPO_EQ.sh):
+```bash
+#!/bin/bash
+gmt gmtset MAP_FRAME_PEN    0.5p,black
+gmt gmtset MAP_FRAME_WIDTH    0.1
+gmt gmtset MAP_FRAME_TYPE     plain
+gmt gmtset FONT_TITLE    18p,Helvetica-Bold,black
+gmt gmtset FONT_LABEL    12p,Helvetica-Bold,black
+gmt gmtset PS_PAGE_ORIENTATION    portrait
+gmt gmtset PS_MEDIA    A4
+gmt gmtset FORMAT_GEO_MAP    D
+gmt gmtset MAP_DEGREE_SYMBOL degree
+gmt gmtset PROJ_LENGTH_UNIT cm
+
+REGION=-80/-60/-40/-15
+
+# DEM/Topography Data
+#clip area and generate hillshade 
+SRTM1_30m_NC=/home/bodo/Downloads/earth_relief_15s.nc
+SRTM1_30m_NC_NWArg=earth_relief_15s_NWArg.nc
+if [ ! -e $SRTM1_30m_NC_NWArg ]
+then
+    echo "generate Topo15S Clip $SRTM1_30m_NC_NWArg"
+    gmt grdcut -R$REGION $SRTM1_30m_NC -G$SRTM1_30m_NC_NWArg
+fi
+
+SRTM1_30m_NC=$SRTM1_30m_NC_NWArg
+SRTM1_30m_HS_NC=earth_relief_15s_NWArg_HS.nc
+if [ ! -e $SRTM1_30m_HS_NC ]
+then
+    echo "generate hillshade $SRTM1_30m_HS_NC"
+    gmt grdgradient $SRTM1_30m_NC -Ne0.6 -Es75/55+a -G$SRTM1_30m_HS_NC
+fi
+
+#Simpler Peucker algorithm
+SRTM1_30m_HS2_NC=earth_relief_15s_NWArg_HS_peucker.nc
+if [ ! -e $SRTM1_30m_HS2_NC ]
+then
+    echo "generate hillshade $SRTM1_30m_HS2_NC"
+    gmt grdgradient $SRTM1_30m_NC -Nt1 -Ep -G$SRTM1_30m_HS2_NC
+fi
+
+# Vector data
+AltiplanoPuna_1bas=GMT_vector_data/AltiplanoPuna_1basin_UTM19S_WGS84.gmt
+OSM_NWArglakes=GMT_vector_data/CentralAndeslakes.gmt
+OSM_NWArgvolcano=GMT_vector_data/CentralAndesvolcano.gmt
+```
+
+At the end of the script, we also set the filenames to Bash variables that we are going to plot (*AltiplanoPuna_1bas, OSM_NWArglakes, OSM_NWArgvolcano*). Make sure you set the proper path if you store the data elsewhere.
+
+Next, we define the parameters for the plot:
+```bash
+## CREATE Topographic map
+#Set Parameters for Plot
+POSTSCRIPT_BASENAME=CentralAndes_Topo15S
+#xmin/xmax/ymin/ymax
+WIDTH=10
+XSTEP=10
+YSTEP=10
+DPI=300
+CITY_STAR_SIZE=0.4c
+```
+
+This is the file prefix *POSTSCRIPT_BASENAME*, the width of the plot in cm, and the longitude (*XSTEP*) and latitude (*YSTEP*) grid spacing. We also set the output DPI to 300 - this generate the figures slightly faster, but you nay want to set this too 600 if you produce your final figure for publication. We also set the size in cm for the stars indicating the cities (*CITY_STAR_SIZE*).
+
+Next, we set title of the plot and the outputfilename that includes the prefix *POSTSCRIPT_BASENAME* with a postfix and stores this in *POSTSCRIPT1*:
+```bash
+TITLE="Topography C. Andes"
+POSTSCRIPT1=${POSTSCRIPT_BASENAME}_relieftopo.ps
+```
+
+As a next step, we create the colorscale for the topography. Here, we use the colormap mby.cpt that can be obtain from [cpt-city](http://soliton.vm.bytemark.co.uk/pub/cpt-city/index.html) (or the direct download link for [mpy.cpt](http://soliton.vm.bytemark.co.uk/pub/cpt-city/mby/mby.cpt)). Note that this colorscale stretches from -8000m for ocean depth to 5000m elevation height on land. Different colorscales have diffirent ranges - here we inidcate the ranges for the [arctic](http://soliton.vm.bytemark.co.uk/pub/cpt-city/arendal/arctic.cpt) and relief (built in) colorscales as well, but these are commented out.
+```bash
+#Make colorscale
+DEM_CPT=relief_color.cpt
+#gmt makecpt -T-5000/4000/250 -D -Carctic >$DEM_CPT
+#gmt makecpt -T-6000/6000/250 -D -Crelief >$DEM_CPT
+gmt makecpt -T-8000/5000/250 -D -Cmby >$DEM_CPT
+```
+
+We can now start with creating the topographic map:
+```bash
+echo " "
+echo "Creating file $POSTSCRIPT1"
+echo " "
+gmt grdimage $SRTM1_30m_NC -I$SRTM1_30m_HS_NC -JM$WIDTH -C$DEM_CPT -R$SRTM1_30m_NC -Q  -Xc -Yc -E$DPI -K -P > $POSTSCRIPT1
+```
+
+And we may want to add an A in the upper right corner:
+```bash
+echo A | gmt pstext -R -J -D0.1c/-0.1c -W0.5p,black -Gwhite -C0.2c -F+cTL+f24p,Helvetica-Bold -P -O -K >> $POSTSCRIPT1
+```
+
+We plot the coastal outline and international border:
+```bash
+gmt pscoast -Bx$XSTEP -By$YSTEP -BWSne -W1/thin,black -R -J -N1/thin,black -O -Df --FORMAT_GEO_MAP=ddd:mm:ssF --MAP_FRAME_PEN=0.5p -P -K >> $POSTSCRIPT1
+```
+*NOTE:* If you want to generate a title header for your figure add replace `-BWSne` with `-BWSne+t"$TITLE"`: `gmt pscoast -Bx$XSTEP -By$YSTEP -BWSne -W1/thin,black -R -J -N1/thin,black -O -Df --FORMAT_GEO_MAP=ddd:mm:ssF --MAP_FRAME_PEN=0.5p -P -K >> $POSTSCRIPT1 `
+{: .notice--warning}
+
+
+We can plot volcanos and lakes from the OSM database and define their outline colors with `-W` and fill colors with `-L`:
+```bash
+gmt psxy $OSM_NWArglakes -R -J -L -Wfaint,lightblue -Glightblue -K -O -P >> $POSTSCRIPT1
+gmt psxy $OSM_NWArgvolcano -R -J -L -St0.15c -Gred -K -O -P >> $POSTSCRIPT1
+```
+
+Similiarily, add the outline of the Central Anden Plateau (Altiplana-Puna Plateau):
+```bash
+gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthick,darkblue -K -O -P >> $POSTSCRIPT1
+```
+
+Next, add the cities with a star and label:
+```bash
+gmt psxy SdC.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+gmt pstext SdC.txt -D-0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy lapaz.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+gmt pstext lapaz.txt -D+0.9c/0.2c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+gmt pstext salta.txt -D+0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+```
+
+We also want a topographic colorscale below the figure. We set the minor tick spacing to 1000m `-Baf1000` and add label and unit `-Baf1000:"Bathymetry and Elevation":/:"[m]":`. We also set the font to 12p
+```bash
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$DEM_CPT -F+c0.1c/0.5c+gwhite+r1p+pthin,black -Baf1000:"Bathymetry and Elevation":/:"[m]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+```
+
+Last, convert the ps file to a PNG file with the option `-Tg` and convert to a jpg:
+```bash
+gmt psconvert $POSTSCRIPT1 -A -P -Tg
+convert -alpha off -quality 100 -density 150 -trim $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
+```
+
+The resulting map display the bathymetry and topography of SAM with volcanoes in red triangles and major lakes in light blue colors, and cities in black stars with labels.
+<figure>
+    <a href="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/CentralAndes_Topo15S_relieftopo.jpg"><img src="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/CentralAndes_Topo15S_relieftopo.jpg"></a>
+    <figcaption>Bathymetry and Topography of the Central Andes: Elevation and bathymetry from a merged data (see text), lakes (lightblue) and volcanoes (red) are from the OSM database, and major city are shown in black stars. </figcaption>
+</figure>
+
+# Generating a grayscale topographic map with USGS earthquake location and depths
+We use the approach described in the previous section and add a second figure (B) showing gray-scale topography and USGS earthquake location. 
+
+First, let's define additional vector data (the USGS EQ data that have been prepared above):
+```bash
+# Vector data
+AltiplanoPuna_1bas=GMT_vector_data/AltiplanoPuna_1basin_UTM19S_WGS84.gmt
+OSM_NWArglakes=/raid-cachi/bodo/Dropbox/Argentina/GIS_Data/OSM/CentralAndeslakes.gmt
+OSM_NWArgvolcano=/raid-cachi/bodo/Dropbox/Argentina/GIS_Data/OSM/CentralAndesvolcano.gmt
+USGS_EQ_LT4=GMT_vector_data/USGS_EQ_NWArg_1970_2018_mag3.5_to_4.csv.bz2
+USGS_EQ_GT4_LT5=GMT_vector_data/USGS_EQ_NWArg_1970_2018_mag4_to_5.csv.bz2
+USGS_EQ_GT5_LT6=GMT_vector_data/USGS_EQ_NWArg_1970_2018_mag5_to_6.csv.bz2
+USGS_EQ_GT6=GMT_vector_data/USGS_EQ_NWArg_1970_2018_mag6_to_9.csv.bz2
+```
+
+Next, we plot and color the earthquakes by their depth using the colorscale *viridis*:
+```bash
+POSTSCRIPT1=${POSTSCRIPT_BASENAME}_reliefgray_EQ.ps
+#Make colorscale
+DEM_CPT=relief_gray.cpt
+gmt makecpt -T-6000/6000/250 -D -Cgray >$DEM_CPT
+EQ_DEPTH_CPT=EQ_color.cpt
+gmt makecpt -Ic -T0/400/25 -D -Cviridis >$EQ_DEPTH_CPT
+TITLE="USGS EQ 1970-2019"
+echo " "
+echo "Creating file $POSTSCRIPT1"
+echo " "
+gmt grdimage $SRTM1_30m_NC -I$SRTM1_30m_HS_NC -JM$WIDTH -C$DEM_CPT -R$SRTM1_30m_NC -Q -Xc -Yc -E$DPI -K -P > $POSTSCRIPT1
+echo B | gmt pstext -R -J -D0.1c/-0.1c -W0.5p,black -Gwhite -C0.2c -F+cTL+f24p,Helvetica-Bold -P -O -K >> $POSTSCRIPT1
+#gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthick,brown -K -O -P >> $POSTSCRIPT1
+bzip2 -dc $USGS_EQ_GT4_LT5 | gmt select -i2,1,3 | gmt psxy -R -J -Wfaint,black -Sc0.07c -C$EQ_DEPTH_CPT -O -P -K >> $POSTSCRIPT1
+bzip2 -dc $USGS_EQ_GT6 | gmt select -i2,1,3 | gmt psxy -R -J -Wfaint,black -Sc0.25c -C$EQ_DEPTH_CPT -O -P -K >> $POSTSCRIPT1
+bzip2 -dc $USGS_EQ_GT5_LT6 | gmt select -i2,1,3 | gmt psxy -R -J -Wfaint,black -Sc0.12c -C$EQ_DEPTH_CPT -O -P -K >> $POSTSCRIPT1
+gmt psxy SdC.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+gmt psxy lapaz.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+#-BWSne+t"$TITLE"
+gmt pscoast -Bx$XSTEP -By$YSTEP -BWSne -W1/thin,black -R -J -N1/thin,black -Df --FORMAT_GEO_MAP=ddd:mm:ssF --MAP_FRAME_PEN=0.5p -O -P -K >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.5c/-3.0c/+w7c/0.3c+ml -C$EQ_DEPTH_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf100:"EQ Depth":/:"[km]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psconvert $POSTSCRIPT1 -A -P -Tg
+convert -alpha off -quality 100 -density 150 -trim $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
+```
+
+The resulting figure shows EQ depth for the Central Andes:
+<figure>
+    <a href="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/CentralAndes_Topo15S_reliefgray_EQ.jpg"><img src="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/CentralAndes_Topo15S_reliefgray_EQ.jpg"></a>
+    <figcaption>Topography in grayscale for the Central Andes overlain by USGS earthquakes depths in color</figcaption>
+</figure>
+
+# Combining color topography and EQ depth into one plot imagemagick
+We can now combine plot (A) and (B) into on figure using [convert](https://imagemagick.org/script/convert.php):
+```bash
+convert -quality 50 -density 150 ${POSTSCRIPT_BASENAME}_relieftopo.png ${POSTSCRIPT_BASENAME}_reliefgray_EQ.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_relief_topo_EQ_combined.jpg
+
+convert -quality 100 -density 300 ${POSTSCRIPT_BASENAME}_relieftopo.png ${POSTSCRIPT_BASENAME}_reliefgray_EQ.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_relief_topo_EQ_combined.png
+```
+
+<figure>
+    <a href="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/CentralAndes_Topo15S_relief_topo_EQ_combined.jpg"><img src="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/CentralAndes_Topo15S_relief_topo_EQ_combined.jpg"></a>
+    <figcaption>A: Color topography and B: USGS EQ depth </figcaption>
+</figure>
+
+# Comparing colorscales
+If you are interested in using a different colorscale, here is a comparison of the different colorscales mentioned above. The steps to create this figure are in the GMT Bash script [plot_NWArg_colorbar_comparison.sh](https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/blob/master/plot_NWArg_colorbar_comparison.sh).
+
+<figure>
+    <a href="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/CentralAndes_Topo15S_topo_colorscales.jpg"><img src="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/CentralAndes_Topo15S_topo_colorscales.jpg"></a>
+    <figcaption>Color scale comparison for the Central Andes including bathymetry and topography </figcaption>
+</figure>
+
+# Create a NDVI and EVI vegetation cover map for the Central Andes
+Similar to the previous approaches, we set the topographic parameters and variables:
+```bash
+#!/bin/bash
+gmt gmtset MAP_FRAME_PEN    0.5p,black
+gmt gmtset MAP_FRAME_WIDTH    0.1
+gmt gmtset MAP_FRAME_TYPE     plain
+gmt gmtset FONT_TITLE    18p,Helvetica-Bold,black
+gmt gmtset FONT_LABEL    12p,Helvetica-Bold,black
+gmt gmtset PS_PAGE_ORIENTATION    portrait
+gmt gmtset PS_MEDIA    A4
+gmt gmtset FORMAT_GEO_MAP    D
+gmt gmtset MAP_DEGREE_SYMBOL degree
+gmt gmtset PROJ_LENGTH_UNIT cm
+
+REGION=-80/-60/-40/-15
+
+# DEM/Topography Data
+#clip area and generate hillshade 
+SRTM1_30m_NC=/home/bodo/Downloads/earth_relief_15s.nc
+SRTM1_30m_NC_NWArg=earth_relief_15s_NWArg.nc
+if [ ! -e $SRTM1_30m_NC_NWArg ]
+then
+    echo "generate Topo15S Clip $SRTM1_30m_NC_NWArg"
+    gmt grdcut -R$REGION $SRTM1_30m_NC -G$SRTM1_30m_NC_NWArg
+fi
+
+SRTM1_30m_NC=$SRTM1_30m_NC_NWArg
+SRTM1_30m_HS_NC=earth_relief_15s_NWArg_HS.nc
+if [ ! -e $SRTM1_30m_HS_NC ]
+then
+    echo "generate hillshade $SRTM1_30m_HS_NC"
+    gmt grdgradient $SRTM1_30m_NC -Ne0.6 -Es75/55+a -G$SRTM1_30m_HS_NC
+fi
+
+#Simpler Peucker algorithm
+SRTM1_30m_HS2_NC=earth_relief_15s_NWArg_HS_peucker.nc
+if [ ! -e $SRTM1_30m_HS2_NC ]
+then
+    echo "generate hillshade $SRTM1_30m_HS2_NC"
+    gmt grdgradient $SRTM1_30m_NC -Nt1 -Ep -G$SRTM1_30m_HS2_NC
+fi
+
+# Vector data
+AltiplanoPuna_1bas=GMT_vector_data/AltiplanoPuna_1basin_UTM19S_WGS84.gmt
+OSM_NWArglakes=/raid-cachi/bodo/Dropbox/Argentina/GIS_Data/OSM/CentralAndeslakes.gmt
+OSM_NWArgvolcano=/raid-cachi/bodo/Dropbox/Argentina/GIS_Data/OSM/CentralAndesvolcano.gmt
+
+# Grid data
+MOD13A3_NDVI_NWArg_rTOPO15=MOD13A3_2001-2017NDVImn_NWArg_Topo15S.nc
+MOD13A3_EVI_NWArg_rTOPO15=MOD13A3_2001-2017EVImn_NWArg_Topo15S.nc
+
+## CREATE Topographic map
+#Set Parameters for Plot
+POSTSCRIPT_BASENAME=CentralAndes
+#xmin/xmax/ymin/ymax
+WIDTH=10
+XSTEP=10
+YSTEP=10
+DPI=300
+CITY_STAR_SIZE=0.4c
+```
+
+And then we plot the NDVI data with colorscale [precip4_diff_19lev](http://soliton.vm.bytemark.co.uk/pub/cpt-city/ncl/precip4_diff_19lev.cpt).
+
+```bash
+TITLE="NDVI - C. Andes"
+POSTSCRIPT1=${POSTSCRIPT_BASENAME}_ndvi.ps
+#Make colorscale
+NDVI_CPT=ndvi_color.cpt
+gmt makecpt -T0.0/0.8/0.042 -D -Cprecip4_diff_19lev >$NDVI_CPT
+echo " "
+echo "Creating file $POSTSCRIPT1"
+echo " "
+gmt grdimage $MOD13A3_NDVI_NWArg_rTOPO15 -I$SRTM1_30m_HS_NC -JM$WIDTH -C$NDVI_CPT -R$SRTM1_30m_NC -Q -Xc -Yc -E$DPI -K -P > $POSTSCRIPT1
+gmt pscoast -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -Swhite -W1/thin,black -R -J -N1/thin,black -O -Df --FORMAT_GEO_MAP=ddd:mm:ssF --MAP_FRAME_PEN=0.5p,black --MAP_FRAME_WIDTH=0.1 -P -K >> $POSTSCRIPT1
+gmt psxy $OSM_NWArglakes -R -J -L -Wfaint,lightblue -Glightblue -K -O -P >> $POSTSCRIPT1
+#gmt psxy $OSM_NWArgvolcano -R -J -L -St0.15c -Gred -K -O -P >> $POSTSCRIPT1
+gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthin,white -K -O -P >> $POSTSCRIPT1
+gmt psxy SdC.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext SdC.txt -D-0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy lapaz.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext lapaz.txt -D+0.9c/0.2c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext salta.txt -D+0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+echo A | gmt pstext -R -J -D0.1c/-0.1c -W0.5p,black -C0.2c -F+cTL+f24p,Helvetica-Bold --MAP_FRAME_PEN=0.5p,black --MAP_FRAME_WIDTH=0.1 -P -O -K >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$NDVI_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf1000:"NDVI":/:"": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psconvert $POSTSCRIPT1 -A -P -Tg
+convert -quality 100 -density 150 -trim $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
+```
+
+The resulting image nicely show the steep vegetation-cover gradient in the Central Andes:
+<figure>
+    <a href="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/CentralAndes_ndvi.jpg"><img src="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/CentralAndes_ndvi.jpg"></a>
+    <figcaption>Mean annual NDVI (MOD13A2, 2001 to 2017) using color scale precip4_diff_19lev.</figcaption>
+</figure>
+
+## EVI
+The NDVI plot can be combined with the EVI plot (also from MOD13A2 data, 2001-2017) using the same approach:
+```bash
+POSTSCRIPT1=${POSTSCRIPT_BASENAME}_evi.ps
+#Make colorscale
+EVI_CPT=evi_color.cpt
+gmt makecpt -T0.0/0.6/0.05 -D -Cprecip_diff_12lev >$EVI_CPT
+TITLE="EVI - C. Andes"
+echo " "
+echo "Creating file $POSTSCRIPT1"
+echo " "
+gmt grdimage $MOD13A3_EVI_NWArg_rTOPO15 -I$SRTM1_30m_HS_NC -JM$WIDTH -C$EVI_CPT -R$SRTM1_30m_NC -Q -Xc -Yc -E$DPI -K -P > $POSTSCRIPT1
+gmt pscoast -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -Swhite -W1/thin,black -R -J -N1/thin,black -O -Df --FORMAT_GEO_MAP=ddd:mm:ssF --MAP_FRAME_PEN=0.5p,black --MAP_FRAME_WIDTH=0.1 -P -K >> $POSTSCRIPT1
+gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthin,white -K -O -P >> $POSTSCRIPT1
+gmt psxy SdC.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext SdC.txt -D-0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy lapaz.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext lapaz.txt -D+0.9c/0.2c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext salta.txt -D+0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+echo B | gmt pstext -R -J -D0.1c/-0.1c -W0.5p,black -C0.2c -F+cTL+f24p,Helvetica-Bold -P -O -K >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$NDVI_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf1000:"EVI":/:"": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psconvert $POSTSCRIPT1 -A -P -Tg
+convert -quality 100 -density 150 -trim $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
+```
+
+## Combine NDVI and EVI plots with imagemagick
+We put both files into one plot using convert (see above). We generate a low-resolution version (JPG) and a higher-resolution version (PNG):
+```bash
+convert -quality 50 -density 150 ${POSTSCRIPT_BASENAME}_ndvi.png ${POSTSCRIPT_BASENAME}_evi.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_ndvi_evi.jpg
+
+convert -quality 100 -density 300 ${POSTSCRIPT_BASENAME}_ndvi.png ${POSTSCRIPT_BASENAME}_evi.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_ndvi_evi.png
+```
+
+<figure>
+    <a href="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/CentralAndes_ndvi_evi.jpg"><img src="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/CentralAndes_ndvi_evi.jpg"></a>
+    <figcaption>Mean annual NDVI (MOD13A2, 2001 to 2017) using color scale precip4_diff_19lev.</figcaption>
+</figure>
+
+# Plot Topography, NDVI, and TRMM2B31 for the NW Argentinean Andes
+In the next plot, we use TRMM 2B31 data and generate a plot for the NW Argentinean Andes. Note that the area displayed in the map has been reduced to match the latitudinal range of the TRMM 2B31 data.
+First, we setup the topographic data and clip the relevant data to a different *REGION*:
+```bash
+#!/bin/bash
+gmt gmtset MAP_FRAME_PEN    0.5p,black
+gmt gmtset MAP_FRAME_WIDTH    0.1
+gmt gmtset MAP_FRAME_TYPE     plain
+gmt gmtset FONT_TITLE    18p,Helvetica-Bold,black
+gmt gmtset FONT_LABEL    12p,Helvetica-Bold,black
+gmt gmtset PS_PAGE_ORIENTATION    portrait
+gmt gmtset PS_MEDIA    A4
+gmt gmtset FORMAT_GEO_MAP    D
+gmt gmtset MAP_DEGREE_SYMBOL degree
+gmt gmtset PROJ_LENGTH_UNIT cm
+
+REGION=-75/-60/-35/-15
+
+# DEM/Topography Data
+#clip area and generate hillshade 
+SRTM1_30m_NC=/home/bodo/Downloads/earth_relief_15s.nc
+SRTM1_30m_NC_NWArg=earth_relief_15s_NWArg.nc
+if [ ! -e $SRTM1_30m_NC_NWArg ]
+then
+    echo "generate Topo15S Clip $SRTM1_30m_NC_NWArg"
+    gmt grdcut -R$REGION $SRTM1_30m_NC -G$SRTM1_30m_NC_NWArg
+fi
+
+SRTM1_30m_NC=$SRTM1_30m_NC_NWArg
+SRTM1_30m_HS_NC=earth_relief_15s_NWArg_HS.nc
+if [ ! -e $SRTM1_30m_HS_NC ]
+then
+    echo "generate hillshade $SRTM1_30m_HS_NC"
+    gmt grdgradient $SRTM1_30m_NC -Ne0.6 -Es75/55+a -G$SRTM1_30m_HS_NC
+fi
+
+#Simpler Peucker algorithm
+SRTM1_30m_HS2_NC=earth_relief_15s_NWArg_HS_peucker.nc
+if [ ! -e $SRTM1_30m_HS2_NC ]
+then
+    echo "generate hillshade $SRTM1_30m_HS2_NC"
+    gmt grdgradient $SRTM1_30m_NC -Nt1 -Ep -G$SRTM1_30m_HS2_NC
+fi
+
+# Vector data
+AltiplanoPuna_1bas=GMT_vector_data/AltiplanoPuna_1basin_UTM19S_WGS84.gmt
+OSM_NWArglakes=/raid-cachi/bodo/Dropbox/Argentina/GIS_Data/OSM/CentralAndeslakes.gmt
+OSM_NWArgvolcano=/raid-cachi/bodo/Dropbox/Argentina/GIS_Data/OSM/CentralAndesvolcano.gmt
+
+# Grid data
+MOD13A3_NDVI_NWArg_rTOPO15=MOD13A3_2001-2017NDVImn_NWArg_Topo15S.nc
+MOD13A3_EVI_NWArg_rTOPO15=MOD13A3_2001-2017EVImn_NWArg_Topo15S.nc
+
+# Prepare TRMM data
+TRMM2B31_1998_2009_MM_PER_YR=trmm2b31_annual_mm_per_year.tif
+TRMM2B31_1998_2009_MM_PER_YR_NWArg=trmm2b31_annual_mm_per_year_NWArg.nc
+TRMM2B31_1998_2009_MM_PER_YR_NWArg_rTOPO15=trmm2b31_annual_mm_per_year_NWArg_Topo15S.nc
+if [ ! -e $TRMM2B31_1998_2009_MM_PER_YR_NWArg ]
+then
+    echo "generate TRMM2B31 Mean clip $TRMM2B31_1998_2009_MM_PER_YR_NWArg"
+    gmt grdcut -R$REGION $TRMM2B31_1998_2009_MM_PER_YR -G$TRMM2B31_1998_2009_MM_PER_YR_NWArg
+fi
+
+if [ ! -e $TRMM2B31_1998_2009_MM_PER_YR_NWArg_rTOPO15 ]
+then
+    echo "resample TRMM2B31 Mean Clip $TRMM2B31_1998_2009_MM_PER_YR_NWArg_rTOPO15"
+    gmt grdsample $TRMM2B31_1998_2009_MM_PER_YR_NWArg -R$REGION -I3601+/4801+ -G$TRMM2B31_1998_2009_MM_PER_YR_NWArg_rTOPO15
+fi
+
+TRMM2B31_1998_2009_EEVENT_NR=trmm2b31_eevent_nr.tif
+TRMM2B31_1998_2009_EEVENT_NR_NWArg=trmm2b31_eevent_nr_NWArg.nc
+TRMM2B31_1998_2009_EEVENT_NR_NWArg_rTOPO15=trmm2b31_eevent_nr_NWArg_Topo15S.nc
+if [ ! -e $TRMM2B31_1998_2009_EEVENT_NR_NWArg ]
+then
+    echo "generate TRMM2B31 Mean clip $TRMM2B31_1998_2009_EEVENT_NR_NWArg"
+    gmt grdcut -R$REGION $TRMM2B31_1998_2009_EEVENT_NR -G$TRMM2B31_1998_2009_EEVENT_NR_NWArg
+fi
+
+if [ ! -e $TRMM2B31_1998_2009_EEVENT_NR_NWArg_rTOPO15 ]
+then
+    echo "resample TRMM2B31 Mean Clip $TRMM2B31_1998_2009_EEVENT_NR_NWArg_rTOPO15"
+    gmt grdsample $TRMM2B31_1998_2009_EEVENT_NR_NWArg -R$REGION -I3601+/4801+ -G$TRMM2B31_1998_2009_EEVENT_NR_NWArg_rTOPO15
+fi
+```
+
+Next, we generate the topographic plot:
+```bash
+POSTSCRIPT_BASENAME=NWArg
+#xmin/xmax/ymin/ymax
+WIDTH=10
+XSTEP=10
+YSTEP=10
+DPI=300
+CITY_STAR_SIZE=0.4c
+
+TITLE="Topo NW Arg"
+POSTSCRIPT1=${POSTSCRIPT_BASENAME}_topo.ps
+#Make colorscale
+DEM_CPT=relief_color.cpt
+gmt makecpt -T-8000/5000/250 -D -Cmby >$DEM_CPT
+echo " "
+echo "Creating file $POSTSCRIPT1"
+echo " "
+gmt grdimage $SRTM1_30m_NC -I$SRTM1_30m_HS_NC -JM$WIDTH -C$DEM_CPT -R$SRTM1_30m_NC -Q  -Xc -Yc -E$DPI -K -P > $POSTSCRIPT1
+#gmt pscoast -Bx$XSTEP -By$YSTEP -BWSne+t"$TITLE" -W1/thin,black -R -J -N1/thin,black -O -Df --FORMAT_GEO_MAP=ddd:mm:ssF --MAP_FRAME_PEN=0.5p -P -K >> $POSTSCRIPT1
+gmt pscoast -Bx$XSTEP -By$YSTEP -BWSne -W1/thin,black -R -J -N1/thin,black -O -Df --FORMAT_GEO_MAP=ddd:mm:ssF --MAP_FRAME_PEN=0.5p -P -K >> $POSTSCRIPT1
+gmt psxy $OSM_NWArglakes -R -J -L -Wfaint,lightblue -Glightblue -K -O -P >> $POSTSCRIPT1
+gmt psxy $OSM_NWArgvolcano -R -J -L -St0.2c -Gblack -K -O -P >> $POSTSCRIPT1
+gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthick,darkblue -K -O -P >> $POSTSCRIPT1
+gmt psxy SdC.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+gmt pstext SdC.txt -D-0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy lapaz.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+gmt pstext lapaz.txt -D+0.9c/0.2c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+gmt pstext salta.txt -D+0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,white -Gblack -K -O -P >> $POSTSCRIPT1
+gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$DEM_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf1000:"Bathymetry and Elevation":/:"[m]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psconvert $POSTSCRIPT1 -A -P -Tg
+```
+
+Then, we generate the NDVI map:
+```bash
+TITLE="NDVI - NW Arg"
+POSTSCRIPT1=${POSTSCRIPT_BASENAME}_ndvi.ps
+#Make colorscale
+NDVI_CPT=ndvi_color.cpt
+#gmt makecpt -T0.0/0.8/0.042 -D -Cprecip4_diff_19lev >$NDVI_CPT
+gmt makecpt -T0.0/0.8/0.067 -D -Cprecip_diff_12lev.cpt >$NDVI_CPT
+echo " "
+echo "Creating file $POSTSCRIPT1"
+echo " "
+gmt grdimage $MOD13A3_NDVI_NWArg_rTOPO15 -I$SRTM1_30m_HS_NC -JM$WIDTH -C$NDVI_CPT -R$SRTM1_30m_NC -Q -Xc -Yc -E$DPI -K -P > $POSTSCRIPT1
+gmt pscoast -Bx$XSTEP -By$YSTEP -BWSne -Swhite -W1/thin,black -R -J -N1/thin,black -O -Df --FORMAT_GEO_MAP=ddd:mm:ssF --MAP_FRAME_PEN=0.5p,black --MAP_FRAME_WIDTH=0.1 -P -K >> $POSTSCRIPT1
+gmt psxy $OSM_NWArglakes -R -J -L -Wfaint,lightblue -Glightblue -K -O -P >> $POSTSCRIPT1
+#gmt psxy $OSM_NWArgvolcano -R -J -L -St0.15c -Gred -K -O -P >> $POSTSCRIPT1
+gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthin,darkblue -K -O -P >> $POSTSCRIPT1
+gmt psxy SdC.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext SdC.txt -D-0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy lapaz.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext lapaz.txt -D+0.9c/0.2c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext salta.txt -D+0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$NDVI_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf1000:"NDVI":/:"": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psconvert $POSTSCRIPT1 -A -P -Tg
+#convert -quality 100 -density 150 $POSTSCRIPT1 ${POSTSCRIPT1::-3}.jpg
+```
+
+Last, we use the colorscale [precip_11lev](http://soliton.vm.bytemark.co.uk/pub/cpt-city/ncl/precip_11lev.cpt) to plot TRMM 2B31 rainfall:
+```bash
+POSTSCRIPT1=${POSTSCRIPT_BASENAME}_trmm2b31.ps
+#Make colorscale
+RAINFALL_CPT=rainfall_color.cpt
+#gmt makecpt -T0.0/2000/167 -D -Cprecip_diff_12lev >$RAINFALL_CPT
+gmt makecpt -T0.0/2000/182 -D -Cprecip_11lev >$RAINFALL_CPT
+TITLE="Rainfall - NW Arg"
+echo " "
+echo "Creating file $POSTSCRIPT1"
+echo " "
+gmt grdimage $TRMM2B31_1998_2009_MM_PER_YR_NWArg_rTOPO15 -I$SRTM1_30m_HS_NC -JM$WIDTH -C$RAINFALL_CPT -R$SRTM1_30m_NC -Q -Xc -Yc -E$DPI -K -P > $POSTSCRIPT1
+gmt pscoast -Bx$XSTEP -By$YSTEP -BWSne -W1/thin,black -R -J -N1/thin,black -O -Df --FORMAT_GEO_MAP=ddd:mm:ssF --MAP_FRAME_PEN=0.5p,black --MAP_FRAME_WIDTH=0.1 -P -K >> $POSTSCRIPT1
+gmt psxy $AltiplanoPuna_1bas -R -J -L -Wthin,darkblue -K -O -P >> $POSTSCRIPT1
+gmt psxy SdC.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext SdC.txt -D-0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy lapaz.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext lapaz.txt -D+0.9c/0.2c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy salta.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext salta.txt -D+0.8c/0.0c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psxy mendoza.txt -Sa${CITY_STAR_SIZE} -R -J -L -Wthin,black -Gblack -K -O -P >> $POSTSCRIPT1
+#gmt pstext mendoza.txt -D+1.0c/-0.5c -F+f12p,Helvetica -W0.1p,black -Gwhite -R -J -K -O -P >> $POSTSCRIPT1
+gmt psscale -R -J -DjBC+h+o-0.0c/-3.0c/+w7c/0.3c+ml -C$RAINFALL_CPT -F+c0.1c/0.3c+gwhite+r1p+pthin,black -Baf1000:"Mean annual rainfall 1998-2014":/:"[mm/yr]": --FONT=12p --FONT_ANNOT_PRIMARY=12p --MAP_FRAME_PEN=0.5p --MAP_FRAME_WIDTH=0.1 -O -P >> $POSTSCRIPT1
+gmt psconvert $POSTSCRIPT1 -A -P -Tg
+```
+
+Last, we combine the figures into one panel with convert:
+```bash
+convert -quality 50 -density 150 ${POSTSCRIPT_BASENAME}_topo.png ${POSTSCRIPT_BASENAME}_ndvi.png ${POSTSCRIPT_BASENAME}_trmm2b31.png -fuzz 1% -trim -bordercolor white -border 10x0 +repage +append ${POSTSCRIPT_BASENAME}_topo_ndvi_rainfall.jpg
+```
+
+The script is stored in the GMT Bash file [plot_NWArgentina_Topo_NDVI_Precip.sh](https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/blob/master/plot_NWArgentina_Topo_NDVI_Precip.sh).
+
+
+
+<figure>
+    <a href="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/NWArg_topo_ndvi_rainfall.jpg"><img src="https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP/raw/master/docs/figures/NWArg_topo_ndvi_rainfall.jpg"></a>
+    <figcaption>Bathymetry and Topography, mean annual NDVI (MOD13A2, 2001 to 2017) using color scale precip4_diff_19lev, and TRMM 2B31 mean annual rainfall (1998-2014) using colorscale precip_11lev.</figcaption>
+</figure>
