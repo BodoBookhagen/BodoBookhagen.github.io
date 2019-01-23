@@ -73,6 +73,10 @@ gmt grdgradient demLat_S28_S22_Lon_W070_W062.dem.wgs84.nc -Ne0.6 -Es75/55+a -Gde
 gmt grdgradient demLat_S28_S22_Lon_W070_W062.dem.wgs84.nc -Nt1 -Ep -GdemLat_S28_S22_Lon_W070_W062.dem.wgs84_HS2.nc
 ```
 
+## NASADEM
+If you have compiled the [NASADEM](https://earthdata.nasa.gov/community/community-data-system-programs/measures-projects/nasadem) from [here](https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/SouthAmerica/hgt_merge/), you can clip the area of interest with `gdal`.
+
+
 ## Conda setup
 Install and start the GMT environment with:
 ```bash
