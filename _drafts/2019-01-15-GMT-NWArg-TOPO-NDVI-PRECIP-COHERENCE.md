@@ -45,7 +45,7 @@ Topographic data are needed. In this example, we rely on the 15s global topograp
 {: .notice--warning}
 
 
-## SRTM1 data
+## SRTM1 and NASADAM data
 Alternatively, you can download the [SRTM DEM](https://www2.jpl.nasa.gov/srtm/) at 30m or 90m spatial resolution. I suggest to look at the most recent [NASADEM](https://earthdata.nasa.gov/community/community-data-system-programs/measures-projects/nasadem). Data have not been finalized yet (but will so soon) and can be accessed [here](https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/SouthAmerica/hgt_merge/). There is a neat github repository [nasadem](https://github.com/dshean/nasadem) by David Shean that provides some scripts for downloading and preprocessing. [TanDEM-X](https://github.com/dshean/tandemx) data are also available. In any case, for our purposes the 15s data will be just fine.
 
 Here, I am using the command `dem.py` from ISCE to download the SRTM1 DEM (1 arcsec, 30m) for a certain area. `dem.py` expect the boundary coordinates to be given. The area of interest is between latitudes 22 and 28S and longitudes 70W and 62W.
@@ -73,10 +73,6 @@ gmt grdgradient demLat_S28_S22_Lon_W070_W062.dem.wgs84.nc -Ne0.6 -Es75/55+a -Gde
 gmt grdgradient demLat_S28_S22_Lon_W070_W062.dem.wgs84.nc -Nt1 -Ep -GdemLat_S28_S22_Lon_W070_W062.dem.wgs84_HS2.nc
 ```
 
-## NASADEM
-If you have compiled the [NASADEM](https://earthdata.nasa.gov/community/community-data-system-programs/measures-projects/nasadem) from [here](https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/SouthAmerica/hgt_merge/), you can clip the area of interest with `gdal`.
-
-
 ## Conda setup
 Install and start the GMT environment with:
 ```bash
@@ -97,7 +93,7 @@ git clone https://github.com/BodoBookhagen/GMT-SAM-EQ-NDVI-PRECIP`.
 
 ## Prepare Data
 ### Prepare grid / raster data
-#### Prepare DEM data
+#### Prepare SRTM1 data
 
 *NOTE:* These data are not included on the github page, because they are too large to be stored on github.
 {: .notice--warning}
@@ -130,6 +126,61 @@ then
     echo "generate hillshade $SRTM1_30m_HS2_NC"
     gmt grdgradient $SRTM1_30m_NC -Nt1 -Ep -G$SRTM1_30m_HS2_NC
 fi
+```
+
+#### Prepare NASADEM data
+If you have compiled the [NASADEM](https://earthdata.nasa.gov/community/community-data-system-programs/measures-projects/nasadem) from [here](https://e4ftl01.cr.usgs.gov/provisional/MEaSUREs/NASADEM/SouthAmerica/hgt_merge/) and have merged it into a GeoTIFF file, you can clip the study area with a [geojson](http://geojson.io/) file. There are different ways of doing this, but using geojson files is generally a very flexible method. You can create a geojson file [here](http://geojson.io/) and save it as [NWArg_extents.geojson](NWArg_extents.geojson). This file contains the coordinates:
+```bash
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70,
+              -28
+            ],
+            [
+              -62,
+              -28
+            ],
+            [
+              -62,
+              -22
+            ],
+            [
+              -70,
+              -22
+            ],
+            [
+              -70,
+              -28
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
+```
+
+This can be converted to a GMT file with `ogr2ogr`. Useful for later purposes.
+```bash
+ogr2ogr -of GMT NWArg_extents.geojson.gmt NWArg_extents.geojson
+```
+
+Now, obtain information about the DEM, clip the NASADEM, and convert to GMT:
+```bash
+NASADEMvoidfilled_30m_DIR=/raid-everest/data/DEM/SRTM1_MEASURES/SAM/merge/
+NASADEMvoidfilled_30m_DEM=$NASADEMvoidfilled_30m_DIR/srtm1_nasadem_SAM_voidfilled_int_geoid_wgs84.tif
+gdalinfo $NASADEMvoidfilled_30m_DEM
+gdalwarp -co COMPRESS=DEFLATE -co ZLEVEL=9 -co PREDICTOR=2 -ot Int16 -of GTiff -srcnodata -9999 -dstnodata 0 -crop_to_cutline -multi -cutline NWArg_extents.geojson $NASADEMvoidfilled_30m_DEM NWArg_NASADEMvoidfilled_30m_wgs84_DEM.tif
+gmt grdconvert NWArg_NASADEMvoidfilled_30m_wgs84_DEM.tif -GNWArg_NASADEMvoidfilled_30m_wgs84_DEM.nc=ns/1/0/0
 ```
 
 #### Prepare MODIS EVI and NDVI raster data
@@ -340,6 +391,55 @@ bzip2 -9 USGS_EQ_NWArg_1970_2018_mag6_to_9.csv
 ```
 
 These files are available in the [GMT_vector_data](GMT_vector_data) directory.
+
+#### Shapefiles and extract subsets and IDs
+Let's assume you have a polygon shapefile with several polygons that have IDs of 1 and 2:
+```bash
+ogrinfo study_areas.shp study_areas
+INFO: Open of `study_areas.shp'
+      using driver `ESRI Shapefile' successful.
+
+Layer name: study_areas
+Metadata:
+  DBF_DATE_LAST_UPDATE=2019-01-12
+Geometry: Polygon
+Feature Count: 2
+Extent: (-67.530361, -25.314850) - (-65.161809, -23.978368)
+Layer SRS WKT:
+GEOGCS["WGS 84",
+    DATUM["WGS_1984",
+        SPHEROID["WGS 84",6378137,298.257223563,
+            AUTHORITY["EPSG","7030"]],
+        AUTHORITY["EPSG","6326"]],
+    PRIMEM["Greenwich",0,
+        AUTHORITY["EPSG","8901"]],
+    UNIT["degree",0.0174532925199433,
+        AUTHORITY["EPSG","9122"]],
+    AUTHORITY["EPSG","4326"]]
+id: Integer64 (10.0)
+OGRFeature(study_areas):0
+  id (Integer64) = 1
+  POLYGON ((-67.5235053024065 -24.1974142141216,-66.4883348916705 -24.1849073902049,-66.4746240253032 -25.0045986059874,-67.5303607355902 -25.0170237773247,-67.5235053024065 -24.1974142141216))
+
+OGRFeature(study_areas):1
+  id (Integer64) = 2
+  POLYGON ((-66.241539297058 -24.0002895615002,-65.2029411697301 -23.9783681199802,-65.1618085706281 -25.296256864246,-66.2141175643232 -25.3148496447068,-66.241539297058 -24.0002895615002))
+```
+
+You can extract shapefile with ID=1 and ID=2 via:
+```bash
+ogr2ogr -f GMT -where ID="1" study_area_QdT.gmt study_areas.shp
+ogr2ogr -f GMT -where ID="2" study_area_Pocitos.gmt study_areas.shp
+```
+
+Similarily, for a file containing the ascending and descending tracks, you can generate separate polygon files:
+```bash
+ogr2ogr -f GMT -where Track="149" ascending_track149.gmt asc_desc_tracks.shp
+ogr2ogr -f GMT -where Track="76" ascending_track76.gmt asc_desc_tracks.shp
+ogr2ogr -f GMT -where Track="83" descending_track83.gmt asc_desc_tracks.shp
+ogr2ogr -f GMT -where Track="10" descending_track10.gmt asc_desc_tracks.shp
+```
+
 
 # Generating a topographic map
 After compiling all the various data source, we can use GMT to create a topographic map of SAM.
