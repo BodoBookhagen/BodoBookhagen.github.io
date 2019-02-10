@@ -35,9 +35,15 @@ conda config --prepend channels conda-forge/label/dev
 conda config --prepend channels conda-forge
 ```
 
+Or in order to reset the channel list
+```bash
+conda config --prepend channels defaults
+```
+
 | What for? | Conda commands |
 |:---------:|:--------------|
-| Pandoc Processing | ```conda create -y -n pandoc python pip pandoc imagemagick``` |
+| GDAL and QGIS | ```conda create -y -n qgis python gdal qgis pandas``` |
+| Pandoc and LaTeX Processing | ```conda create -y -n pandoc python pip pandoc imagemagick texlive-core``` |
 | GMT 5 and Python Processing |```conda create -y -n gmt5 gmt=5* python=3.6 scipy pandas numpy matplotlib scikit-image gdal spyder imagemagick``` |
 | GMT 6 and Python Processing |```conda create -y -n gmt6 gmt=6* python=3* scipy pandas numpy matplotlib scikit-image gdal spyder imagemagick``` |
 | GMT and CDO Processing | ```conda create -y -n gmt5_cdo gmt=5* cdo imagemagick```<br>There appears to be an issue with some cdo version (libhdf) and you may need to install cdo separately.  |
