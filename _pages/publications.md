@@ -31,6 +31,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 
 | Nr. | Author(s) | Year | Title | *Journal* |  DOI | 
 |:---:|:----------|:----:|-------|:---------:|:---:|
+| 117 | Brell, M., Segl, K., Guanter, L., *Bookhagen, B.* | 2019 | 3D hyperspectral point cloud generation: fusing airborne laser scanning and hyperspectral imaging sensors for improved object-based information extraction | *ISPRS Journal of Photogrammetry and Remote Sensing* | [DOI]() |
 | 116 | Boers, N., Goswami, B., Rheinwalt, A., **Bookhagen, B.**, Hoskins, B., Kurths, J. | 2019 | Complex networks reveal global pattern of extreme-rainfall teleconnections | *nature* | [DOI](https://doi.org/10.1038/s41586-018-0872-x) [PDF](https://www.nature.com/articles/s41586-018-0872-x?ref=marketbulletin)
 | 115 | Smith, T.T., Rheinwalt, A. and **Bookhagen, B.**| 2019 | Determining the Optimal Grid Resolution for Topographic Analysis on an Airborne Lidar Dataset | *Earth Surf. Dynam. Discussions* | [DOI](https://doi.org/10.5194/esurf-2018-96) [PDF](https://www.earth-surf-dynam-discuss.net/esurf-2018-96/esurf-2018-96.pdf)
 
