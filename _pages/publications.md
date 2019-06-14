@@ -3,7 +3,7 @@ title: "Publications"
 permalink: /publications/
 author_profile: true
 ---
-See also: [Google Scholar Profile](https://scholar.google.com/citations?user=_UuIymgAAAAJ&hl=en), 
+See also: [Google Scholar Profile](https://scholar.google.com/citations?user=_UuIymgAAAAJ&hl=en),
 [Researcher ID Profile](http://www.researcherid.com/rid/A-1389-2012), and [ORCID](https://orcid.org/0000-0003-1323-6453)
 ##### Top
 
@@ -15,8 +15,8 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 
 ## Peer reviewed Book chapters
 
-| Nr. | Author(s) | Year | Chapter Title | *Book Title* | Editors | Publisher | DOI | 
-|:---:|:----------|:----:|---------------|------------|---------|-----------|-----|
+| Nr. | Author(s) | Year | Chapter Title | *Book Title* | Editors | Publisher | DOI |
+|:---:|:----------|:----:|---------------|:------------:|---------|-----------|-----|
 | 7   | Smith T.T. and **Bookhagen, B.** | 2019 | Remotely sensed rain and snowfall in the Himalaya | *Himalayan Weather and Climate and their impact on the environment* | A. P. Dimri, B. Bookhagen, M. Stoffel and T. Yasunari | Springer Verlag, Berlin | [DOI]() [PDF](http://bodobookhagen.github.io/pdf/smith19_remotely_sensed_rain_and_snowfall_Himalaya.pdf) |
 | 6 |  **Bookhagen, B.** | 2017 | Hydrology and glaciology of the Himalayas: their influence on wetlands | *Bird Migration Across the Himalayas: wetland functioning amidst mountains and glaciers* | H. Prins and T. Namgail | Cambridge University Press | [DOI](https://doi.org/10.1017/9781316335420.014) [PDF](http://bodobookhagen.github.io/pdf/bookhagen17_hydrology_climate_wetlands.pdf) |
 | 5 | **Bookhagen, B.** | 2016 | Glaciers and Monsoon Systems | *The Monsoons and Climate Change* | L.M.V. Carvalho and C. Jones | Springer Verlag, Berlin | [DOI](https://doi.org/10.1007/978-3-319-21650-8_11) [PDF](http://bodobookhagen.github.io/pdf/bookhagen_16_glaciers_and_monsoon_systems.pdf) |
@@ -29,19 +29,19 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 
 ### 2019
 
-| Nr. | Author(s) | Year | Title | *Journal* |  DOI | 
+| Nr. | Author(s) | Year | Title | *Journal* |  DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
-| 121 | Teshebeava, K., Echtler, H., **Bookhagen, B.**, Strecker, M.R. | in press, 2019 | Deep-seated gravitational slope deformation (DSGSD) and slow moving landslides in the southern Tien Shan Mountains: new insights from InSAR, tectonic, and geomorphic analysis | *Earth Surface Processes and Landforms* | [DOI]() |
-| 120 | Clubb, F., **Bookhagen, B.**, Rheinwalt, A. | in press, 2019 | Clustering river profiles to classify geomorphic domains | *JGR Earth Surface* | [DOI](https://doi.org/10.1029/2019JF005025) |
+| 121 | Teshebeava, K., Echtler, H., **Bookhagen, B.**, Strecker, M.R. | in press, 2019 | Deep-seated gravitational slope deformation (DSGSD) and slow moving landslides in the southern Tien Shan Mountains: new insights from InSAR, tectonic, and geomorphic analysis | *Earth Surface Processes and Landforms* | [DOI](https://doi.org/10.1002/esp.4648) |
+| 120 | Clubb, F., **Bookhagen, B.**, Rheinwalt, A. | 2019 | Clustering river profiles to classify geomorphic domains | *JGR Earth Surface* | [DOI](https://doi.org/10.1029/2019JF005025) |
 | 119 | Purinton, B., **Bookhagen, B.** | in review, 2019 | Introducing PebbleCounts: A grain-sizing tool for photo surveys of dynamic gravel-bed | *Earth Surf. Dynam. Discuss.* | [DOI](https://doi.org/10.5194/esurf-2019-20) |
-| 118 | Weldeab, S., Rühlemann, C., **Bookhagen, B.**, Pausata, F., Perez-Lua, F. | in press, 2019 | Enhanced Himalayan glacial melting during YD and H1 recorded in the northern Bay of Bengal | *G-Cubed* | [DOI]() 2018GC008065 |
+| 118 | Weldeab, S., Rühlemann, C., **Bookhagen, B.**, Pausata, F., Perez-Lua, F. | 2019 | Enhanced Himalayan glacial melting during YD and H1 recorded in the northern Bay of Bengal | *G-Cubed* | [DOI](https://doi.org/10.1029/2018GC008065) |
 | 117 | Brell, M., Segl, K., Guanter, L., **Bookhagen, B.** | 2019 | 3D hyperspectral point cloud generation: fusing airborne laser scanning and hyperspectral imaging sensors for improved object-based information extraction | *ISPRS Journal of Photogrammetry and Remote Sensing* | [DOI](https://doi.org/10.1016/j.isprsjprs.2019.01.022) |
 | 116 | Boers, N., Goswami, B., Rheinwalt, A., **Bookhagen, B.**, Hoskins, B., Kurths, J. | 2019 | Complex networks reveal global pattern of extreme-rainfall teleconnections | *nature* | [DOI](https://doi.org/10.1038/s41586-018-0872-x) [PDF](https://www.nature.com/articles/s41586-018-0872-x?ref=marketbulletin)
-| 115 | Smith, T.T., Rheinwalt, A. and **Bookhagen, B.**| in review, 2019 | Determining the Optimal Grid Resolution for Topographic Analysis on an Airborne Lidar Dataset | *Earth Surf. Dynam. Discussions* | [DOI](https://doi.org/10.5194/esurf-2018-96) [PDF](https://www.earth-surf-dynam-discuss.net/esurf-2018-96/esurf-2018-96.pdf)
+| 115 | Smith, T.T., Rheinwalt, A. and **Bookhagen, B.**| 2019 | Determining the Optimal Grid Resolution for Topographic Analysis on an Airborne Lidar Dataset | *Earth Surf. Dynam.* | [DOI](https://doi.org/10.5194/esurf-7-475-2019) [PDF](https://www.earth-surf-dynam.net/7/475/2019/esurf-7-475-2019.pdf)
 
 ### 2018
 
-| Nr. | Author(s) | Year | Title | *Journal* | DOI | 
+| Nr. | Author(s) | Year | Title | *Journal* | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 | 114 | Purinton, B. and **Bookhagen, B.**| 2018 | Measuring Decadal Vertical Land-level Changes from SRTM-C (2000) and TanDEM-X (~2015) in the South-Central Andes | *Earth Surf. Dynam.* | [DOI](https://doi.org/10.5194/esurf-6-971-2018) [PDF](https://www.earth-surf-dynam.net/6/971/2018/esurf-6-971-2018.pdf)|
 |113 | Hoffmann, B., **Bookhagen, B.**, Stephanie M. Olen, S.M., Barthold, F., Sachse, D. |2018| The effect of Indian Summer Monsoon rainfall on surface water δD values in the central Himalaya | *Hydrological Processes*| [DOI](https://doi.org/10.1002/hyp.13281) [PDF](http://bodobookhagen.github.io/pdf/Meese18_Arun_stable_isotopes.pdf) |
@@ -58,7 +58,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 ### 2017
 [Jump to top](#top)
 
-| Nr. | Author(s) | Year | Title | *Journal* | DOI | 
+| Nr. | Author(s) | Year | Title | *Journal* | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 |104 | Bufe, A., Burbank, D.W., Langtao, L., **Bookhagen, B.**, Q. Jintang, Q., Jie, C., Tao, L., Thompson Jobe, J. A., Jobe, T., Huili,  Y. |2017| Variations of lateral bedrock erosion rates control planatation of uplifting folds in the foreland of the Tian Shan, NW China | *JGR Earth Surface* | [DOI](https://doi.org/10.1002/2016JF004099) |
 |103 | Smith, T.T., **Bookhagen, B.**, Reinwalt, A. |2017| Spatio-temporal Patterns of High Mountain Asia’s Snowmelt Season Identified with an Automated Snowmelt Detection Algorithm, 1987-2016 | *The Cryosphere* | [DOI](https://doi.org/10.5194/tc-11-2329-2017) [PDF](https://www.the-cryosphere.net/11/2329/2017/tc-11-2329-2017.pdf) |
@@ -76,7 +76,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 ### 2016
 [Jump to top](#top)
 
-| Nr. | Author(s) | Year | Title | *Journal* | DOI | 
+| Nr. | Author(s) | Year | Title | *Journal* | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 |93 | Castino, F., **Bookhagen, B.**, and M. R. Strecker |2016| River-discharge dynamics in the Southern Central Andes and the 1976–77 global climate shift | *Geophys. Res. Lett.* | [DOI](https://doi.org/10.1002/2016GL070868) [PDF](http://bodobookhagen.github.io/pdf/Castino16_discharge_nw_argentina.pdf) |
 |92 | Dey, S., Thiede, R.C., Schildgen, T.F., Wittmann, H., **Bookhagen, B.**, Scherler, D., Jain, V., Strecker, M.R. |2016| Holocene internal shortening within the northwest Sub-Himalaya: Out-of-sequence faulting of the Jwalamukhi Thrust, India | *Tectonics* | [DOI](https://doi.org/10.1002/2015TC004002) [PDF](http://bodobookhagen.github.io/pdf/Dey16_out_of_sequence_thrusting_nw_himalaya.pdf) |
@@ -85,7 +85,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 |89 | Forte, A., Whipple, K.X., **Bookhagen, B.**, Rossi, W.M. |2016| Decoupling of Modern *Tectonics*, Climate, and Topography in the Caucasus | *Earth and Planetary Science Letters* | [DOI](https://doi.org/10.1016/j.epsl.2016.06.013) [PDF](http://bodobookhagen.github.io/pdf/forte16_caucasus_decoupling_shortening_rates.pdf) |
 |88 | Dey, S., Thiede, R.C., Schildgen, T.F., Wittmann, H., **Bookhagen, B.**, Scherler, D., Jain, V., Strecker, M.R. |2016| Climate-driven sediment aggradation and incision since the Late Pleistocene in the NW Himalaya, India | *Earth and Planetary Science Letters* | [DOI](https://doi.org/10.1016/j.epsl.2016.05.050) [PDF]() |
 |87 | Hartmann, B., **Bookhagen, B.**, Chadwick, O.C. |2016| The effects of check dams and other erosion control structures on the restoration of Andean bofedal ecosystems| *Restoration Ecology* | [DOI](https://doi.org/10.1111/rec.12402) [PDF](http://bodobookhagen.github.io/pdf/Hartman16_checkdams.pdf) |
-|86 | Castino, F., **Bookhagen, B.**, Strecker, M.R. |2016| Rainfall variability and trends of the past six decades (1950-2014) in the subtropical NW Argentine Andes | *Climate Dynamics* | [DOI](https://doi.org/10.1007/s00382-016-3127-2) [PDF](http://bodobookhagen.github.io/pdf/castino16_NWArgentina_rainfall_trends.pdf) | 
+|86 | Castino, F., **Bookhagen, B.**, Strecker, M.R. |2016| Rainfall variability and trends of the past six decades (1950-2014) in the subtropical NW Argentine Andes | *Climate Dynamics* | [DOI](https://doi.org/10.1007/s00382-016-3127-2) [PDF](http://bodobookhagen.github.io/pdf/castino16_NWArgentina_rainfall_trends.pdf) |
 |85 | Smith, T. and **Bookhagen, B.** |2016| Assessing Uncertainty and Sensor Biases in Passive Microwave Data across High Mountain Asia | *Remote Sensing of Environment* | [DOI](https://doi.org/10.1016/j.rse.2016.03.037) [PDF](http://bodobookhagen.github.io/pdf/smith16_HMA_snowfall.pdf) |
 |84 | Olen, S.M., **Bookhagen, B.**, Strecker, M.R. |2016| Role of climate and vegetation density in modulating denudation rates in the Himalaya | *Earth and Planetary Science Letters* | [DOI](https://doi.org/10.1016/j.epsl.2016.03.047) [PDF](http://bodobookhagen.github.io/pdf/olen16_vegetation_himalaya.pdf) |
 |83 | Stolbova, V., Surovyatkina, E., **Bookhagen, B.**, Kurths, J. |2016| Tipping elements of the Indian monsoon: Prediction of onset and withdrawal| *Geophys. Res. Lett.*|  [DOI](https://doi.org/10.1002/2016GL068392) [PDF](http://bodobookhagen.github.io/pdf/stolbova16_monsoon_onset.pdf)|
@@ -97,7 +97,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 ### 2015
 [Jump to top](#top)
 
-| Nr. | Author(s) | Year | Title | *Journal* | DOI | 
+| Nr. | Author(s) | Year | Title | *Journal* | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 |78 | Harvey, J.E., Burbank, D.W., **Bookhagen, B.** |2015| Along-strike changes in Himalayan thrust geometry: Topographic and tectonic discontinuities in western Nepal | *Lithosphere* | [DOI](https://doi.org/10.1130/L444.1) [PDF](http://bodobookhagen.github.io/pdf/harvey15_himalaya_tectonics.pdf) |
 |77 | Olen, S.M., **Bookhagen, B.**, Hoffmann, B., Sachse, D., Adhikari, D. P., Strecker, M.R. |2015| Understanding erosion rates in the Himalayan orogen: A case study from the Arun Valley | *JGR Earth Surface* | [DOI](https://doi.org/10.1002/2014JF003410) [PDF](http://bodobookhagen.github.io/pdf/Olen15_Arun_erosion.pdf)|
@@ -113,7 +113,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 ### 2014
 [Jump to top](#top)
 
-| Nr. | Author(s) | Year | Title | *Journal* | DOI | 
+| Nr. | Author(s) | Year | Title | *Journal* | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 |68 | Montero-Lopez, C., Strecker, M.R., Schildgen, T.F., Hongn, F., Guzman, S., **Bookhagen, B.**, Sudo, M. |2014| Local high relief at the southern margin of the Andean plateau by 9 Ma: evidence from ignimbritic valley fills and river incision| *Terra Nova* | [DOI](https://doi.org/10.1111/ter.12120) [PDF](http://bodobookhagen.github.io/pdf/montero14_local_high_relief9Ma.pdf) |
 |67 | Stolbova, V., Martin, P., **Bookhagen, B.**, Marwan, N., Kurths, J. |2014| Extreme rainfall of the South American monsoon system: A dataset comparison using complex networks, Topology and seasonal evolution of the network of extreme precipitation over the Indian subcontinent and Sri Lanka | *Nonlin. Processes Geophys.* | [DOI](https://doi.org/10.5194/npg-21-901-2014) [PDF](http://bodobookhagen.github.io/pdf/stolbova14_seasonal_precip_monsoon.pdf) |
@@ -130,7 +130,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 |55 | Alonzo, M., **Bookhagen, B.**, Roberts, D.A. |2014| Urban tree species mapping using hyperspectral and lidar data fusion | *Remote Sensing of Environment* | [DOI](https://doi.org/10.1016/j.rse.2014.03.018) [PDF](http://bodobookhagen.github.io/pdf/Alonzo14_santa_barbara_lidar.pdf)
 |54 | Hanshaw, M.N., **Bookhagen, B.** |2014| Glacial areas, lake areas, and snow lines from 1975 to 2012: status of the Cordillera Vilcanota, including the Quelccaya Ice Cap, northern central Andes, Peru | *The Cryosphere* | [DOI](https://doi.org/10.5194/tc-8-359-2014) [PDF](https://www.the-cryosphere.net/8/359/2014/tc-8-359-2014.pdf)
 |53 | Coutand, I., Whipp, D.M., Grujic, D., Bernet, M., Fellin, M.G., **Bookhagen, B.**, Landry, K.R., Ghalley, S.K., Duncan, C. |2014| Geometry and kinematics of the Main Himalayan Thrust and Neogene crustal exhumation in the Bhutanese Himalaya derived from inversion of multi-thermochronologic data | *JGR Solid Earth* | [DOI](https://doi.org/10.1002/2013JB010891) [PDF](http://bodobookhagen.github.io/pdf/Coutand14_Exhumation_Bhutan.pdf)
-|52 | Hirschmiller, J., Grujic, D., **Bookhagen, B.**, Coutand, I., Huyghe, P., Mugnier, J.-L., Ojha, T. |2014| What controls the growth of the Himalayan foreland fold-and-thrust belt? | *Geology* | [DOI](https://doi.org/10.1130/G35057.1) [PDF](http://bodobookhagen.github.io/pdf/Hirschmiller14_Himalaya_FTB.pdf) | 
+|52 | Hirschmiller, J., Grujic, D., **Bookhagen, B.**, Coutand, I., Huyghe, P., Mugnier, J.-L., Ojha, T. |2014| What controls the growth of the Himalayan foreland fold-and-thrust belt? | *Geology* | [DOI](https://doi.org/10.1130/G35057.1) [PDF](http://bodobookhagen.github.io/pdf/Hirschmiller14_Himalaya_FTB.pdf) |
 |51 | Oskin, M.E., Burbank, D.W., Phillips, F.M., Marrero, S.M., **Bookhagen, B.**, Selander, J.A. |2014| Relationship of channel steepness to channel incision rate from a tilted and progressively exposed unconformity surface | *JGR Earth Surface* | [DOI](https://doi.org/10.1002/2013JF002826) [PDF](http://bodobookhagen.github.io/pdf/oskin14_channel_steepness.pdf) |
 |50 | Scherler, D., **Bookhagen, B.**, Strecker, M.R. |2014| Tectonic control on 10Be-derived erosion rates in the Garhwal Himalaya, India | *JGR Earth Surface* | [DOI](https://doi.org/10.1002/2013JF002955) [PDF](http://bodobookhagen.github.io/pdf/scherler14_tectonic_control_erosion_garhwal.pdf)
 |49 | Baguskas, S.A., Peterson, S.H., **Bookhagen, B.**, Still, C.J. |2014| Evaluating spatial patterns of drought-induced tree mortality in a coastal California pine forest | *Forest Ecology and Management* | [DOI](https://doi.org/10.1016/j.foreco.2013.12.020) [PDF](http://bodobookhagen.github.io/pdf/baguskas14_SCI_tree_mortality.pdf)
@@ -138,7 +138,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 ### 2013
 [Jump to top](#top)
 
-| Nr. | Author(s) | Year | Title | Journal | DOI | 
+| Nr. | Author(s) | Year | Title | Journal | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 |48 | Yildrim, C., Schildgen, T.F., Echtler, H., Melnick, D., **Bookhagen, B.**, Ciner, A., Niedermann, S., Merchel, S., Martschini, M., Steier, P., Strecker, M.R. |2013| Tectonic implications of fluvial incision and pediment deformation at the northern margin of the Central Anatolian Plateau based on multiple cosmogenic nuclides| *Tectonics*| [DOI](https://doi.org/10.1002/tect.20066) [PDF](http://bodobookhagen.github.io/pdf/yildrim13_cap_crn.pdf)
 |47 | Amidon, W.H., **Bookhagen, B.**, Avouac, J.P., Smith, T., Rood, D. |2013| Late Pleistocene glacial advances in the western Tibet interior| *Earth and Planetary Science Letters*| [DOI](https://doi.org/10.1016/j.epsl.2013.08.041) [PDF](http://bodobookhagen.github.io/pdf/amidon13_MK_moraines.pdf)
@@ -149,7 +149,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 ### 2012
 [Jump to top](#top)
 
-| Nr. | Author(s) | Year | Title | Journal | DOI | 
+| Nr. | Author(s) | Year | Title | Journal | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 |43 | Burbank, D.W., **Bookhagen, B.**, Gabet, E.J., Putkonen, J. |2012| Modern climate and erosion in the Himalaya | *Compres Rendus Geoscience* | [DOI](https://doi.org/10.1016/j.crte.2012.10.010) [PDF](http://bodobookhagen.github.io/pdf/burbank12_modern_climate_erosion_Himalaya.pdf)
 |42 | Fisher, G.B., Amos, C.B., **Bookhagen, B.**, Burbank, D.W., Godard, V. |2012| Channel widths, landslides, faults, and beyond: The new world order of high-spatial resolution Google Earth imagery in the study of earth surface processes | *Geological Society of America Special Papers Vol. 492*  | [link](https://pubs.geoscienceworld.org/books/book/658/Google-Earth-and-Virtual-Visualizations-in) [PDF](http://bodobookhagen.github.io/pdf/fisher12_google_earth_channelwidth.pdf)
@@ -164,7 +164,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 ### 2011
 [Jump to top](#top)
 
-| Nr. | Author(s) | Year | Title | Journal | DOI | 
+| Nr. | Author(s) | Year | Title | Journal | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 |34 | Goode, J., Burbank, D.W., **Bookhagen, B.** |2011| Basin Width Control of Faulting in the Naryn Basin, South-Central Kyrgyzstan | *Tectonics* | [DOI](https://doi.org/10.1029/2011TC002910) [PDF](http://bodobookhagen.github.io/pdf/goode11_basin_width_control.pdf)
 |33 | Malik, N., **Bookhagen, B.**, Marwan, N., Kurths, J. |2011| Analysis of spatial and temporal extreme monsoonal rainfall over South Asia using complex networks | *Climate Dynamics* | [DOI](https://doi.org/10.1007/s00382-011-1156-4) [PDF](http://bodobookhagen.github.io/pdf/malik11_monsoon_extreme_events.pdf)
@@ -175,7 +175,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 ### 2010
 [Jump to top](#top)
 
-| Nr. | Author(s) | Year | Title | Journal | DOI | 
+| Nr. | Author(s) | Year | Title | Journal | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 |29 | **Bookhagen, B.** and Burbank, D.W. |2010| Towards a complete Himalayan hydrologic budget: The spatiotemporal distribution of snow melt and rainfall and their impact on river discharge | *JGR Earth Surface* | [DOI](https://doi.org/10.1029/2009JF001426) [PDF](http://bodobookhagen.github.io/pdf/bookhagen10_TRMM_SWE.pdf) |
 |28 | **Bookhagen, B.** |2010| Appearance of extreme monsoonal rainfall events and their impact on erosion in the Himalaya | *Geomatics, Natural Hazards, Risk* | [DOI](https://doi.org/10.1080/19475701003625737) [PDF](http://bodobookhagen.github.io/pdf/bookhagen10_extreme_rainfall_Himalaya.pdf)
@@ -187,7 +187,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 ### 2009
 [Jump to top](#top)
 
-| Nr. | Author(s) | Year | Title | Journal | DOI | 
+| Nr. | Author(s) | Year | Title | Journal | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 |23 | Hren, M., **Bookhagen, B.**, Blisniuk, P., Booth, A., Chamberlain, C.P |2009| d18O and dD of streamwater across the Himalaya and Tibetan Plateau: Implications for moisture sources and paleoelevation reconstructions | *Earth and Planetary Science Letters* | [DOI](http://dx.doi.org/10.1016/j.epsl.2009.08.041) [PDF](http://bodobookhagen.github.io/pdf/hren09_d18O_streamwaters_Himalaya.pdf)
 |22 | Strecker, M.R., Alonso, R., **Bookhagen, B.**, Carrapa, B., Coutand, I., Hain, H.P., Hilley, G.E., Mortimer, E., Schoehnbohm, L., and Sobel E.R. |2009| Does the topographic distribution of the central Andean Pune Plateau result from climatic or geodynamic processes? | *Geology* | [DOI](https://doi.org/10.1130/G25545A.1) [PDF](http://bodobookhagen.github.io/pdf/strecker09_topography_andes.pdf)
@@ -197,7 +197,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 ### 2008
 [Jump to top](#top)
 
-| Nr. | Author(s) | Year | Title | Journal | DOI | 
+| Nr. | Author(s) | Year | Title | Journal | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 |19 | **Bookhagen, B.** and Strecker, M.R. |2008| Orographic barriers, high-resolution TRMM rainfall, and relief variations along the eastern Andes | *Geophys. Res. Lett.* | [DOI](https://doi.org/10.1029/2007GL032011) [PDF](http://bodobookhagen.github.io/pdf/bookhagen08_TRMM_SAM_relief.pdf)
 |18 | Gabet, E.J., Burbank, D.W., Pratt-Sitaula, B., Putkonen, J., **Bookhagen, B.** |2008| Modern erosion rates in the High Himalayas of Nepal | *Earth and Planetary Science Letters* | [DOI](https://doi.org/10.1016/j.epsl.2007.11.059) [PDF](http://bodobookhagen.github.io/pdf/gabet08_modern_erosion_himalaya.pdf)
@@ -205,7 +205,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 ### 2007
 [Jump to top](#top)
 
-| Nr. | Author(s) | Year | Title | Journal | DOI | 
+| Nr. | Author(s) | Year | Title | Journal | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 |17 | Strecker, M.R., Alonso, R.N., **Bookhagen, B.**, Carrapa, B., Hilley, G.E., Sobel, E., and Trauth, M.H. |2007| Tectonics and Climate of the Southern Central Andes | *Annual Reviews of Earth and Planetary Sciences* | [DOI](https://doi.org/10.1146/annurev.earth.35.031306.140158)  [PDF](http://bodobookhagen.github.io/pdf/strecker07_tectonics_climate_andes.pdf)
 |16 | Craddock, W., Burbank, D.W., **Bookhagen, B.**, Gabet, E. |2007| Bedrock channel geometry along an orographic rainfall gradient in the upper Marsyandi River valley in central Nepal | *JGR Earth Surface* | [DOI](https://doi.org/10.1029/2006JF000589) [PDF](http://bodobookhagen.github.io/pdf/craddock07_bedrock_channel_geometry_nepal.pdf)
@@ -214,7 +214,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 ### 2006
 [Jump to top](#top)
 
-| Nr. | Author(s) | Year | Title | Journal | DOI | 
+| Nr. | Author(s) | Year | Title | Journal | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 |14 | Grujic, D., Coutand, I., **Bookhagen, B.**, Bonnet, S., Blythe, A., Duncan, C. |2006| Climatic forcing of erosion, landscape, and tectonics in the Bhutan Himalayas | *Geology* | [DOI](https://doi.org/10.1130/G22648.1) [PDF](http://bodobookhagen.github.io/pdf/grujic06_climate_bhutan.pdf)
 |13 | **Bookhagen, B.**, Echtler, H.P., Melnick, D., Strecker, M.R., Spencer, J.Q.G. |2006| Using uplifted Holocene beach berms for paleoseismic analysis on the Santa María Island, south-central Chile| *Geophys. Res. Lett.* | [DOI](https://doi.org/10.1029/2006GL026734)  [PDF](http://bodobookhagen.github.io/pdf/bookhagen06_smisland_chile.pdf)
@@ -226,7 +226,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 ### 2001-2005
 [Jump to top](#top)
 
-| Nr. | Author(s) | Year | Title | Journal | DOI | 
+| Nr. | Author(s) | Year | Title | Journal | DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 |8 | **Bookhagen, B.**, Thiede, R.C., Strecker, M.R. |2005| Late Quaternary intensified monsoon phases control landscape evolution in the northwest Himalaya | *Geology* | [DOI](https://doi.org/10.1130/G20982.1) [PDF](http://bodobookhagen.github.io/pdf/bookhagen05_IMPs_nw_himalaya.pdf)
 |7 | **Bookhagen, B.**, Thiede, R.C., Strecker. M.R. |2005| Abnormal Monsoon years and their control on erosion and sediment flux in the high, arid northwest Himalaya| *Earth and Planetary Science Letters* | [DOI](https://doi.org/10.1016/j.epsl.2004.11.014) [PDF](http://bodobookhagen.github.io/pdf/bookhagen05_amy_nw_himalaya.pdf)
