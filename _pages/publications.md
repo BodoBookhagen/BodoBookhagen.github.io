@@ -31,6 +31,7 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 
 | Nr. | Author(s) | Year | Title | *Journal* |  DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
+| 122 | Brieger, F., Herzschuh, U., Luidmila A. Pestryakova, L.A., **Bookhagen, B.**,  Zakharov, E.S. and Kruse, S. | 2019 | Advances in the Derivation of Northeast Siberian Forest Metrics Using High-Resolution UAV-Based Photogrammetric Point Clouds | *Remote Sensing* | [DOI](https://doi.org/10.3390/rs11121447) [PDF](https://www.mdpi.com/2072-4292/11/12/1447/pdf)
 | 121 | Teshebeava, K., Echtler, H., **Bookhagen, B.**, Strecker, M.R. | in press, 2019 | Deep-seated gravitational slope deformation (DSGSD) and slow moving landslides in the southern Tien Shan Mountains: new insights from InSAR, tectonic, and geomorphic analysis | *Earth Surface Processes and Landforms* | [DOI](https://doi.org/10.1002/esp.4648) |
 | 120 | Clubb, F., **Bookhagen, B.**, Rheinwalt, A. | 2019 | Clustering river profiles to classify geomorphic domains | *JGR Earth Surface* | [DOI](https://doi.org/10.1029/2019JF005025) |
 | 119 | Purinton, B., **Bookhagen, B.** | in review, 2019 | Introducing PebbleCounts: A grain-sizing tool for photo surveys of dynamic gravel-bed | *Earth Surf. Dynam. Discuss.* | [DOI](https://doi.org/10.5194/esurf-2019-20) |
