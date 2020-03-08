@@ -10,8 +10,11 @@ See also: [Google Scholar Profile](https://scholar.google.com/citations?user=_Uu
 [Jump to peer-reviewed book chapters](#peer-reviewed-book-chapters)<br>
 [Jump to peer-reviewed journal articles](#peer-reviewed-journal-articles)<br>
 
-Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#2015) [2014](#2014) [2013](#2013) [2012](#2012) [2011](#2011) <br>
+Jump to year: [2020](#2020) [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#2015) [2014](#2014) [2013](#2013) [2012](#2012) [2011](#2011) <br>
 [2010](#2010) [2009](#2009) [2008](#2008) [2007](#2007) [2006](#2006) [2001-2005](#2001-2005)
+
+## Edited Books
+Himalayan Weather and Climate and their Impact on the Environment, Editors: Dimri, A.P., **Bookhagen, B.**, Stoffel, M., Yasunari, T., *Springer*, ISBN 978-3-030-29684-1, [link](https://www.springer.com/gp/book/9783030296834)
 
 ## Peer reviewed Book chapters
 
@@ -27,12 +30,16 @@ Jump to year: [2019](#2019) [2018](#2018) [2017](#2017) [2016](#2016) [2015](#20
 
 ## Peer reviewed journal articles
 
-### 2019
-
+### 2020
 | Nr. | Author(s) | Year | Title | *Journal* |  DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
-| 127 | Milewski, R., Chabrillat, S., **Bookhagen, B.**, | 2020 | Analyses of Seasonal Salt Pan Crust Dynamic and their Climatic Drivers
-using Dense Landsat 8 Time-Series and Ground Data | *Remote Sensing* | [DOI](https://www.mdpi.com/journal/remotesensing/special_issues/dryland_rs) |
+| 129 | Voss, K., **Bookhagen, B.**, Sachse, D., and Chadwick, O. | 2020 | Variation of deuterium excess in surface waters across a 5000-m elevation gradient in eastern Nepal | *Journal of Hydrology* | [DOI](HYDROL32491R1) [PDF]() |
+| 128 | Olen, S. and **Bookhagen, B.**, | 2020 | Applications of SAR interferometric coherence time series: Spatiotemporal dynamics of geomorphic transitions in the south‐central Andes | *JGR Earth Surface* | [DOI](https://doi.org/10.1029/2019JF005141) [PDF](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2019JF005141) |
+| 127 | Milewski, R., Chabrillat, S., **Bookhagen, B.**, | 2020 | Analyses of Seasonal Salt Pan Crust Dynamic and their Climatic Drivers using Dense Landsat 8 Time-Series and Ground Data | *Remote Sensing* | [DOI](https://doi.org/10.3390/rs12030474) [PDF](https://www.mdpi.com/2072-4292/12/3/474/pdf) |
+
+### 2019
+| Nr. | Author(s) | Year | Title | *Journal* |  DOI |
+|:---:|:----------|:----:|-------|:---------:|:---:|
 | 126 | Merchel, S., Gartner, A., Beutner, S., **Bookhagen, B.**, Chabilan, A. | 2019 | Attempts to understand potential deficiencies in chemical procedures for AMS: Cleaning and dissolving quartz for 10Be and 26Al analysis | *Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms* | [DOI](https://doi.org/10.1016/j.nimb.2019.02.007) |
 | 125 | Rheinwalt, A., Goswami, B., **Bookhagen, B.** | 2019 | A network-based flow accumulation algorithm for point clouds: Facet-Flow Networks (FFN) | *JGR Earth Surface* | [DOI](https://doi.org/10.1029/2018JF004827) |
 | 124 | Ramezani Ziarani, M.,  **Bookhagen, B.**, Schmidt, T., Wickert, J., de la Torre, A., Hierro, R. | 2019 | Using convective available potential energy (CAPE) and dew-point temperature to characterize rainfall-extreme events in the south-central Andes | *atmosphere* | [DOI](https://doi.org/10.3390/atmos10070379) |
