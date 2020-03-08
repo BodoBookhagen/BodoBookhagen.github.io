@@ -31,6 +31,7 @@ Himalayan Weather and Climate and their Impact on the Environment, Editors: Dimr
 ## Peer reviewed journal articles
 
 ### 2020
+
 | Nr. | Author(s) | Year | Title | *Journal* |  DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 | 129 | Voss, K., **Bookhagen, B.**, Sachse, D., and Chadwick, O. | 2020 | Variation of deuterium excess in surface waters across a 5000-m elevation gradient in eastern Nepal | *Journal of Hydrology* | [DOI](HYDROL32491R1) [PDF]() |
@@ -38,6 +39,7 @@ Himalayan Weather and Climate and their Impact on the Environment, Editors: Dimr
 | 127 | Milewski, R., Chabrillat, S., **Bookhagen, B.**, | 2020 | Analyses of Seasonal Salt Pan Crust Dynamic and their Climatic Drivers using Dense Landsat 8 Time-Series and Ground Data | *Remote Sensing* | [DOI](https://doi.org/10.3390/rs12030474) [PDF](https://www.mdpi.com/2072-4292/12/3/474/pdf) |
 
 ### 2019
+
 | Nr. | Author(s) | Year | Title | *Journal* |  DOI |
 |:---:|:----------|:----:|-------|:---------:|:---:|
 | 126 | Merchel, S., Gartner, A., Beutner, S., **Bookhagen, B.**, Chabilan, A. | 2019 | Attempts to understand potential deficiencies in chemical procedures for AMS: Cleaning and dissolving quartz for 10Be and 26Al analysis | *Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms* | [DOI](https://doi.org/10.1016/j.nimb.2019.02.007) |
