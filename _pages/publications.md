@@ -37,7 +37,7 @@ Himalayan Weather and Climate and their Impact on the Environment, Editors: Dimr
 | 129 | Voss, K., **Bookhagen, B.**, Sachse, D., and Chadwick, O. | 2020 | Variation of deuterium excess in surface waters across a 5000-m elevation gradient in eastern Nepal | *Journal of Hydrology* | [DOI](HYDROL32491R1) [PDF]() |
 | 128 | Olen, S. and **Bookhagen, B.**, | 2020 | Applications of SAR interferometric coherence time series: Spatiotemporal dynamics of geomorphic transitions in the south‐central Andes | *JGR Earth Surface* | [DOI](https://doi.org/10.1029/2019JF005141) [PDF](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2019JF005141) |
 | 127 | Milewski, R., Chabrillat, S., **Bookhagen, B.**, | 2020 | Analyses of Seasonal Salt Pan Crust Dynamic and their Climatic Drivers using Dense Landsat 8 Time-Series and Ground Data | *Remote Sensing* | [DOI](https://doi.org/10.3390/rs12030474) [PDF](https://www.mdpi.com/2072-4292/12/3/474/pdf) |
-| | |[2019](#anchors-in-markdown) | | | |
+|*[2019](#2019)* | || | | |
 | 126 | Merchel, S., Gartner, A., Beutner, S., **Bookhagen, B.**, Chabilan, A. | 2019 | Attempts to understand potential deficiencies in chemical procedures for AMS: Cleaning and dissolving quartz for 10Be and 26Al analysis | *Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms* | [DOI](https://doi.org/10.1016/j.nimb.2019.02.007) |
 | 125 | Rheinwalt, A., Goswami, B., **Bookhagen, B.** | 2019 | A network-based flow accumulation algorithm for point clouds: Facet-Flow Networks (FFN) | *JGR Earth Surface* | [DOI](https://doi.org/10.1029/2018JF004827) |
 | 124 | Ramezani Ziarani, M.,  **Bookhagen, B.**, Schmidt, T., Wickert, J., de la Torre, A., Hierro, R. | 2019 | Using convective available potential energy (CAPE) and dew-point temperature to characterize rainfall-extreme events in the south-central Andes | *atmosphere* | [DOI](https://doi.org/10.3390/atmos10070379) |
@@ -50,11 +50,7 @@ Himalayan Weather and Climate and their Impact on the Environment, Editors: Dimr
 | 117 | Brell, M., Segl, K., Guanter, L., **Bookhagen, B.** | 2019 | 3D hyperspectral point cloud generation: fusing airborne laser scanning and hyperspectral imaging sensors for improved object-based information extraction | *ISPRS Journal of Photogrammetry and Remote Sensing* | [DOI](https://doi.org/10.1016/j.isprsjprs.2019.01.022) |
 | 116 | Boers, N., Goswami, B., Rheinwalt, A., **Bookhagen, B.**, Hoskins, B., Kurths, J. | 2019 | Complex networks reveal global pattern of extreme-rainfall teleconnections | *nature* | [DOI](https://doi.org/10.1038/s41586-018-0872-x) [PDF](https://www.nature.com/articles/s41586-018-0872-x?ref=marketbulletin)
 | 115 | Smith, T.T., Rheinwalt, A. and **Bookhagen, B.**| 2019 | Determining the Optimal Grid Resolution for Topographic Analysis on an Airborne Lidar Dataset | *Earth Surf. Dynam.* | [DOI](https://doi.org/10.5194/esurf-7-475-2019) [PDF](https://www.earth-surf-dynam.net/7/475/2019/esurf-7-475-2019.pdf)
-
-### 2018
-
-| Nr. | Author(s) | Year | Title | *Journal* | DOI |
-|:---:|:----------|:----:|-------|:---------:|:---:|
+|*[2018](#2019)* | || | | |
 | 114 | Purinton, B. and **Bookhagen, B.**| 2018 | Measuring Decadal Vertical Land-level Changes from SRTM-C (2000) and TanDEM-X (~2015) in the South-Central Andes | *Earth Surf. Dynam.* | [DOI](https://doi.org/10.5194/esurf-6-971-2018) [PDF](https://www.earth-surf-dynam.net/6/971/2018/esurf-6-971-2018.pdf)|
 |113 | Hoffmann, B., **Bookhagen, B.**, Stephanie M. Olen, S.M., Barthold, F., Sachse, D. |2018| The effect of Indian Summer Monsoon rainfall on surface water δD values in the central Himalaya | *Hydrological Processes*| [DOI](https://doi.org/10.1002/hyp.13281) [PDF](http://bodobookhagen.github.io/pdf/Meese18_Arun_stable_isotopes.pdf) |
 |112 | Thompson, J.A., Chen, J., Yang, H., **Bookhagen, B.** and Burbank, D.W. |2018| Coarse- versus fine-grain quartz OSL and cosmogenic 10Be dating of deformed fluvial terraces on the northeast Pamir margin, northwest China | *Quaternary Geochronology* | [DOI](https://doi.org/10.1016/j.quageo.2018.01.002) [PDF](http://bodobookhagen.github.io/pdf/Thompson_QuatGeochron_Revisions.pdf) |
