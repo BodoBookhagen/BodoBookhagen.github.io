@@ -12,7 +12,7 @@ read_time: false
 Installing Miniconda on Linux, Mac OS X, and Windows 10 for point-cloud processing, python programming, and work with GMT, CDO and other tools.
 
 ## Installation on Windows 10
-Installation works best, if you use the Windows 10 Bash. There are several resources available on the internet that explain the [bash setup](https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10). 
+Installation works best, if you use the Windows 10 Bash. There are several resources available on the internet that explain the [bash setup](https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10).
 After the reboot, *wget* [miniconda](https://conda.io/miniconda.html) for [Linux 64 bit](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh) and install:
 
 ```bash
@@ -50,6 +50,9 @@ conda config --prepend channels defaults
 | CDO Processing | ```conda create -y -n cdo cdo```<br>For some miniconda installations, you have to separately install CDO into a different environment, because of hdf library versioning issues. |
 | CDO and NCL Processing | ```conda create -y -n cdo_ncl cdo ncl imagemagick```  |
 | PointCloud Processing | ```conda create -y -n PC_py3 python=3.6 pip scipy pandas numpy matplotlib scikit-image gdal pdal xarray packaging ipython multiprocess h5py lastools pykdtree spyder gmt=5* imagemagick``` <br> Activate the environment ```source activate PC_py3``` <br> and install laspy with ```pip install laspy```|
+| Python 3 and DEMs (requires Linux or Unix Subsystem on Windows) | ```conda create -y -n Py3_DEM python=3.* pip scipy pandas numpy matplotlib scikit-image gdal ipython spyder statsmodels jupyter pyproj
+conda activate Py3_DEM
+conda install -y -c conda-forge richdem landlab``` |
 | PointCloud Processing for a Python 2 environment | ```conda create -y -n PC_py2 python=2* pip scipy pandas numpy matplotlib scikit-image gdal pdal  ipython h5py lastools spyder gmt=5* imagemagick``` |
 
 # Activating environments
