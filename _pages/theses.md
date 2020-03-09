@@ -3,9 +3,8 @@ layout: single
 title: 'Theses'
 read_time: false
 permalink: /theses/
-author_profile: false
-toc: true
-toc_label: "List of MSc and BSc theses"
+author_profile: true
+classes: wide
 ---
 # Advising of BSc and MSc theses
 There have been several MSc and BSc theses advised in the past years. These were at the University of California, Santa Barbara in the Deparments of [Geography](https://geog.ucsb.edu/) and [Earth Sciences](https://www.geol.ucsb.edu/), at the University of Potsdam in the [Institute of Geosciences](http://www.geo.uni-potsdam.de/), [Institute of Environmental Sciences and Geography](https://www.uni-potsdam.de/de/umwelt/), [Institute of Biochemistry and Biology](https://www.uni-potsdam.de/en/ibb/), and at the [Institute of Geodesy and Geoinformation Science](https://www.igg.tu-berlin.de/menue/institut_fuer_geodaesie_und_geoinformationstechnik/parameter/en/), Technical University of Berlin.
