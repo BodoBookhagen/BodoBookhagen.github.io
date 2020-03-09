@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: archive
 title: 'Theses'
 read_time: false
 permalink: /theses/
@@ -21,7 +21,8 @@ There are also several open theses topics that interested students can work on. 
 | x| 2019 | Mohammad Zarch | *Ground Deformation Monitoring in Mining Areas on the Central Andean Plateau (Puna, Argentina) Using Sentinel-1 Data* | Institute of Geodesy and Geoinformation Science,  
 | x | 2019 | Richard Mommertz | *Mapping bedfast and floating thermokarst lake ice and determining lake depth using Sentinel 1 Synthetic Aperture Radar Remote Sensing on the west shore of Hudson Bay, Canada and Prudhoe Bay, Alaska* | Institute of Environmental Sciences and Geography, MSc Geoökologie | |
 | x | 2019 | Frederic Brieger | *Derivation of Biophysical Metrics for NE-Siberian Biomes using UAV-Based Photogrammetric Point Clouds* | Institute of Geosciences, MSc Geowissenschaften | MSc thesis published in [*remote sensing*](https://www.mdpi.com/2072-4292/11/12/1447) |
-
+| x| 2019 | Nicole Mätzing | *Untersuchungen der organischen Kohlenstoffspezies im Grundwasser des Wasserwerks Potsdam-Rehbrücke in Bezug zu den geologischen, technischen und klimatischen Rahmenbedingungen* | Institute of Geosciences, MSc Geowissenschaften | |
+| x | 2019 | Steffen Wellegehausen | *Quality assessment of structure from motion point clouds from river pebbles* | Institute of Environmental Sciences and Geography, MSc Geoökologie | |
 
 # List of BSc thesis in reversed chronological order
 
