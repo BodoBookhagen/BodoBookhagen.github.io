@@ -10,19 +10,22 @@ main:
   #   url: /awards/
 
   - title: "Talks"
-    url: /talks/    
+    url: /talks/
 
   - title: "Teaching"
-    url: /teaching/    
-    
+    url: /teaching/
+
+  - title: "Theses"
+    url: /theses/    
+
   - title: "Research"
     url: /research/
-        
+
   - title: "Blogs"
     url: /year-archive/
-    
+
   - title: "Contact"
-    url: /contact/  
-    
+    url: /contact/
+
   # - title: "Guide"
     # url: /markdown/
