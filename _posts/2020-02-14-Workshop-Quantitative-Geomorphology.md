@@ -1,6 +1,8 @@
 ---
 title: 'Workshop Quantitative Geomorphology'
 date: 2020-02-14
+author_profile: true
+classes: wide
 read_time: false
 permalink: /posts/2020/02/Workshop-Quantitative-Geomorphology
 author_profile: false

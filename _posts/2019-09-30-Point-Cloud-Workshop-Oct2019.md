@@ -1,5 +1,7 @@
 ---
 title: 'Point Cloud Workshop at the University of Potsdam'
+author_profile: true
+classes: wide
 date: 2019-09-30
 read_time: false
 permalink: /posts/2019/09/Point-Cloud-Workshop-Oct2019
