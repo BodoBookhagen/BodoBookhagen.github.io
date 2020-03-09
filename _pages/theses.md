@@ -21,6 +21,8 @@ There are also several open theses topics that interested students can work on. 
 | x| 2019 | Elena Lefler | *Klassifikation der Seen auf dem Hochland von Tibet mittels Google Earth Engine* | Institute of Geosciences, MSc Geoinformation und Visualisierung | |
 | x| 2019 | Mohammad Zarch | *Ground Deformation Monitoring in Mining Areas on the Central Andean Plateau (Puna, Argentina) Using Sentinel-1 Data* | Institute of Geodesy and Geoinformation Science,  
 | x | 2019 | Richard Mommertz | *Mapping bedfast and floating thermokarst lake ice and determining lake depth using Sentinel 1 Synthetic Aperture Radar Remote Sensing on the west shore of Hudson Bay, Canada and Prudhoe Bay, Alaska* | Institute of Environmental Sciences and Geography, MSc Geoökologie | |
+| x | 2019 | Frederic Brieger | *Derivation of Biophysical Metrics for NE-Siberian Biomes using UAV-Based Photogrammetric Point Clouds* | Institute of Geosciences, MSc Geowissenschaften | MSc thesis published in [*remote sensing*](https://www.mdpi.com/2072-4292/11/12/1447) |
+
 
 # List of BSc thesis in reversed chronological order
 
