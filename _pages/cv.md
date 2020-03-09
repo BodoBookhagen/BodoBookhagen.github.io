@@ -3,6 +3,7 @@ layout: archive
 title: "Curriculum Vitae"
 permalink: /cv/
 author_profile: true
+classes: wide
 redirect_from:
   - /resume
 ---
@@ -31,4 +32,3 @@ See [CV](http://bodobookhagen.github.io/pdf/bookhagen_CV.pdf).
 | Jan. 2005 -- Feb. 2006 | Assistant Researcher, Institute for Crustal Studies, UC Santa Barbara |
 | Oct. 2001 -- Jul. 2002 | DAAD Stipend at the University of California, Berkeley |
 | Mar. 1996 -- May 2001 | Computer coder at a private computer company in Berlin, Germany |
-
