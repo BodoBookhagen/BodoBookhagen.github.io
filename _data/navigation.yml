@@ -21,8 +21,8 @@ main:
   - title: "Research"
     url: /research/
 
-  - title: "Blogs"
-    url: /year-archive/
+#  - title: "Blogs"
+#    url: /year-archive/
 
   - title: "Contact"
     url: /contact/
