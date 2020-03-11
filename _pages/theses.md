@@ -16,7 +16,7 @@ There have been several MSc and BSc theses advised in the past years. These were
 
 | Nr. | Year | Author | *Title* | Department and Degree | Additional information and PDF link (if available) |
 |:---:|:----------|:----:|-------|:---:|
-| 31 | 2020 | Felix Kessler | *SAR and ice detection* | Institute of Geosciences, MSc Remote Sensing, geoInformation, and Visualization | |
+| 31 | 2020 | Felix Kessler | *Near-real time detection of lake ice using Sentinel-1 data* | Institute of Geosciences, MSc Remote Sensing, geoInformation, and Visualization | |
 | 30 | 2020 | Sascha Rabinowitsch | *Die Ermittlung von Genauigkeiten und Anwendungsszenarios für fernerkundlich erhobene Punktwolken am Beispiel des Campus Golm* | Institute of Geosciences, MSc Geowissenschaften | |
 | 29 | 2020 | Kristian Kragiel | *Terrestrial lidar scanning and point cloud classification of the „Neues Palais“, University of Potsdam* | Institute of Geosciences, MSc Geowissenschaften | |
 | 28 | 2019 | Elena Lefler | *Klassifikation der Seen auf dem Hochland von Tibet mittels Google Earth Engine* | Institute of Geosciences, MSc Geoinformation und Visualisierung | |
