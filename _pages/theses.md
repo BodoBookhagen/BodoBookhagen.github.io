@@ -16,7 +16,7 @@ There have been several MSc and BSc theses advised in the past years. These were
 
 | Nr. | Year | Author | *Title* | Department and Degree | Additional information and PDF link (if available) |
 |:---:|:----------|:----:|-------|:---:|
-| 32 | 2020 | Ariane Müting | *Generating high-resolution DEMs from tri-stereo satellite imagery: A geomorphologic case study in the Quebrada del Toro, NW Argentina* | Institute of Geosciences, MSc Geowissenschaften | |
+| 32 | 2020 | Ariane Müting | *Generating high-resolution DEMs from tri-stereo satellite imagery: A geomorphologic case study in the Quebrada del Toro, NW Argentina* | Institute of Geosciences, MSc Geowissenschaften | [PDF of MSc thesis](http://bodobookhagen.github.io/pdf/ArianeMueting_MSc_lr.pdf) |
 | 31 | 2020 | Felix Keßler | *Near-real time detection of lake ice using Sentinel-1 data* | Institute of Geosciences, MSc Remote Sensing, geoInformation, and Visualization | [PDF of MSc thesis](http://bodobookhagen.github.io/pdf/Mastersthesis_FelixKessler.pdf) |
 | 30 | 2020 | Sascha Rabinowitsch | *Die Ermittlung von Genauigkeiten und Anwendungsszenarios für fernerkundlich erhobene Punktwolken am Beispiel des Campus Golm* | Institute of Geosciences, MSc Geowissenschaften | |
 | 29 | 2020 | Kristian Kragiel | *Terrestrial lidar scanning and point cloud classification of the „Neues Palais“, University of Potsdam* | Institute of Geosciences, MSc Geowissenschaften | |
@@ -58,7 +58,7 @@ There have been several MSc and BSc theses advised in the past years. These were
 | 8 | 2019 | Nadja Siebzehnrübl | *Veränderungen in der Landbedeckung der Mu Us Wüste* | Institute of Environmental Sciences and Geography, BSc Geoökologie |
 | 7 | 2019 | Felix Tischer | *Fernerkundliche Erfassung von Gewässerqualität in Brandenburg mit Landsat 8 OLI/TIRS und Sentinel-2 MSI Sensoren* | Institute of Environmental Sciences and Geography, BSc Geoökologie |
 | 6 | 2018 | Hoang Anh Vu Tuyen | *Detektierung und Kartierung von Methanquellen in eisbedeckten Seen mittels hochauflösender Fernerkundung* | Institute of Geosciences, BSc Geowissenschaften |
-| 5 | 2018 | Frederike Ariane Müting | *Classification and spectral unmixing of remote sensing data for the Batura Glacier, Karakoram* | Institute of Geosciences, BSc Geowissenschaften |
+| 5 | 2018 | Ariane Müting | *Classification and spectral unmixing of remote sensing data for the Batura Glacier, Karakoram* | Institute of Geosciences, BSc Geowissenschaften |
 | 4 | 2016 | Sascha Rabinowitsch | *Bestimmung der Flussaufschotterung in Nord/West-Argentinien mittels digitaler Geländemodelle* | Institute of Geosciences, BSc Geowissenschaften |
 | 3 | 2016 | Alicja Balfanz | *Deciphering seasonal vegetation gradients along a topographic transect in NW Argentina* | Institute of Environmental Sciences and Geography, BSc Geoökologie |
 | 2 | 2016 | Anne Klopprogge | *Remote Sensing Based Classification of Geologic Units oft he Puna Plateau in NW Argentina* | Institute of Geosciences, BSc Geowissenschaften |
