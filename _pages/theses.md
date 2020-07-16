@@ -17,7 +17,7 @@ There have been several MSc and BSc theses advised in the past years. These were
 | Nr. | Year | Author | *Title* | Department and Degree | Additional information and PDF link (if available) |
 |:---:|:----------|:----:|-------|:---:|
 | 32 | 2020 | Ariane Müting | *Generating high-resolution DEMs from tri-stereo satellite imagery: A geomorphologic case study in the Quebrada del Toro, NW Argentina* | Institute of Geosciences, MSc Geowissenschaften | [PDF](http://bodobookhagen.github.io/pdf/ArianeMueting_MSc.pdf) |
-| 31 | 2020 | Felix Kessler | *Near-real time detection of lake ice using Sentinel-1 data* | Institute of Geosciences, MSc Remote Sensing, geoInformation, and Visualization | [PDF](http://bodobookhagen.github.io/pdf/Mastersthesis_FelixKeßler.pdf) |
+| 31 | 2020 | Felix Kessler | *Near-real time detection of lake ice using Sentinel-1 data* | Institute of Geosciences, MSc Remote Sensing, geoInformation, and Visualization | [PDF](http://bodobookhagen.github.io/pdf/Mastersthesis_FelixKessler.pdf) |
 | 30 | 2020 | Sascha Rabinowitsch | *Die Ermittlung von Genauigkeiten und Anwendungsszenarios für fernerkundlich erhobene Punktwolken am Beispiel des Campus Golm* | Institute of Geosciences, MSc Geowissenschaften | |
 | 29 | 2020 | Kristian Kragiel | *Terrestrial lidar scanning and point cloud classification of the „Neues Palais“, University of Potsdam* | Institute of Geosciences, MSc Geowissenschaften | |
 | 28 | 2019 | Elena Lefler | *Klassifikation der Seen auf dem Hochland von Tibet mittels Google Earth Engine* | Institute of Geosciences, MSc Geoinformation und Visualisierung | |
