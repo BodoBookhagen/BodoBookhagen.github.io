@@ -10,12 +10,14 @@ classes: wide
 There are several open theses topics that interested students can work on. Please contact [me](mailto:bodo.bookhagen@uni-potsdam.de) if you would like to pursue this.
 
 # Past theses advising
-There have been several MSc and BSc theses advised in the past years. These were at the University of California, Santa Barbara in the Deparments of [Geography](https://geog.ucsb.edu/) and [Earth Sciences](https://www.geol.ucsb.edu/), at the University of Potsdam in the [Institute of Geosciences](http://www.geo.uni-potsdam.de/), [Institute of Environmental Sciences and Geography](https://www.uni-potsdam.de/de/umwelt/), [Institute of Biochemistry and Biology](https://www.uni-potsdam.de/en/ibb/), and at the [Institute of Geodesy and Geoinformation Science](https://www.igg.tu-berlin.de/menue/institut_fuer_geodaesie_und_geoinformationstechnik/parameter/en/), Technical University of Berlin. Below is an incomplete list of MSc and BSc theses.
+There have been several MSc and BSc theses advised in the past years. These were at the University of California, Santa Barbara in the Deparments of [Geography](https://geog.ucsb.edu/) and [Earth Sciences](https://www.geol.ucsb.edu/), at the University of Potsdam in the [Institute of Geosciences](http://www.geo.uni-potsdam.de/), [Institute of Environmental Sciences and Geography](https://www.uni-potsdam.de/de/umwelt/), [Institute of Biochemistry and Biology](https://www.uni-potsdam.de/en/ibb/), and at the [Institute of Geodesy and Geoinformation Science](https://www.igg.tu-berlin.de/menue/institut_fuer_geodaesie_und_geoinformationstechnik/parameter/en/), Technical University of Berlin. Below is an *incomplete* list of MSc and BSc theses.
 
 ## List of advised MSc thesis in reversed chronological order
 
 | Nr. | Year | Author | *Title* | Department and Degree | Additional information and PDF link (if available) |
 |:---:|:----------|:----:|-------|:---:|
+| 34 | 2020 | Philipp Jordan | *Applications of pointcloud and full-waveform Lidar data for object detection* | Institute of Geosciences, MSc Remote Sensing, geoInformation, and Visualization | |
+| 33 | 2020 | Franziska Mouliji | *Eine Zeitreihenanalyse der Vegetationsänderung in den Anden von 1998 bis 2014* | Institute of Geosciences, MSc Geoinformation und Visualisierung |  |
 | 32 | 2020 | Ariane Müting | *Generating high-resolution DEMs from tri-stereo satellite imagery: A geomorphologic case study in the Quebrada del Toro, NW Argentina* | Institute of Geosciences, MSc Geowissenschaften | [PDF of MSc thesis](http://bodobookhagen.github.io/pdf/ArianeMueting_MSc_lr.pdf) |
 | 31 | 2020 | Felix Keßler | *Near-real time detection of lake ice using Sentinel-1 data* | Institute of Geosciences, MSc Remote Sensing, geoInformation, and Visualization | [PDF of MSc thesis](http://bodobookhagen.github.io/pdf/Mastersthesis_FelixKessler.pdf) |
 | 30 | 2020 | Sascha Rabinowitsch | *Die Ermittlung von Genauigkeiten und Anwendungsszenarios für fernerkundlich erhobene Punktwolken am Beispiel des Campus Golm* | Institute of Geosciences, MSc Geowissenschaften | |
