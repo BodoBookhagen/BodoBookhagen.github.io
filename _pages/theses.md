@@ -16,6 +16,7 @@ There have been several MSc and BSc theses advised in the past years. These were
 
 | Nr. | Year | Author | *Title* | Department and Degree | Additional information and PDF link (if available) |
 |:---:|:----------|:----:|-------|:---:|
+| 35 | 2020 | Ifeyani Okaro | *The Sixth Sense of White Storks - Towards an E2E Service for Locust Threat Alarms* | Institute of Geosciences, MSc Remote Sensing, geoInformation, and Visualization | |
 | 34 | 2020 | Philipp Jordan | *Applications of pointcloud and full-waveform Lidar data for object detection* | Institute of Geosciences, MSc Remote Sensing, geoInformation, and Visualization | |
 | 33 | 2020 | Franziska Mouliji | *Eine Zeitreihenanalyse der Vegetationsänderung in den Anden von 1998 bis 2014* | Institute of Geosciences, MSc Geoinformation und Visualisierung |  |
 | 32 | 2020 | Ariane Müting | *Generating high-resolution DEMs from tri-stereo satellite imagery: A geomorphologic case study in the Quebrada del Toro, NW Argentina* | Institute of Geosciences, MSc Geowissenschaften | [PDF of MSc thesis](http://bodobookhagen.github.io/pdf/ArianeMueting_MSc_lr.pdf) |
