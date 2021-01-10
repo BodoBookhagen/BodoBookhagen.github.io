@@ -10,6 +10,6 @@ Karl-Liebknecht-Str. 24-25<br>
 14476 Potsdam-Golm<br>
 Germany<br>
 
-Email: [bodo.bookhagen@uni-potsdam.de](mailto:bodo.bookhagen@uni-potsdam.de) [PGP Public Key](https://raw.githubusercontent.com/BodoBookhagen/BodoBookhagen.github.io/master/images/BodoBookhagen0x353E2C2F73B640A5pub.asc)
+Email: [bodo.bookhagen@uni-potsdam.de](mailto:bodo.bookhagen@uni-potsdam.de) [PGP Public Key](https://raw.githubusercontent.com/BodoBookhagen/BodoBookhagen.github.io/master/pdf/BodoBookhagen0x353E2C2F73B640A5pub.asc)
 
 [Department address and map](http://www.geo.uni-potsdam.de/contact.html)
