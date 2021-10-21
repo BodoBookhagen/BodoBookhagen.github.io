@@ -16,6 +16,7 @@ There have been several MSc and BSc theses advised in the past years. These were
 
 | Nr. | Year | Author | *Title* | Department and Degree | Additional information and PDF link (if available) |
 |:---:|:----------|:----:|:-------|:---:|:---:|
+| 37 | 2021 | David Eichhorn | *Tree detection and tree species identification from dense LiDAR point cloud for Sanssouci Park in Potsdam, Germany* | Institute of Environmental Sciences and Geography, MSc Geoecology | |
 | 36 | 2021 | Anna Rosner | *Dating glacial moraines on the volcanic Complex Quevar in NW Argentina using the cosmogenic nuclides 26Al, 10Be, and 21Ne* | Institute of Geosciences, MSc Geoscience | |
 | 35 | 2020 | Ifeyani Okaro | *The Sixth Sense of White Storks - Towards an E2E Service for Locust Threat Alarms* | Institute of Geosciences, MSc Remote Sensing, geoInformation, and Visualization | |
 | 34 | 2020 | Philipp Jordan | *Applications of pointcloud and full-waveform Lidar data for object detection* | Institute of Geosciences, MSc Remote Sensing, geoInformation, and Visualization | |
