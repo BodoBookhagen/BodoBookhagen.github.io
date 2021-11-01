@@ -58,6 +58,7 @@ There have been several MSc and BSc theses advised in the past years. These were
 
 | Nr. | Year | Author | *Title* | Department and Degree |
 |:---:|:----------|:----:|-------|:---:|
+| 11 | 2021 | Christian Pfaff | *Multispektrale Analyse der Waldbrandgebiete in Nordostdeutschland von 2017-2020* | Institute of Environmental Sciences and Geography, BSc Geoökologie |
 | 10 | 2020 | Benjamin Huxol | *Topography of the Jasmund Cliff coast (Ruegen) - a quantitative analysis* | Institute of Geosciences, BSc Geowissenschaften |
 | 9 | 2019 | Pia Petzold | *Sediment-grain size changes along the Quebrada del Toro River in NW Argentina* | Institute of Geosciences, BSc Geowissenschaften |
 | 8 | 2019 | Nadja Siebzehnrübl | *Veränderungen in der Landbedeckung der Mu Us Wüste* | Institute of Environmental Sciences and Geography, BSc Geoökologie |
