@@ -22,6 +22,8 @@ There have been several MSc and BSc theses advised in the past years. These were
 
 | Nr. | Year | Author | *Title* | Department and Degree | Additional information and PDF link (if available) |
 |:---:|:----------|:----:|:-------|:---:|:---:|
+| 41 | 2021 | Nicolas Garcia | *Slow-moving landslide detection in the western Himalaya using Sentinel-1 radar time series* | IoG, MSc RSIV | |
+| 40 | 2021 | Shaig Hamzaliyev | *Reconstructing ground surfaces from full waveform Lidar data* | IoG, MSc RSIV | |
 | 39 | 2021 | Farid Atmani | *Canopy height estimation of the Namibian Savanna Forest with ICESat-2 and GEDI missions* | IoG, MSc RSIV | |
 | 38 | 2021 | Najibullah Kakar | *Exploiting high-resolution InSAR Rate Maps to the Fullest: Fault Slip, Landslides and Groundwater Changes in Northeastern Afghanistan* | IoG, MSc RSIV | |
 | 37 | 2021 | David Eichhorn | *Tree detection and tree species identification from dense LiDAR point cloud for Sanssouci Park in Potsdam, Germany* | IoESG, MSc Geoecology | |
