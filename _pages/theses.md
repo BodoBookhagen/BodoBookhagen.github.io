@@ -31,7 +31,7 @@ There have been several MSc and BSc theses advised in the past years. These were
 | 42 | 2021 | Martin Lang | *Quantifying landscape-evolution rates across the Argentinean Puna Plateau using geochemical methods* | IoG, MSc Geoscience | |
 | 41 | 2021 | Nicolas Garcia | *Slow-moving landslide detection in the western Himalaya using Sentinel-1 radar time series* | IoG, MSc RSIV | |
 | 40 | 2021 | Shaig Hamzaliyev | *Reconstructing ground surfaces from full waveform Lidar data* | IoG, MSc RSIV | |
-| 39 | 2021 | Farid Atmani | *Canopy height estimation of the Namibian Savanna Forest with ICESat-2 and GEDI missions* | IoG, MSc RSIV | |
+| 39 | 2021 | Farid Atmani | *Canopy height estimation of the Namibian Savanna Forest with ICESat-2 and GEDI missions* | IoG, MSc RSIV | Thesis published in _Remote Sensing_ [DOI](https://www.mdpi.com/2072-4292/14/12/2928)|
 | 38 | 2021 | Najibullah Kakar | *Exploiting high-resolution InSAR Rate Maps to the Fullest: Fault Slip, Landslides and Groundwater Changes in Northeastern Afghanistan* | IoG, MSc RSIV | |
 | 37 | 2021 | David Eichhorn | *Tree detection and tree species identification from dense LiDAR point cloud for Sanssouci Park in Potsdam, Germany* | IoESG, MSc Geoecology | |
 | 36 | 2021 | Anna Rosner | *Dating glacial moraines on the volcanic Complex Quevar in NW Argentina using the cosmogenic nuclides 26Al, 10Be, and 21Ne* | IoG, MSc Geoscience | |
