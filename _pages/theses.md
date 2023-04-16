@@ -22,12 +22,13 @@ There have been several MSc and BSc theses advised in the past years. These were
 
 | Nr. | Year | Author | *Title* | Department and Degree | Additional information and PDF link (if available) |
 |:---:|:----------|:----:|:-------|:---:|:---:|
-| 48 | 2022 | Roi Hendler | *A Simple Method to Estimate Transpiration Rates of Savannah Shrub Stands Based on Allometric Relationships and UAV imagery* | MSc EEC |
-| 47 | 2022 | Bashini Mahaarachchi | *Identifying vehicle parking lots from aerial images using deep learning methods* | MSc Data Science |
-| 46 | 2022 | Yiğit Öner Altıntaş | *Measuring high-resolution surface deformation signals in Turkey using Sentinel-1 radar interferometry* | IoG, MSc |
-| 45 | 2022 | Jonas Kordt | *How to date the deflection of the Sutlej River* | University of Kiel |
-| 44 | 2022 | Max Hess | *Deciduous Tree Segmentation using Generated Tree Stands and Geometric Networks* | IoESG, MSc |
-| 43 | 2022 | Sandra Wobeser | *Catchment-Wide Denudation Rates from the Western Himalaya: Detrital Terrestrial Cosmogenic Nuclides (TCN) from the Sutlej River* | IoG, MSc |
+| 49 | 2022 | Samuel Russell | *The Application of UAV and Satellite Data to Map Palaeontological Sample Sites* | IoG, MSc RSIV | |
+| 48 | 2022 | Roi Hendler | *A Simple Method to Estimate Transpiration Rates of Savannah Shrub Stands Based on Allometric Relationships and UAV imagery* | MSc EEC | |
+| 47 | 2022 | Bashini Mahaarachchi | *Identifying vehicle parking lots from aerial images using deep learning methods* | MSc Data Science | |
+| 46 | 2022 | Yiğit Öner Altıntaş | *Measuring high-resolution surface deformation signals in Turkey using Sentinel-1 radar interferometry* | IoG, MSc RSIV | |
+| 45 | 2022 | Jonas Kordt | *How to date the deflection of the Sutlej River* | University of Kiel | |
+| 44 | 2022 | Max Hess | *Deciduous Tree Segmentation using Generated Tree Stands and Geometric Networks* | IoESG, MSc RSIV | |
+| 43 | 2022 | Sandra Wobeser | *Catchment-Wide Denudation Rates from the Western Himalaya: Detrital Terrestrial Cosmogenic Nuclides (TCN) from the Sutlej River* | IoG, MSc RSIV | |
 | 42 | 2021 | Martin Lang | *Quantifying landscape-evolution rates across the Argentinean Puna Plateau using geochemical methods* | IoG, MSc Geoscience | |
 | 41 | 2021 | Nicolas Garcia | *Slow-moving landslide detection in the western Himalaya using Sentinel-1 radar time series* | IoG, MSc RSIV | |
 | 40 | 2021 | Shaig Hamzaliyev | *Reconstructing ground surfaces from full waveform Lidar data* | IoG, MSc RSIV | |
