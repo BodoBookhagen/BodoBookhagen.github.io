@@ -22,6 +22,9 @@ There have been several MSc and BSc theses advised in the past years. These were
 
 | Nr. | Year | Author | *Title* | Department and Degree | Additional information and PDF link (if available) |
 |:---:|:----------|:----:|:-------|:---:|:---:|
+| 52 | 2023 | Fuad Yagublu | *Point Clouds from multi-camera setup: Application in the Geosciences* | IoG, MSc RSIV | |
+| 51 | 2023 | Gittu Thampi | *Identify the animal pathways using a convolutional neural network* | IoG, MSc RSIV | |
+| 50 | 2023 | Larissa Cristina de Rezende Magalhaes | *Use of spaceborne lidar and radar data to analyze the vegetation cover in the Namibian Savannah* | IoG, MSc RSIV | |
 | 49 | 2022 | Samuel Russell | *The Application of UAV and Satellite Data to Map Palaeontological Sample Sites* | IoG, MSc RSIV | |
 | 48 | 2022 | Roi Hendler | *A Simple Method to Estimate Transpiration Rates of Savannah Shrub Stands Based on Allometric Relationships and UAV imagery* | MSc EEC | |
 | 47 | 2022 | Bashini Mahaarachchi | *Identifying vehicle parking lots from aerial images using deep learning methods* | MSc Data Science | |
