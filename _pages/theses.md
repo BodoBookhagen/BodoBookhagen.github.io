@@ -22,6 +22,18 @@ There have been several MSc and BSc theses advised in the past years. These were
 
 | Nr. | Year | Author | *Title* | Department and Degree | Additional information and PDF link (if available) |
 |:---:|:----------|:----:|:-------|:---:|:---:|
+| 64 | 2025 | Yiğit Özlan | *Assessing Optical Flow Techniques for Displacement Mapping Using SAR and Optical Images: A Study on the 2023 Kahramanmaraş Earthquakes* | IoG, MSc RSIV |
+| 63 | 2025 | Victoria Dergunova | *Detecting Fault Structures in High-Resolution 2D Imagery* | Computer Sciences, University of Potsdam |
+| 62 | 2025 | Man Tuen Chan | *Extending the Capabilities of SegmentAnything to Delineate River Pebbles from Orthophotos* | IoG, MSc RSIV | [MSc thesis in review in *Earth Surface Dynamics*](https://egusphere.copernicus.org/preprints/2025/egusphere-2025-4003/) 
+| 61 | 2025 | Ananya Pandey | *Geomorphic Expression of Slow Deformation Processes in a Tectonically Active Intermontane Basin: Deformed Terraces and Changes in the Fluvial Network in the Calchaquı́ Valley, Northwestern Argentina* | IoG, MSc RSIV | 
+| 60 | 2025 | Sabrina Blatz | *Detection of pipe bursts and sewer damages in Berlin using InSAR time series from 2020-2023* | Geography, Humboldt University |
+| 59 | 2024 | Safa Khan | *Random Forest based Ground Classification of UAV Point Clouds* | IoG, MSc RSIV | 
+| 58 | 2024 | Luis Kremer | *A line-based subsampling and segmentation approach for tree structure detection in terrestrial laser scanning point clouds using supervised machine learning* | IoG, MSc RSIV |
+| 57 | 2024 | Stefan Schütz | *Satellite-Based Lake Area Time Series Analysis on the Central Andean Plateau* | IoG, MSc RSIV |
+| 56 | 2024 | Wei-Liang Lin | *Reconstruction of Glacial Surface Models Using Improved SfM Workflows: An Example from the Central Tien Shan in Kyrgyzstan*  | Geography, Humboldt University |
+| 55 | 2024 | Juan Sebastian Valencia Velasquez | *Landslide detection using time series of spaceborne Digital Elevation Models and Lidar instruments in the South American Andes* | IoG, MSc RSIV | 
+| 54 | 2024 | Florian Best | *Remote-Sensing based mapping of Solar Panels in Berlin using Machine Learning* | IoG, MSc RSIV |
+| 53 | 2024 | Franziska Börner | *Classiﬁcation of ICESat-2 ATL03 Point Clouds in Alpine Regions* | IoG, MSc RSIV |
 | 52 | 2023 | Fuad Yagublu | *Point Clouds from multi-camera setup: Application in the Geosciences* | IoG, MSc RSIV | |
 | 51 | 2023 | Gittu Thampi | *Identify the animal pathways using a convolutional neural network* | IoG, MSc RSIV | |
 | 50 | 2023 | Larissa Cristina de Rezende Magalhaes | *Use of spaceborne lidar and radar data to analyze the vegetation cover in the Namibian Savannah* | IoG, MSc RSIV | |
