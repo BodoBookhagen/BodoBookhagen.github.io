@@ -20,7 +20,7 @@ excerpt: ""
 
 **Research:**  My research explores transport processes both within the Earth (vertical tectonics) and on the Earth’s surface (geomorphology), with particular emphasis on hydrologic and atmospheric drivers. I focus on quantifying Earth-surface processes through:
 
-i. Remote sensing data and techniques
+1. Remote sensing data and techniques
 2. In-situ and field measurements
 3. Geochemical analyses
 4. Time series and data analytics
@@ -28,6 +28,6 @@ i. Remote sensing data and techniques
 
 Additional tutorials, datasets, and code resources are available on the [University of Potsdam - Remote Sensing and Earth-Surface Process Team webpage](http://UP-RS-ESP.github.io/) and [Blog Posts and Tutorials](https://up-rs-esp.github.io/year-archive/). An archive of earlier materials from my time at [here](http://www.geog.ucsb.edu/~bodo/).
 
-**Teaching:** My [**teaching**](http://bodobookhagen.github.io/teaching) integrates remote sensing, earth data science, and geochemical approaches to investigate Earth-surface processes. Courses combine multiple data sources—satellite observations, field data, and model outputs—and use programming environments such as Python, C, and MATLAB. We have developed a modern curriculum in remote sensing and Earth-surface processes and coordinate the international MSc program in *Remote Sensing, geoInformation, and Visualization* (see the [university's application portal](https://www.uni-potsdam.de/de/mnfakul/studium-und-lehre/master/remote-sensing-geoinformation-and-visualization.html) and the [DAAD](https://www.daad.de/deutschland/studienangebote/international-programmes/en/detail/4855/) programming listing). All teaching materials are available through the [University of Potsdam Moodle Platform](https://moodle2.uni-potsdam.de/) .
+**Teaching:** My [**teaching**](http://bodobookhagen.github.io/teaching) integrates remote sensing, earth data science, and geochemical approaches to investigate Earth-surface processes. Courses combine multiple data sources—satellite observations, field data, and model outputs—and use programming environments such as Python, C, and MATLAB. We have developed a modern curriculum in remote sensing and Earth-surface processes and coordinate the international MSc program in *Remote Sensing, geoInformation, and Visualization* (see the [University of Potsdam application portal](https://www.uni-potsdam.de/de/mnfakul/studium-und-lehre/master/remote-sensing-geoinformation-and-visualization.html) and the [DAAD](https://www.daad.de/deutschland/studienangebote/international-programmes/en/detail/4855/) programming listing). All teaching materials are available through the [University of Potsdam Moodle Platform](https://moodle2.uni-potsdam.de/) .
 
 A list of advised BSc and MSc theses (year, name, topic, department) can be found in [BSc and MSc Theses](http://bodobookhagen.github.io/theses).
