@@ -16,12 +16,18 @@ excerpt: ""
 ---
 **Please also see the [University of Potsdam - Remote Sensing and Earth-Surface Process Team](http://UP-RS-ESP.github.io/) webpage.**
 
-**Research Motivation:** The Earth's surface is driven by geological, biological, and climatic forces. They form a complex system of closely coupled processes - knowledge of these interactions is essential because the Earth’s surface is the foundation for all human activity and its dynamics impact all facets of life, habitability, and sustainability.
+**Research Motivation:**  The Earth’s surface is shaped by the interplay of geological, biological, and climatic forces. These interconnected systems form a complex network of feedbacks and processes. Understanding these interactions is essential—Earth’s surface underpins all human activity, and its dynamic behavior directly influences habitability, sustainability, and environmental resilience.
 
-**Research:** I am interested in transport processes within the Earth (vertical tectonics) and on the Earth's Surface (geomorphology), specifically driven by hydrologic and atmospheric processes. My [**research**](http://bodobookhagen.github.io/research) focuses on quantifying Earth-Surface Processes using (1) remote sensing data and techniques; (2) in-situ and field measurements; (3) geochemical approaches; (4) time series and data analyses; and (5) numerical modeling approaches.
+**Research:**  My research explores transport processes both within the Earth (vertical tectonics) and on the Earth’s surface (geomorphology), with particular emphasis on hydrologic and atmospheric drivers. I focus on quantifying Earth-surface processes through:
 
-More extensive tutorial, data, and codes are available and on the [University of Potsdam - Remote Sensing and Earth-Surface Process Team webpage](http://UP-RS-ESP.github.io/) and [Blog Posts and Tutorials](https://up-rs-esp.github.io/year-archive/). An older website at my previous employer (UC Santa Barbara) can be found [here](http://www.geog.ucsb.edu/~bodo/).
+i. Remote sensing data and techniques
+2. In-situ and field measurements
+3. Geochemical analyses
+4. Time series and data analytics
+5. Numerical and process-based modeling
 
-**Teaching:** My [**teaching**](http://bodobookhagen.github.io/teaching) centers around a combination of remote-sensing and earth-data sciences. In the classroom, we rely on a variety of data sources (remote sensing, field data, modeling output), programming environments (Python, C, Matlab), and geochemical tools (e.g., cosmogenic nuclides and stable isotopes) to quantify geoscientific processes. In the past years, we have developed a modern remote sensing and earth-surface processes curriculum and we are running an international MSc program *Remote Sensing, geoInformation, and Visualization* (see the [university's application website](https://www.uni-potsdam.de/de/mnfakul/studium-und-lehre/master/remote-sensing-geoinformation-and-visualization.html) and the international program listed at the [DAAD](https://www.daad.de/deutschland/studienangebote/international-programmes/en/detail/4855/)). All teaching materials are available on the Moodle platform at the University of Potsdam.
+Additional tutorials, datasets, and code resources are available on the [University of Potsdam - Remote Sensing and Earth-Surface Process Team webpage](http://UP-RS-ESP.github.io/) and [Blog Posts and Tutorials](https://up-rs-esp.github.io/year-archive/). An archive of earlier materials from my time at [here](http://www.geog.ucsb.edu/~bodo/).
 
-A list of advised BSc and MSc theses (year, name, topic, department) is listed in [BSc and MSc Theses](http://bodobookhagen.github.io/theses).
+**Teaching:** My [**teaching**](http://bodobookhagen.github.io/teaching) integrates remote sensing, earth data science, and geochemical approaches to investigate Earth-surface processes. Courses combine multiple data sources—satellite observations, field data, and model outputs—and use programming environments such as Python, C, and MATLAB. We have developed a modern curriculum in remote sensing and Earth-surface processes and coordinate the international MSc program in *Remote Sensing, geoInformation, and Visualization* (see the [university's application portal](https://www.uni-potsdam.de/de/mnfakul/studium-und-lehre/master/remote-sensing-geoinformation-and-visualization.html) and the [DAAD](https://www.daad.de/deutschland/studienangebote/international-programmes/en/detail/4855/) programming listing). All teaching materials are available through the [University of Potsdam Moodle Platform](https://moodle2.uni-potsdam.de/) .
+
+A list of advised BSc and MSc theses (year, name, topic, department) can be found in [BSc and MSc Theses](http://bodobookhagen.github.io/theses).
