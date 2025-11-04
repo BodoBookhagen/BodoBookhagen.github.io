@@ -15,9 +15,9 @@ main:
   - title: "BSc and MSc Theses"
     url: /theses/
 
-  - title: "Research"
-    url: /research/
-
+#  - title: "Research"
+#    url: /research/
+#
 #  - title: "Blogs"
 #    url: /year-archive/
 

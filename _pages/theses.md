@@ -10,7 +10,7 @@ classes: wide
 There are several open theses topics that interested students can work on. Please contact [me](mailto:bodo.bookhagen@uni-potsdam.de) if you would like to pursue this.
 
 # Past theses advising
-There have been several MSc and BSc theses advised in the past years. These were at the University of California, Santa Barbara in the Deparments of [Geography](https://geog.ucsb.edu/) and [Earth Sciences](https://www.geol.ucsb.edu/), at the University of Potsdam in the [Institute of Geosciences](http://www.geo.uni-potsdam.de/), [Institute of Environmental Sciences and Geography](https://www.uni-potsdam.de/de/umwelt/), [Institute of Biochemistry and Biology](https://www.uni-potsdam.de/en/ibb/), and at the [Institute of Geodesy and Geoinformation Science](https://www.igg.tu-berlin.de/menue/institut_fuer_geodaesie_und_geoinformationstechnik/parameter/en/), Technical University of Berlin. Below is an *incomplete* list of MSc and BSc theses.
+There have been several MSc and BSc theses advised in the past years. These were at the University of California, Santa Barbara in the Deparments of [Geography](https://geog.ucsb.edu/) and [Earth Sciences](https://www.geol.ucsb.edu/), at the University of Potsdam in the [Institute of Geosciences](http://www.geo.uni-potsdam.de/), [Institute of Environmental Sciences and Geography](https://www.uni-potsdam.de/de/umwelt/), [Institute of Biochemistry and Biology](https://www.uni-potsdam.de/en/ibb/), and at the [Institute of Computer Science](https://www.uni-potsdam.de/en/cs/). External theses were advised at the [Geography Department](https://www.geographie.hu-berlin.de/en/geography_department) at the Humboldt University and at the [Institute of Geodesy and Geoinformation Science](https://www.igg.tu-berlin.de/menue/institut_fuer_geodaesie_und_geoinformationstechnik/parameter/en/) at the Technical University of Berlin. Below is an *incomplete* list of MSc and BSc theses.
 
 ## List of advised MSc thesis in reversed chronological order
 ### Abbreviations:
@@ -23,7 +23,7 @@ There have been several MSc and BSc theses advised in the past years. These were
 | Nr. | Year | Author | *Title* | Department and Degree | Additional information and PDF link (if available) |
 |:---:|:----------|:----:|:-------|:---:|:---:|
 | 64 | 2025 | Yiğit Özlan | *Assessing Optical Flow Techniques for Displacement Mapping Using SAR and Optical Images: A Study on the 2023 Kahramanmaraş Earthquakes* | IoG, MSc RSIV |
-| 63 | 2025 | Victoria Dergunova | *Detecting Fault Structures in High-Resolution 2D Imagery* | Computer Sciences, University of Potsdam |
+| 63 | 2025 | Victoria Dergunova | *Detecting Fault Structures in High-Resolution 2D Imagery* | Computer Science, University of Potsdam |
 | 62 | 2025 | Man Tuen Chan | *Extending the Capabilities of SegmentAnything to Delineate River Pebbles from Orthophotos* | IoG, MSc RSIV | [MSc thesis in review in *Earth Surface Dynamics*](https://egusphere.copernicus.org/preprints/2025/egusphere-2025-4003/) 
 | 61 | 2025 | Ananya Pandey | *Geomorphic Expression of Slow Deformation Processes in a Tectonically Active Intermontane Basin: Deformed Terraces and Changes in the Fluvial Network in the Calchaquı́ Valley, Northwestern Argentina* | IoG, MSc RSIV | 
 | 60 | 2025 | Sabrina Blatz | *Detection of pipe bursts and sewer damages in Berlin using InSAR time series from 2020-2023* | Geography, Humboldt University |

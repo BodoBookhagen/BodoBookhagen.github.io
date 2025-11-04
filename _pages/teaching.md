@@ -15,8 +15,8 @@ At the undergraduate (BSc) level, I am teaching a mandatory introductory class t
 At the graduate (MSc) level, I am teaching the following classes:
 - Remote Sensing of the Environment [GEW-RCM01](https://puls.uni-potsdam.de/qisserver/rds?state=wtree&search=1&trex=step&root120192=167710%7C163183%7C165068%7C165890%7C165827%7C165833%7C164824&P.vx=kurz)
 - Earth System Sciences [GEW-RCM02](https://puls.uni-potsdam.de/qisserver/rds?state=wtree&search=1&trex=step&root120192=167710%7C163183%7C165068%7C165890%7C165827%7C165833%7C168306&P.vx=kurz)
+- Communicationa and Visualization
 - Terrestrial and Airborne Lidar and Photogrammetry Systems [GEW-RSM02](https://puls.uni-potsdam.de/qisserver/rds?state=wtree&search=1&trex=step&root120192=167710%7C163183%7C165068%7C165890%7C165827%7C164809%7C168362%7C167994&P.vx=kurz)
-- Big Data Analytics (co-teaching) [GEW-DAP03](https://puls.uni-potsdam.de/qisserver/rds?state=wtree&search=1&trex=step&root120192=167710%7C163183%7C165068%7C165890%7C165827%7C164809%7C168535%7C167529&P.vx=kurz)
 - Analysis of Digital Elevation Models (co-teaching) [GEW-GIS01](https://puls.uni-potsdam.de/qisserver/rds?state=wtree&search=1&trex=step&root120192=167710%7C163183%7C165068%7C165890%7C165827%7C164809%7C168397%7C163517&P.vx=kurz)
 
 {% include base_path %}
