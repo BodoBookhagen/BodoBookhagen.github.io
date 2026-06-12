@@ -33,9 +33,11 @@ Nr. | Author(s) | Year | Chapter Title |  _Book Title_  | Editors  | Publisher |
 
 Nr.  | Author(s) | Year | Title | _Journal_ | DOI
 :--: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:
-| | **[2026]** | | |
-174 | Chan, V., Rheinwal, A., Bookhagen, B. | 2026 | OrthoSAM: multi-scale extension of the Segment Anything Model for river pebble delineation from large orthophotos | _Earth Surface Dynamics_ | [DOI](https://esurf.copernicus.org/articles/14/391/2026/#bib1.bibx26)
 
+177 | Tofelde, S., Clubb, F. J., **Bookhagen, B.** | 2026 | Controls on Valley-Floor Width in the Western Andes | _JGR Earth Surface_ | [DOI](https://doi.org/10.1029/2025JF00868a3)
+176 | Hongn, F., Montero-López, C., Aramayo, A., Camardelli, C., Guevara, A., **Bookhagen, B.**, Strecker, M.R. | 2026 | Localized deformation, uplift and fluvial processes of the proximal Bermejo megafan in the Andean foreland: Topographic growth of the Lomas de Olmedo anticline of NW Argentina | _Journal of South American Earth Sciences_ | [DOI](https://doi.org/10.1016/j.jsames.2026.106014)
+175 | Smith, T., Morr, A., **Bookhagen, B.** and Boers, N. | 2026 | Predicting instabilities in transient landforms and interconnected ecosystems | _Nature Communications_ | [DOI](https://doi.org/10.1038/s41467-026-68944-w)
+174 | Chan, V., Rheinwal, A., **Bookhagen, B.** | 2026 | OrthoSAM: multi-scale extension of the Segment Anything Model for river pebble delineation from large orthophotos | _Earth Surface Dynamics_ | [DOI](https://esurf.copernicus.org/articles/14/391/2026/#bib1.bibx26)
 | | **[2025]** | | |
 173 | Hess, M., Rheinwalt, A., **Bookhagen, B.** | 2025 | Refining point-cloud neighborhood construction for improved classification | _Science of Remote Sensing_ | [DOI](https://doi.org/10.1016/j.srs.2025.100325)
 172 | Armeni, V., Mantiloni, L., **Bookhagen, B.**, Rivalta, E., Acocella, V., Strecker, M.R. | 2025 | Spatial patterns of volcanism between adjacent rift segments | _Earth and Planetary Science Letters_ | [DOI](https://doi.org/10.1016/j.epsl.2025.119623)
