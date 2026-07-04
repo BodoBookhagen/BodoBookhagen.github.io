@@ -1,0 +1,99 @@
+<!-- GDPR cookie / analytics consent banner. GA is loaded only on "Accept". -->
+<style>
+  #consent-banner{position:fixed;left:0;right:0;bottom:0;z-index:9999;
+    background:#252a34;color:#f2f3f4;padding:1em 1.25em;
+    box-shadow:0 -2px 12px rgba(0,0,0,.3);font-size:.8rem;line-height:1.55;
+    display:none;}
+  #consent-banner.is-visible{display:block;}
+  #consent-banner .consent-inner{max-width:1100px;margin:0 auto;display:flex;
+    flex-wrap:wrap;gap:1em 1.5em;align-items:center;justify-content:space-between;}
+  #consent-banner p{margin:0;flex:1 1 340px;}
+  #consent-banner a{color:#8fd0ff;text-decoration:underline;}
+  #consent-banner .consent-actions{display:flex;gap:.6em;flex-wrap:wrap;
+    flex:0 0 auto;}
+  #consent-banner button{cursor:pointer;border:0;border-radius:4px;
+    padding:.55em 1.15em;font-size:.8rem;font-weight:700;line-height:1.2;}
+  #consent-accept{background:#3f9c41;color:#fff;}
+  #consent-decline{background:#4a5160;color:#fff;}
+  #consent-banner button:focus-visible{outline:2px solid #8fd0ff;outline-offset:2px;}
+  @media (max-width:640px){
+    #consent-banner .consent-inner{flex-direction:column;align-items:stretch;}
+    #consent-banner .consent-actions{justify-content:stretch;}
+    #consent-banner .consent-actions button{flex:1 1 auto;}
+  }
+</style>
+
+<div id="consent-banner" role="dialog" aria-live="polite"
+     aria-label="Cookie consent / Cookie-Einwilligung">
+  <div class="consent-inner">
+    <p>
+      <strong>Datenschutz&nbsp;/&nbsp;Privacy.</strong>
+      Diese Website nutzt Google&nbsp;Analytics nur mit Ihrer Einwilligung, um die
+      Nutzung dieser wissenschaftlichen Website zu verstehen. &middot;
+      This website uses Google&nbsp;Analytics only with your consent to understand
+      how this scientific website is used.
+      <a href="{{ '/datenschutz/' | relative_url }}">Datenschutz</a> &middot;
+      <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
+    </p>
+    <div class="consent-actions">
+      <button id="consent-decline" type="button">Ablehnen / Decline</button>
+      <button id="consent-accept" type="button">Akzeptieren / Accept</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var KEY = 'ogre-analytics-consent';
+  var banner = document.getElementById('consent-banner');
+  var handled = false;
+
+  function readChoice() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function saveChoice(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  function show() { if (banner) { banner.classList.add('is-visible'); } }
+  function hide() { if (banner) { banner.classList.remove('is-visible'); } }
+
+  function loadGA() {
+    if (handled) { return; }
+    handled = true;
+    if (typeof window.__loadGoogleAnalytics === 'function') {
+      window.__loadGoogleAnalytics();
+    } else {
+      // Non-production build: the GA snippet is not emitted, so there is
+      // nothing to load. Consent is still recorded for testing.
+      console.info('[consent] analytics consent granted (no GA in this build environment).');
+    }
+  }
+
+  function deleteGACookies() {
+    var host = location.hostname;
+    var domains = [host, '.' + host, host.replace(/^www\./, ''), '.' + host.replace(/^www\./, '')];
+    document.cookie.split(';').forEach(function (c) {
+      var name = c.split('=')[0].trim();
+      if (name.indexOf('_ga') === 0 || name.indexOf('_gid') === 0 || name.indexOf('_gat') === 0) {
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+        domains.forEach(function (d) {
+          document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=' + d;
+        });
+      }
+    });
+  }
+
+  function accept() { saveChoice('granted'); hide(); loadGA(); }
+  function decline() { saveChoice('denied'); hide(); deleteGACookies(); }
+
+  // Let a footer link or the privacy page re-open the banner to change consent.
+  window.ogreCookieSettings = function () { handled = false; show(); };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var a = document.getElementById('consent-accept');
+    var d = document.getElementById('consent-decline');
+    if (a) { a.addEventListener('click', accept); }
+    if (d) { d.addEventListener('click', decline); }
+
+    var choice = readChoice();
+    if (choice === 'granted') { loadGA(); }
+    else if (choice !== 'denied') { show(); }
+  });
+})();
+</script>
