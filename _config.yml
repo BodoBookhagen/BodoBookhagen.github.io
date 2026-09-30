@@ -82,13 +82,13 @@ analytics:
 # Site Author
 author:
   name             : "Bodo Bookhagen"
-  avatar           : "bookhagen_profile_photo.jpg"
+  avatar           : "images/bookhagen_profile_photo.jpg"
   bio              : "Remote Sensing, Geomorphology"
   location         : "Dept. of Earth Sciences"
   employer         : "University of Potsdam"
   googlescholar    : "https://scholar.google.com/citations?user=_UuIymgAAAAJ&hl=en"
   email            : "bodo.bookhagen@uni-potsdam.de"
-  researchgate     :  "https://www.researchgate.net/profile/Bodo_Bookhagen"
+  researchgate     : "https://www.researchgate.net/profile/Bodo_Bookhagen"
   uri              :
   bitbucket        :
   codepen          :
