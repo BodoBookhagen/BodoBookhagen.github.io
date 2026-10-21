@@ -33,7 +33,8 @@ Nr. | Author(s) | Year | Chapter Title |  _Book Title_  | Editors  | Publisher |
 
 Nr.  | Author(s) | Year | Title | _Journal_ | DOI
 :-: | :--- | :-: | :--- | :--- | :---
-180 | Mueting, A., Charrier, L., **Bookhagen B.** | 2026 | Challenges in reconstructing seasonally driven landslide motion from optical satellite data: insights from the Del Medio catchment, NW Argentina | *Earth Sruface Dynamics* | [DOI](https://doi.org/10.5194/esurf-14-781-2026, 2026)
+181 | Viotto, S. **Bookhagen, B.** | 2026 | Strategies for Mitigating the Impact of Ionospheric and Tropospheric Delay on Sentinel-1 Interferograms in Northwestern Argentina | *Earth and Space Sciences* | [DOI](https://doi.org/10.1029/2026EA005014)
+180 | Mueting, A., Charrier, L., **Bookhagen B.** | 2026 | Challenges in reconstructing seasonally driven landslide motion from optical satellite data: insights from the Del Medio catchment, NW Argentina | *Earth Surface Dynamics* | [DOI](https://doi.org/10.5194/esurf-14-781-2026, 2026)
 179 | Smith, T., **Bookhagen, B.** | 2026 |  Discharge deficits in the Central Himalaya linked to greening and warming | *scientific reports* | [DOI](https://doi.org/10.1038/s41598-026-68997-3)
 178 | Fritz, S.C. et al. | 2026 | Initial results from a Trans-Amazon Drilling Project core from the Acre Basin of Brazil | *Scientific Drilling* | [DOI](https://sd.copernicus.org/articles/35/127/2026/)
 177 | Tofelde, S., Clubb, F. J., **Bookhagen, B.** | 2026 | Controls on Valley-Floor Width in the Western Andes | _JGR Earth Surface_ | [DOI](https://doi.org/10.1029/2025JF00868a3)
